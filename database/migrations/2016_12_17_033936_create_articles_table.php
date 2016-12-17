@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('url');
             $table->string('title');
             $table->text('text');
-            $table->integer('autor_id');
+            $table->integer('author_id');
             $table->timestamps();
         });
     }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" itemscope itemtype="<a href="http://schema.org/Article">http://schema.org/Article</a>">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

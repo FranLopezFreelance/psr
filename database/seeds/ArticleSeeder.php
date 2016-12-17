@@ -26,7 +26,8 @@ class ArticleSeeder extends Seeder
             años una falsa sensación de seguridad, una falsa euforia, que ahora ha
             quedado destrozada”, y no creo que Toynbee sea un enemigo de Estados
             Unidos.',
-          'autor_id' => 1,
+          'author_id' => 1,
+          'created_at' => '2016-12-16 06:21:31',
       ]);
       DB::table('articles')->insert([
           'section_id' => 4,
@@ -34,7 +35,8 @@ class ArticleSeeder extends Seeder
           'title' => 'Estado Nacional Soberano',
           'text' => 'Conforma nuestro Primer Pilar.  Es, lejos, lo más importante pues sin la re-fundación de un Estado Nacional Soberano,
           nada de los que propone nuestro Proyecto Segunda República es factible.',
-          'autor_id' => 2,
+          'author_id' => 2,
+          'created_at' => '2016-12-17 06:21:31',
       ]);
     }
 }
