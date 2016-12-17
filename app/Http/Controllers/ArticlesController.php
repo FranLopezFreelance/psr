@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
 {
+    public function getArticles(){
+      $sections = Section::where('level', 1)->get();
+      return view('articles.index', compact('sections'));
+    }
 
     public function getArticle($section, $subSection, $url){
 
@@ -20,16 +24,6 @@ class ArticlesController extends Controller
       }else{
         return back();
       }
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
     }
 
     /**

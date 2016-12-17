@@ -18,4 +18,5 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('articulos', 'ArticlesController@getArticles');
 Route::get('articulos/{section}/{subSection}/{url}', 'ArticlesController@getArticle');
