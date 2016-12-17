@@ -8,24 +8,6 @@ use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
 {
-    public function getArticles(){
-      $sections = Section::where('level', 1)->get();
-      return view('articles.index', compact('sections'));
-    }
-
-    public function getArticle($section, $subSection, $url){
-
-      if(Section::where('name', $section)->first()
-      && Section::where('name', $subSection)->first()
-      && $article = Article::where('url', $url)->first()){
-
-        $sections = Section::where('level', 1)->get();
-        return view('articles.show', compact('article', 'sections'));
-      }else{
-        return back();
-      }
-    }
-
     /**
      * Show the form for creating a new resource.
      *
