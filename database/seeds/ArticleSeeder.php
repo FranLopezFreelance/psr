@@ -12,7 +12,7 @@ class ArticleSeeder extends Seeder
     public function run()
     {
       DB::table('articles')->insert([
-          'section_id' => 2,
+          'section_id' => 4,
           'url' => 'la-hora-de-los-pueblos',
           'title' => 'La hora de los Pueblos',
           'text' => 'Tal vez algunas personas que puedan leer este libro lleguen a pensar
@@ -27,6 +27,14 @@ class ArticleSeeder extends Seeder
             quedado destrozada”, y no creo que Toynbee sea un enemigo de Estados
             Unidos.',
           'autor_id' => 1,
+      ]);
+      DB::table('articles')->insert([
+          'section_id' => 4,
+          'url' => 'estado-nacional-soberano',
+          'title' => 'Estado Nacional Soberano',
+          'text' => 'Conforma nuestro Primer Pilar.  Es, lejos, lo más importante pues sin la re-fundación de un Estado Nacional Soberano,
+          nada de los que propone nuestro Proyecto Segunda República es factible.',
+          'autor_id' => 2,
       ]);
     }
 }

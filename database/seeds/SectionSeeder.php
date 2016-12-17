@@ -14,14 +14,26 @@ class SectionSeeder extends Seeder
       DB::table('sections')->insert([
           'level' => 1,
           'section_id' => 0,
-          'url' => 'politica',
-          'name' => 'Política',
+          'url' => 'nacional',
+          'name' => 'Nacional',
+      ]);
+      DB::table('sections')->insert([
+          'level' => 2,
+          'section_id' => 0,
+          'url' => 'internacional',
+          'name' => 'Internacional',
       ]);
       DB::table('sections')->insert([
           'level' => 2,
           'section_id' => 1,
-          'url' => 'nacional',
-          'name' => 'Nacional',
+          'url' => 'economia',
+          'name' => 'Economía',
+      ]);
+      DB::table('sections')->insert([
+          'level' => 2,
+          'section_id' => 1,
+          'url' => 'politica',
+          'name' => 'Política',
       ]);
     }
 }

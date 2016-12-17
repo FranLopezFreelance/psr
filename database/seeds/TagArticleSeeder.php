@@ -23,5 +23,13 @@ class TagArticleSeeder extends Seeder
           'tag_id' => 3,
           'article_id' => 1,
       ]);
+      DB::table('tagsArticles')->insert([
+          'tag_id' => 4,
+          'article_id' => 2,
+      ]);
+      DB::table('tagsArticles')->insert([
+          'tag_id' => 5,
+          'article_id' => 2,
+      ]);
     }
 }

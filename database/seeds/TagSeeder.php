@@ -20,5 +20,11 @@ class TagSeeder extends Seeder
       DB::table('tags')->insert([
           'text' => 'Libros Clásicos',
       ]);
+      DB::table('tags')->insert([
+          'text' => 'Soberanía Política',
+      ]);
+      DB::table('tags')->insert([
+          'text' => 'Estado Soberano',
+      ]);
     }
 }
