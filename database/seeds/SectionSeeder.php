@@ -18,7 +18,7 @@ class SectionSeeder extends Seeder
           'name' => 'Nacional',
       ]);
       DB::table('sections')->insert([
-          'level' => 2,
+          'level' => 1,
           'section_id' => 0,
           'url' => 'internacional',
           'name' => 'Internacional',

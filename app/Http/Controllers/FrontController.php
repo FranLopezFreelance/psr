@@ -9,12 +9,8 @@ use Illuminate\Http\Request;
 class FrontController extends Controller
 {
   public function getArticles(){
-    $this->renderView('front.articles.index');
-  }
-
-  public function renderView($view){
     $sections = Section::where('level', 1)->get();
-    return view($view, compact('sections'));
+    return view('front.articles.index', compact('sections'));
   }
 
   public function getArticle($section, $subSection, $url){
