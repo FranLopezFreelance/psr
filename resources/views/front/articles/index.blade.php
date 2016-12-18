@@ -10,7 +10,7 @@
 
                 <div class="panel-body">
                       @forelse($sections as $section)
-                        {{ $section->getTree() }}
+                        {{ $section->getTree(1) }}
                       @empty
                       @endforelse
                 </div>
@@ -21,7 +21,7 @@
                 <div class="panel-heading"><h3>Artículos</h3>
                 </div>
                 <div class="panel-body">
-                    
+
                 </div>
             </div>
         </div>

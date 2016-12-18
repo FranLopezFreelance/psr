@@ -9,12 +9,15 @@ use Illuminate\Http\Request;
 class FrontController extends Controller
 {
   public function getArticles(){
+    $this->renderView('front.articles.index');
+  }
+
+  public function renderView($view){
     $sections = Section::where('level', 1)->get();
-    return view('front.articles.index', compact('sections'));
+    return view($view, compact('sections'));
   }
 
   public function getArticle($section, $subSection, $url){
-
     if(Section::where('name', $section)->first()
     && Section::where('name', $subSection)->first()
     && $article = Article::where('url', $url)->first()){
@@ -24,5 +27,15 @@ class FrontController extends Controller
     }else{
       return back();
     }
+  }
+
+  public function getVideo(){
+    $sections = Section::where('level', 1)->get();
+    return view('front.videos.index', compact('sections'));
+  }
+
+  public function getVideos(){
+    $sections = Section::where('level', 1)->get();
+    return view('front.videos.index', compact('sections'));
   }
 }

@@ -47,6 +47,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li><a href="/articulos">Artículos</a></li>
+                        <li><a href="/videos">Videos</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

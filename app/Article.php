@@ -18,10 +18,6 @@ class Article extends Model
       return $this->belongsToMany('App\Tag', 'tagsArticles', 'article_id', 'tag_id');
   }
 
-  public function date(){
-    return date_format($this->created_at, 'd-m-Y');
-  }
-
   public function getTags(){
     $tags = "";
     if($this->tags){
@@ -34,6 +30,10 @@ class Article extends Model
 
     echo $tags;
 
+  }
+
+  public function date(){
+    return date_format($this->created_at, 'd-m-Y');
   }
 
   public function getLink(){
