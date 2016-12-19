@@ -12,10 +12,7 @@
 */
 use App\Article;
 
-Route::get('/', function () {
-    $articles = Article::all();
-    return view('welcome', compact('articles'));
-});
+Route::get('/', 'FrontController@getIndex');
 
 Auth::routes();
 Route::get('articulos', 'FrontController@getArticles');

@@ -1,19 +1,67 @@
-const elixir = require('laravel-elixir');
+var gulp = require('gulp');
+var minifyCSS = require('gulp-minify-css');
+var autoprefixer = require('gulp-autoprefixer');
+var less = require('gulp-less');
+var concat = require('gulp-concat');
+var rename = require("gulp-rename");
+var uglify = require("gulp-uglify");
+var browserSync = require('browser-sync');
 
-require('laravel-elixir-vue-2');
+var path = {
+    src: "node_modules/",
+    js: "site/scripts/"
+}
 
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
+var config = {
+    ngsrc: [
+    ],
+    scripts:[
+      'site/scripts/pages/home.js'
+    ]
+}
 
-elixir(mix => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+gulp.task("scripts", function () {
+    return gulp.src(config.scripts)
+     .pipe(concat("pages.js"))
+     .pipe(gulp.dest("./dist/js/"))
+     .pipe(rename("pages.min.js"))
+     .pipe(uglify())
+     .pipe(gulp.dest("./dist/js/"))
+});
+
+gulp.task("html", function () {
+    return gulp.src('site/html/**/*.html')
+     .pipe(gulp.dest("./dist/html/"))
+});
+
+gulp.task('styles', function() {
+    gulp.src(['resources/assets/less/front/main.less'])
+        .pipe(less())
+        .pipe(autoprefixer('last 1 version'))
+        .pipe(concat('thestyle.css'))
+        .pipe(gulp.dest('./public/css/front/'))
+        .pipe(minifyCSS())
+        .pipe(rename("thestyle.min.css"))
+        .pipe(gulp.dest('./public/css/front'))
+        .pipe(browserSync.reload({stream:true}));
+})
+
+gulp.task('browser-sync', function(){
+    browserSync({
+         proxy: "http://localhost/psr",
+         /*port: 8000*/
+    });
+});
+gulp.task('bs-reload', function (){
+    browserSync.reload();
+});
+
+gulp.task('default', ['browser-sync'], function () {
+  //  gulp.run('styles');
+    //gulp.run('html');
+
+
+    gulp.watch('resources/assets/less/front/*.less',['styles']);
+    gulp.watch('resources/views/welcome.blade.php',['bs-reload']);
+    //gulp.watch('site/scripts/**/*.js',['scripts','bs-reload']);
 });

@@ -1,0 +1,100 @@
+@font-face {
+    font-family: LucidaFax;
+    src: url(../fonts/911Fonts.com_LucidaFaxRegular.ttf);
+}
+
+html, body { height: 100%; padding: 0; }
+html,body,input,div,button,nav,form,a,span,h1,h2,h3,h4,h5,h6{
+	font-family: 'Lato', sans-serif;
+}
+html,body{
+	background-color: #f2f2f2;
+}
+
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1440px; /* or 950px */
+}
+
+
+nav.main-menu{
+//	height: 80px;
+	background-color: white;
+	width: 100%;
+	margin-bottom: 0px;
+  .rounded(0);
+
+	ul.nav{
+	li{
+		padding: 15px 5px;
+		.transition();
+		a{
+			color:black;
+			font-weight:600;
+			text-transform: uppercase;
+			font-size: 14px;
+		}
+		&:hover{
+			.transition();
+			background-color: @blue-dark;
+			a{color:white;}
+		}
+    &:select{
+      background-color: transparent;
+    }
+	}
+}
+.navbar-default .navbar-nav>.open>a,
+ .navbar-default .navbar-nav>.open>a:focus,
+  .navbar-default .navbar-nav>.open>a:hover,
+  li.dropdown a{
+  background-color: transparent!important;
+  color:white!important;
+  ul.dropdown-menu li a{
+    color:grey!important;
+  }
+}
+
+.navbar-brand{
+	margin: 0;
+  padding: 0px;
+
+	img{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top:7px;
+    .q(@sm,{
+      position: inherit;
+      height: 70px;
+      transform: none;
+      margin-top: 5px;
+      margin-left: 20px;
+      });
+
+	}
+}
+}
+
+div.nav-bottom-carousel{
+  background-color: #0077c5;
+  height: 5px;
+}
+
+.nacional{
+  padding-top: 40px;
+}
+div.footer{
+  background-color: #949494;
+  padding: 10px 0;
+  border-top: solid 5px #006fb7;
+}
+
+img.boceto{
+  width: 100%;
+}
+
+.pilares{
+  background-color: #0077c5;
+}

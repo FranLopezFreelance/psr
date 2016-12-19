@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
+  private function renderView($template,$params){
+    return view($template, compact($params));
+  }
+  public function getIndex(){
+    $sections = Section::where('level', 1)->get();
+    //dd($sections);
+    return view('front.index', compact('sections'));
+  //  $this->renderView('front.index', $sections);
+  }
+
   public function getArticles(){
     $sections = Section::where('level', 1)->get();
     return view('front.articles.index', compact('sections'));
