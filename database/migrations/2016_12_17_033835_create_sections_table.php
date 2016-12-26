@@ -18,7 +18,10 @@ class CreateSectionsTable extends Migration
             $table->integer('level');
             $table->integer('section_id');
             $table->string('name');
+            $table->text('description');
             $table->string('url');
+            $table->integer('topnav');
+            $table->integer('active');
             $table->timestamps();
         });
     }
