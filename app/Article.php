@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+  protected $fillable = [
+      'section_id', 'url', 'title', 'html_title', 'description', 'text', 'author_id', 'views', 'dest', 'active'
+  ];
+
   public function section(){
       return $this->belongsTo('App\Section');
   }

@@ -4,10 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Section;
+use App\Author;
 use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $section = Section::where('level', 2)->first();
+        $articles = $section->articles;
+        $sections = Section::all();
+        return view('backend.articles.index', compact('articles', 'sections'));
+    }
+
+    public function getBySection(Section $section)
+    {
+      $sections = Section::all();
+      $articles = $section->articles;
+      return view('backend.articles.index', compact('articles', 'sections'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -15,7 +41,9 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        //
+        $sections = Section::all();
+        $authors = Author::all();
+        return view('backend.articles.create', compact('sections', 'authors'));
     }
 
     /**
@@ -26,7 +54,10 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article = new Article($request->all());
+        $article->save();
+        $message = 'El Artículo ha sido creado.';
+        return view('backend.articles.show', compact('article', 'message'));
     }
 
     /**
@@ -35,9 +66,9 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        //
+        return view('backend.articles.show', compact('article'));
     }
 
     /**
@@ -46,9 +77,11 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //
+        $sections = Section::all();
+        $authors = Author::all();
+        return view('backend.articles.edit', compact('article', 'sections', 'authors'));
     }
 
     /**
@@ -58,9 +91,13 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Article $article)
     {
-        //
+        $sections = Section::all();
+        $authors = Author::all();
+        $article->update($request->all());
+        $message = 'Las modificaciones fueron guardadas.';
+        return view('backend.articles.edit', compact('article', 'sections', 'authors', 'message'));
     }
 
     /**
@@ -69,8 +106,12 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        $articles = Article::all();
+        $sections = Section::all();
+        $message = 'El Artículo ha sido eliminado.';
+        return view('backend.articles.index', compact('articles', 'sections', 'message'));
     }
 }

@@ -12,10 +12,20 @@
 */
 use App\Article;
 
+/* FRONT CONTROLLERS */
 Route::get('/', 'FrontController@getIndex');
-
-Auth::routes();
 Route::get('articulos', 'FrontController@getArticles');
 Route::get('articulos/{section}/{subSection}/{url}', 'FrontController@getArticle');
 Route::get('videos', 'FrontController@getVideos');
 Route::get('videos/{section}/{url}', 'FrontController@getVideo');
+
+Auth::routes();
+
+/* BACKEND CONTROLLERS */
+Route::get('/backend', 'BackendController@index');
+
+Route::resource('/backend/sections', 'SectionsController');
+Route::resource('/backend/articles', 'ArticlesController');
+Route::get('/backend/articles/section/{section}', 'ArticlesController@getBySection');
+Route::resource('/backend/videos', 'VideosController');
+Route::resource('/backend/audios', 'AudiosController');
