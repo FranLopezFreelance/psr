@@ -19,7 +19,7 @@ class CreateAuthorsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('img_url');
-            $table->integer('active');
+            $table->integer('active')->default(1);
             $table->timestamps();
         });
     }

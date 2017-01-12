@@ -7,8 +7,9 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4>
-                <a href="/backend/articles">Artículos</a> / Todos los artículos
+                <a href="/backend/articles">Artículos</a>
                 <a class="btn btn-success article-create" href="/backend/articles/create">Crear</a>
+                <a class="btn btn-default btn-xs pull-right" href="/articulos" target="_blank">Web</a>
             </h4>
           </div>
         </div>
@@ -39,6 +40,9 @@
                   @forelse($articles as $article)
                     <li class="list-group-item">
                       <a href="/backend/articles/{{ $article->id }}">{{ $article->title }}</a>
+                      @if($article->dest == 'on')
+                        <span class="label label-warning">Destacado</span>
+                      @endif
                       {!! Form::open(['method' => 'DELETE','route' => ['articles.destroy', $article->id],'style'=>'display:inline']) !!}
                       {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs pull-right']) !!}
                       {!! Form::close() !!}

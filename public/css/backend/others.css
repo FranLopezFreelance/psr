@@ -4,3 +4,11 @@
 .article-edit {
   margin-right: 15px;
 }
+
+.principal {
+  display: none;
+}
+
+.label-warning {
+  margin-left: 15px;
+}

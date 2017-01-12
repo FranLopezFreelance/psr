@@ -17,16 +17,18 @@ class FrontController extends Controller
   }
 
   public function getArticles(){
-    $sections = Section::where('level', 1)->get();
+    $sections = Section::where('level', 1)
+                        ->get();
     return view('front.articles.index', compact('sections'));
   }
 
   public function getArticle($section, $subSection, $url){
     if(Section::where('name', $section)->first()
-    && Section::where('name', $subSection)->first()
+    && Section::where('url', $subSection)->first()
     && $article = Article::where('url', $url)->first()){
 
-      $sections = Section::where('level', 1)->get();
+      $sections = Section::where('level', 1)
+                          ->get();
       return view('front.articles.show', compact('article', 'sections'));
     }else{
       return back();
@@ -34,7 +36,8 @@ class FrontController extends Controller
   }
 
   public function getVideos(){
-    $sections = Section::where('level', 1)->get();
+    $sections = Section::where('level', 1)
+                        ->get();
     return view('front.videos.index', compact('sections'));
   }
 

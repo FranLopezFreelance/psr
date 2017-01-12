@@ -14,7 +14,7 @@
                           <label for="title" class="col-md-4 control-label">Título</label>
 
                           <div class="col-md-6">
-                              <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus>
+                              <input id="title" type="text" class="form-control title" name="title" value="{{ old('title') }}" required autofocus>
 
                               @if ($errors->has('title'))
                                   <span class="help-block">
@@ -28,7 +28,7 @@
                           <label for="html_title" class="col-md-4 control-label">Título HTML</label>
 
                           <div class="col-md-6">
-                              <input id="html_title" type="text" class="form-control" name="html_title" value="{{ old('html_title') }}" required autofocus>
+                              <input id="html_title" type="text" class="form-control" name="html_title" value="{{ old('html_title') }}" required>
 
                               @if ($errors->has('html_title'))
                                   <span class="help-block">
@@ -42,7 +42,7 @@
                           <label for="url" class="col-md-4 control-label">URL</label>
 
                           <div class="col-md-6">
-                              <input id="url" type="text" class="form-control" name="url" value="{{ old('url') }}" required>
+                              <input id="url" type="text" class="form-control url" name="url" value="{{ old('url') }}" required>
 
                               @if ($errors->has('url'))
                                   <span class="help-block">
@@ -127,6 +127,16 @@
                                   </span>
                               @endif
                           </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-4">
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox" class="dest" name="dest"> Destacado
+                            </label>
+                          </div>
+                        </div>
                       </div>
 
                       <div class="form-group">

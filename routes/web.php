@@ -25,7 +25,10 @@ Auth::routes();
 Route::get('/backend', 'BackendController@index');
 
 Route::resource('/backend/sections', 'SectionsController');
+Route::get('/backend/sections/get/{section}', 'SectionsController@getBySection');
+
 Route::resource('/backend/articles', 'ArticlesController');
 Route::get('/backend/articles/section/{section}', 'ArticlesController@getBySection');
+
 Route::resource('/backend/videos', 'VideosController');
 Route::resource('/backend/audios', 'AudiosController');

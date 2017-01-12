@@ -22,7 +22,7 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->text('text');
             $table->date('date');
-            $table->integer('active');
+            $table->integer('active')->default(1);
             $table->integer('dest');
             $table->timestamps();
         });

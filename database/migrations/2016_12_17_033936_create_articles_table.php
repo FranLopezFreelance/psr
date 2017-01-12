@@ -16,16 +16,16 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('section_id');
-            $table->integer('tag_id');
+            $table->integer('tag_id')->default(0);
             $table->string('url');
             $table->string('title');
             $table->string('html_title');
             $table->text('description');
             $table->text('text');
             $table->integer('author_id');
-            $table->integer('views');
-            $table->string('dest');
-            $table->integer('active');
+            $table->integer('views')->default(0);
+            $table->string('dest')->default('off');
+            $table->integer('active')->default(1);
             $table->timestamps();
         });
     }

@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Section;
+use App\Typesection;
 use Illuminate\Http\Request;
 
 class SectionsController extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,17 @@ class SectionsController extends Controller
      */
     public function index()
     {
-        //
+      $sections = Section::where('level', 1)->get();
+      $section = $sections->where('id', 1)->first();
+      $subSections = $section->childrens;
+      return view('backend.sections.index', compact('section', 'sections', 'subSections'));
+    }
+
+    public function getBySection(Section $section)
+    {
+      $sections = Section::where('level', 1)->get();
+      $subSections = $section->childrens;
+      return view('backend.sections.index', compact('section', 'sections', 'subSections'));
     }
 
     /**
@@ -23,7 +40,9 @@ class SectionsController extends Controller
      */
     public function create()
     {
-        //
+      $sections = Section::all();
+      $typesections = Typesection::all();
+      return view('backend.sections.create', compact('sections', 'typesections'));
     }
 
     /**
@@ -34,7 +53,10 @@ class SectionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $section = new Section($request->all());
+      $section->save();
+      $message = 'La Sección ha sido creada.';
+      return view('backend.sections.show', compact('section', 'message'));
     }
 
     /**
@@ -43,9 +65,9 @@ class SectionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Section $section)
     {
-        //
+      return view('backend.sections.show', compact('section'));
     }
 
     /**
@@ -54,9 +76,10 @@ class SectionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Section $section)
     {
-        //
+      $sections = Section::all();
+      return view('backend.sections.edit', compact('section', 'sections'));
     }
 
     /**
@@ -66,9 +89,12 @@ class SectionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Section $section)
     {
-        //
+      $section->update($request->all());
+      $sections = Section::all();
+      $message = 'Las modificaciones fueron guardadas.';
+      return view('backend.sections.edit', compact('section', 'sections', 'message'));
     }
 
     /**
@@ -77,8 +103,13 @@ class SectionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Section $section)
     {
-        //
+      $section->delete();
+      $sections = Section::where('level', 1)->get();
+      $section = $sections->where('id', 1)->first();
+      $subSections = $section->childrens;
+      $message = 'La Sección ha sido eliminada.';
+      return view('backend.sections.index', compact('section', 'sections', 'subSections', 'message'));
     }
 }

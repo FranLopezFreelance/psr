@@ -29,7 +29,7 @@
                           <label for="title" class="col-md-4 control-label">Título</label>
 
                           <div class="col-md-6">
-                              <input id="title" type="text" class="form-control" name="title"
+                              <input id="title" type="text" class="form-control title" name="title"
                                 @if(old('title'))
                                   value="{{ old('title') }}"
                                 @else
@@ -69,7 +69,7 @@
                           <label for="url" class="col-md-4 control-label">URL</label>
 
                           <div class="col-md-6">
-                              <input id="url" type="text" class="form-control" name="url"
+                              <input id="url" type="text" class="form-control url" name="url"
                                 @if(old('url'))
                                   value="{{ old('url') }}"
                                 @else
@@ -148,6 +148,20 @@
                                   </span>
                               @endif
                           </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-4">
+                          <div class="checkbox">
+                            <label>
+                              @if($article->dest == 'on')
+                                <input type="checkbox" name="dest" class="dest" checked> Destacado
+                              @else
+                                <input type="checkbox" name="dest" class="dest"> Destacado
+                              @endif
+                            </label>
+                          </div>
+                        </div>
                       </div>
 
                       <div class="form-group">

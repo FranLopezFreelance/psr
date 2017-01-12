@@ -17,7 +17,7 @@ class CreateTagsTable extends Migration
             $table->increments('id');
             $table->string('text');
             $table->text('description');
-            $table->integer('active');
+            $table->integer('active')->default(1);
             $table->timestamps();
         });
     }

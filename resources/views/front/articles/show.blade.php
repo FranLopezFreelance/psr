@@ -19,6 +19,9 @@
         <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading">{{ $article->section->mother->name }}/{{ $article->section->name }}
+                  @if($article->dest == 'on')
+                    <span class="label label-warning">Destacado</span>
+                  @endif
                   <h3>{{ $article->title }}</h3>
                 </div>
                 <div class="panel-body">

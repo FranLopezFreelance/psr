@@ -5,7 +5,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><h4><a href="/backend/articles">Artículos</a> / {{ $article->title }}</h4></div>
+                <div class="panel-heading">
+                  <h4><a href="/backend/articles">Artículos</a> / {{ $article->title }} <a class="btn btn-default btn-xs pull-right" href="/articulos/{{ $article->getLink() }}" target="_blank">Web</a></h4>
+                </div>
                 <div class="panel-body">
                   @if(isset($message))
                       <div class="alert alert-success message">

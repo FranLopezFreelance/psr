@@ -22,7 +22,12 @@ class ArticlesController extends Controller
     public function index()
     {
         $section = Section::where('level', 2)->first();
-        $articles = $section->articles;
+        if(isset($section->articles)){
+          $articles = $section->articles;
+        }else{
+          $articles = Article::all();
+        }
+
         $sections = Section::all();
         return view('backend.articles.index', compact('articles', 'sections'));
     }
@@ -93,9 +98,15 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, Article $article)
     {
+          //dd($request->all());
         $sections = Section::all();
         $authors = Author::all();
         $article->update($request->all());
+        if(!$request->input('dest')){
+          $article->dest = 'off';
+          $article->save();
+        }
+
         $message = 'Las modificaciones fueron guardadas.';
         return view('backend.articles.edit', compact('article', 'sections', 'authors', 'message'));
     }

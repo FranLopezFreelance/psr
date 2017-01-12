@@ -25,7 +25,7 @@ class CreateAudioTable extends Migration
             $table->date('date');
             $table->integer('views');
             $table->string('dest');
-            $table->integer('active');
+            $table->integer('active')->default(1);
             $table->timestamps();
         });
     }

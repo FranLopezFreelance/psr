@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
+    protected $fillable = [
+        'level', 'section_id', 'url', 'name', 'description', 'typesection_id'
+    ];
+
     public function childrens(){
       return $this->hasMany('App\Section');
     }
@@ -24,6 +28,10 @@ class Section extends Model
 
     public function section(){
       return $this->hasMany('App\Video');
+    }
+
+    public function typesection(){
+      return $this->belongsTo('App\Typesection');
     }
 
     public function getTree($type){
@@ -57,15 +65,17 @@ class Section extends Model
 
     public function getTreeBack($type){
       if($type==1){
-        $tree = $this->name;
-        if($this->childrens){
-          $tree .= "<ul>";
-          foreach($this->childrens as $children){
-            $tree .= "<li><a href='/backend/articles/section/".$children->id."'>".$children->name."</li></a>";
+        if($this->level == 1){
+          $tree = $this->name;
+          if($this->childrens){
+            $tree .= "<ul>";
+            foreach($this->childrens as $children){
+              $tree .= "<li><a href='/backend/articles/section/".$children->id."'>".$children->name."</li></a>";
+            }
+            $tree .= "</ul>";
           }
-          $tree .= "</ul>";
+          echo $tree;
         }
-        echo $tree;
       }elseif($type==2){
           $tree = $this->name;
           $tree .= "<ul>";
