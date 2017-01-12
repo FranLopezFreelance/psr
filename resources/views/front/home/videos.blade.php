@@ -1,7 +1,7 @@
 
 <div class="home-videos container-fluid">
   <h4>Último Programa</h4>
-  <div class="row">
+  <div class="row"  >
     <div class="col-xs-12 col-sm-6 video-nacional">
       <div class="video img-center-responsive">
         <img src="img/test/video-1.jpg" alt="">
