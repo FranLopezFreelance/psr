@@ -206,23 +206,8 @@ nav.main-menu .navbar-brand img {
     margin-left: 20px;
   }
 }
-div.nav-bottom-carousel {
-  background-color: #0077c5;
-  height: 5px;
-}
-.nacional {
-  padding-top: 40px;
-}
-div.footer {
-  background-color: #949494;
-  padding: 10px 0;
-  border-top: solid 5px #006fb7;
-}
-img.boceto {
-  width: 100%;
-}
-.pilares {
-  background-color: #0077c5;
+div.carousel-border {
+  border-bottom: 4px solid black!important;
 }
 .extra-slider {
   padding: 0;
@@ -405,4 +390,57 @@ div.wrapper ul {
   color: #fff799;
   background: transparent;
   text-decoration: underline;
+}
+div.home-videos {
+  min-height: 200px;
+  background-color: #0063a4;
+  padding-bottom: 20px;
+  padding: 0px;
+}
+div.home-videos h4 {
+  color: white;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  padding: 40px;
+  font-size: 40px;
+}
+@media (min-width: 768px) {
+  div.home-videos div.video-nacional {
+    padding-right: 0px;
+  }
+  div.home-videos div.video-internacional {
+    padding-left: 0px;
+  }
+}
+div.home-videos div.video {
+  background-color: grey;
+  position: relative;
+}
+div.home-videos div.video span {
+  position: absolute;
+  text-align: left;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  font-size: 15px;
+  padding: 8px 20px;
+  color: white;
+  border-left: 7px solid #0096ec;
+}
+@media (min-width: 992px) {
+  div.home-videos div.video span {
+    font-size: 25px;
+  }
+}
+div.home-videos div.video-internacional > div.video > span {
+  border-left: 7px solid #fd1c18;
+}
+div.home-mas-videos {
+  padding-left: 30px;
+}
+div.home-mas-videos div.col-md-3 {
+  padding-left: 0px!important;
+  padding-right: 10px!important;
 }
