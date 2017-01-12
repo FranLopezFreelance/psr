@@ -29,7 +29,11 @@
     <a href="#" class="next"><i class="material-icons">keyboard_arrow_right</i></a>
   </div>
   <div class="pagination"></div>
+  <div class="carousel-border">
+
+  </div>
 </div>
 
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<!-- Go to www.addthis.com/dashboard to customize your tools
  <div class="addthis_inline_share_toolbox"></div>
+ -->
