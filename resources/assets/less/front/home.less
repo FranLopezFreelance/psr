@@ -1,0 +1,52 @@
+div.home-videos{
+  min-height: 200px;
+  background-color: @blue;
+  padding-bottom: 20px;
+  padding: 0px;
+
+  h4{
+    color: white;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    padding: 40px;
+    font-size: 40px;
+  }
+  .q(@sm,{
+    div.video-nacional{
+      padding-right: 0px;
+    }
+    div.video-internacional{
+      padding-left: 0px;
+    }
+  });
+
+  div.video{
+    background-color: grey;
+    position: relative;
+    span{
+      position: absolute;
+      text-align: left;
+      bottom: 0px;
+      left:0px;
+      background-color: rgba(0,0,0,0.8);
+      width: 100%;
+      font-size: 15px;
+      padding: 8px 20px;
+      color:white;
+      border-left: 7px solid @blue-border-video;
+      .q(@md,{font-size: 25px;});
+    }
+  }
+
+  div.video-internacional>div.video>span{
+    border-left: 7px solid @red-border-video;
+  }
+}
+div.home-mas-videos{
+  padding-left: 30px;
+  div.col-md-3{
+    padding-left: 0px!important;
+    padding-right: 10px!important;
+  }
+}
