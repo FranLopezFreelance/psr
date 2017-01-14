@@ -62,6 +62,6 @@ gulp.task('default', ['browser-sync'], function () {
 
 
     gulp.watch('resources/assets/less/front/*.less',['styles']);
-    gulp.watch('resources/views/welcome.blade.php',['bs-reload']);
+    gulp.watch('resources/views/**/*.php',['bs-reload']);
     //gulp.watch('site/scripts/**/*.js',['scripts','bs-reload']);
 });

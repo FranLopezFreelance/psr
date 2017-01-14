@@ -1,5 +1,5 @@
 
-<div class="extra-slider container-fluid">
+<div class="extra-slider slider-home container-fluid">
   <div class="wrapper ">
     <ul>
       <!--<li class="item pilar proyecto">-->
