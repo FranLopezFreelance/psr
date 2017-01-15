@@ -180,5 +180,16 @@ class SectionSeeder extends Seeder
         'social_desc' => 'Todo lo relacionado al Quinto Pilar del PSR: Restablecer los Valores Éticos y Morales.',
         'order' => 5,
       ]);
+      DB::table('sections')->insert([
+        'level' => 2,
+        'section_id' => 2,
+        'url' => 'economia',
+        'name' => 'Economía',
+        'html_title' => 'Economía',
+        'typeview_id' => 2,
+        'description' => 'Todo lo relacionado a Economía.',
+        'social_desc' => 'Todo lo relacionado a Economía.',
+        'order' => 1,
+      ]);
     }
 }
