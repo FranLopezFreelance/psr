@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Section;
-use App\Typesection;
 use Illuminate\Http\Request;
 
 class SectionsController extends Controller
@@ -20,17 +19,21 @@ class SectionsController extends Controller
      */
     public function index()
     {
+      $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)->get();
       $sections = Section::where('level', 1)->get();
       $section = $sections->where('id', 1)->first();
       $subSections = $section->childrens;
-      return view('backend.sections.index', compact('section', 'sections', 'subSections'));
+      return view('backend.sections.index', compact('section', 'sections', 'subSections', 'menuSections'));
     }
 
     public function getBySection(Section $section)
     {
+      $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)->get();
       $sections = Section::where('level', 1)->get();
       $subSections = $section->childrens;
-      return view('backend.sections.index', compact('section', 'sections', 'subSections'));
+      return view('backend.sections.index', compact('section', 'subSections', 'menuSections'));
     }
 
     /**
@@ -40,9 +43,10 @@ class SectionsController extends Controller
      */
     public function create()
     {
+      $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)->get();
       $sections = Section::all();
-      $typesections = Typesection::all();
-      return view('backend.sections.create', compact('sections', 'typesections'));
+      return view('backend.sections.create', compact('sections', 'menuSections'));
     }
 
     /**
@@ -53,10 +57,12 @@ class SectionsController extends Controller
      */
     public function store(Request $request)
     {
+      $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)->get();
       $section = new Section($request->all());
       $section->save();
       $message = 'La Sección ha sido creada.';
-      return view('backend.sections.show', compact('section', 'message'));
+      return view('backend.sections.show', compact('section', 'message', 'menuSections'));
     }
 
     /**
@@ -67,7 +73,9 @@ class SectionsController extends Controller
      */
     public function show(Section $section)
     {
-      return view('backend.sections.show', compact('section'));
+      $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)->get();
+      return view('backend.sections.show', compact('section', 'menuSections'));
     }
 
     /**
@@ -78,8 +86,10 @@ class SectionsController extends Controller
      */
     public function edit(Section $section)
     {
+      $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)->get();
       $sections = Section::all();
-      return view('backend.sections.edit', compact('section', 'sections'));
+      return view('backend.sections.edit', compact('section', 'sections', 'menuSections'));
     }
 
     /**
@@ -91,10 +101,12 @@ class SectionsController extends Controller
      */
     public function update(Request $request, Section $section)
     {
+      $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)->get();
       $section->update($request->all());
       $sections = Section::all();
       $message = 'Las modificaciones fueron guardadas.';
-      return view('backend.sections.edit', compact('section', 'sections', 'message'));
+      return view('backend.sections.edit', compact('section', 'sections', 'message', 'menuSections'));
     }
 
     /**
@@ -105,11 +117,12 @@ class SectionsController extends Controller
      */
     public function destroy(Section $section)
     {
+      $menuSections = Section::where('level', 1)->get();
       $section->delete();
       $sections = Section::where('level', 1)->get();
       $section = $sections->where('id', 1)->first();
       $subSections = $section->childrens;
       $message = 'La Sección ha sido eliminada.';
-      return view('backend.sections.index', compact('section', 'sections', 'subSections', 'message'));
+      return view('backend.sections.index', compact('section', 'sections', 'subSections', 'message', 'menuSections'));
     }
 }

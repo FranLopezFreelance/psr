@@ -26,6 +26,7 @@ class CreateSectionsTable extends Migration
             $table->string('url');
             $table->string('order');
             $table->integer('topnav')->default(1);
+            $table->integer('topnav_back')->default(0);
             $table->integer('active')->default(1);
             $table->timestamps();
         });

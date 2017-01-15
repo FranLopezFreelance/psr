@@ -60,32 +60,14 @@
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                Artículos <span class="caret"></span>
+                                Contenidos <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="/backend/articles"/> Ver</a></li>
-                                <li><a href="/backend/articles/create"/> Nuevo</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                Videos <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/backend/videos"/> Ver</a></li>
-                                <li><a href="/backend/videos/create"/> Nuevo</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                Audios <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/backend/audios"/> Ver</a></li>
-                                <li><a href="/backend/audios/create"/> Nuevo</a></li>
+                              @forelse($menuSections as $section)
+                                <li><a href="/backend/contents/section/{{ $section->id }}"/> {{ $section->name }}</a></li>
+                              @empty
+                              @endforelse
                             </ul>
                         </li>
                         @endif

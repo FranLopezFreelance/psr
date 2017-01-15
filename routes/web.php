@@ -12,22 +12,20 @@
 */
 use App\Article;
 
+Auth::routes();
+//
+// /* BACKEND CONTROLLERS */
+Route::get('/backend', 'BackendController@index');
+Route::resource('/backend/sections', 'SectionsController');
+Route::resource('/backend/contents', 'ContentsController');
+
 /* FRONT CONTROLLERS */
 Route::get('/', 'FrontController@getIndex');
 Route::get('/{section}', 'FrontController@getSection');
 Route::get('/{section}/{subSection}', 'FrontController@getSubSection');
 Route::get('/{section}/{subSection}/{content}', 'FrontController@getContent');
 
-// Auth::routes();
-//
-// /* BACKEND CONTROLLERS */
-// Route::get('/backend', 'BackendController@index');
-//
-// Route::resource('/backend/sections', 'SectionsController');
-// Route::get('/backend/sections/get/{section}', 'SectionsController@getBySection');
-//
-// Route::resource('/backend/articles', 'ArticlesController');
-// Route::get('/backend/articles/section/{section}', 'ArticlesController@getBySection');
-//
-// Route::resource('/backend/videos', 'VideosController');
-// Route::resource('/backend/audios', 'AudiosController');
+// /* OTHERS BACKEND CONTROLLERS */
+Route::get('/backend/sections/{section}', 'SectionsController@getBySection');
+Route::get('/backend/contents/section/{section}', 'ContentsController@getBySection');
+Route::get('/backend/contents/subSection/{subSection}', 'ContentsController@getBySubSection');

@@ -20,6 +20,7 @@ class SectionSeeder extends Seeder
           'typeview_id' => 1,
           'description' => 'Estos son los 5 Pilares, base estructural del Proyecto Segunda República.',
           'social_desc' => 'Estos son los 5 Pilares, base estructural del Proyecto Segunda República.',
+          'topnav_back' => 1,
           'order' => 1,
       ]);
       DB::table('sections')->insert([
@@ -31,6 +32,7 @@ class SectionSeeder extends Seeder
         'typeview_id' => 2,
         'description' => 'Estos son los artículos realizados por el equipo de Proyecto Segunda República.',
         'social_desc' => 'Estos son los artículos realizados por el equipo de Proyecto Segunda República.',
+        'topnav_back' => 1,
         'order' => 2,
       ]);
       DB::table('sections')->insert([
@@ -42,6 +44,7 @@ class SectionSeeder extends Seeder
         'typeview_id' => 3,
         'description' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'topnav_back' => 1,
         'order' => 3,
       ]);
       DB::table('sections')->insert([
@@ -53,6 +56,7 @@ class SectionSeeder extends Seeder
         'typeview_id' => 4,
         'description' => 'Estos son los porgramas de Radio que se emiten a lo largo de todo el País.',
         'social_desc' => 'Estos son los porgramas de Radio que se emiten a lo largo de todo el País.',
+        'topnav_back' => 1,
         'order' => 4,
       ]);
       DB::table('sections')->insert([
