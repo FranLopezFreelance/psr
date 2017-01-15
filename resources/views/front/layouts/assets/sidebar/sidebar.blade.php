@@ -34,3 +34,7 @@
   @include('front.layouts.assets.sidebar.articulo-recomendado',array('title'=>"La deuda pública de Macri en 2016",'img'=>'./img/test/merkel.jpg','txt'=>'Hace pocas semanas el Ministerio de Economía (MECON) ','url'=>'articulos/nacional/macri-gato'))
   @include('front.layouts.assets.sidebar.articulo-recomendado',array('title'=>"La deuda pública de Macri en 2016",'img'=>'./img/test/merkel.jpg','txt'=>'Hace pocas semanas el Ministerio de Economía (MECON) ','url'=>'articulos/nacional/macri-gato'))
 </div>
+
+<div class="">
+  <img src="{{$path}}/img/test/sputnik.jpg" alt="">
+</div>
