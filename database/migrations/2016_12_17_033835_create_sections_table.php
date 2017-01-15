@@ -17,11 +17,16 @@ class CreateSectionsTable extends Migration
             $table->increments('id');
             $table->integer('level');
             $table->integer('section_id')->default(0);
-            $table->integer('typesection_id');
             $table->string('name');
+            $table->string('html_title');
             $table->text('description');
+            $table->text('social_desc');
+            $table->integer('typeview_id');
+            $table->string('social_img')->default('default.jpg');
             $table->string('url');
-            $table->integer('topnav')->default(0);
+            $table->string('order');
+            $table->integer('topnav')->default(1);
+            $table->integer('topnav_back')->default(0);
             $table->integer('active')->default(1);
             $table->timestamps();
         });

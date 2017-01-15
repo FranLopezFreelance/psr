@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
+use App\Content;
 use App\Section;
 use Illuminate\Http\Request;
 
@@ -16,34 +16,28 @@ class FrontController extends Controller
   //  $this->renderView('front.index', $sections);
   }
 
-  public function getArticles(){
-    $sections = Section::where('level', 1)
-                        ->get();
-    return view('front.articles.index', compact('sections'));
-  }
-
-  public function getArticle($section, $subSection, $url){
-    if(Section::where('name', $section)->first()
-    && Section::where('url', $subSection)->first()
-    && $article = Article::where('url', $url)->first()){
-
-      $sections = Section::where('level', 1)
-                          ->get();
-      return view('front.articles.show', compact('article', 'sections'));
+  public function getSection($section){
+    if($section = Section::where('url', $section)->first()){
+      dd($section->typeView->index_view);
     }else{
-      return back();
+      return view('errors.404');
     }
   }
 
-  public function getVideos(){
-    $sections = Section::where('level', 1)
-                        ->get();
-    return view('front.videos.index', compact('sections'));
+  public function getSubSection($section, $subSection){
+    if($subSection = Section::where('url', $subSection)->first()){
+      dd($subSection->typeView->index_view);
+    }else{
+      return view('errors.404');
+    }
   }
 
-  public function getVideo(){
-    $sections = Section::where('level', 1)->get();
-    return view('front.videos.index', compact('sections'));
+  public function getContent($section, $subSection, $content){
+    if($content = Content::where('url', $content)->first()){
+      dd($content->typeView->show_view);
+    }else{
+      return view('errors.404');
+    }
   }
 
 }

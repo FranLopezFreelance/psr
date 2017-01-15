@@ -10,26 +10,6 @@
                   <form class="form-horizontal" role="form" method="POST" action="/backend/sections">
                       {{ csrf_field() }}
 
-                      <div class="form-group{{ $errors->has('typesection_id') ? ' has-error' : '' }}">
-                          <label for="typesection_id" class="col-md-4 control-label">Tipo de Sección</label>
-                          <div class="col-md-6">
-                              <select class="form-control" name="typesection_id" required>
-                                <option value="0">Elegir...</option>
-                                  @forelse($typesections as $typesection)
-                                      <option value="{{ $typesection->id }}">{{ $typesection->name }}</option>
-                                  @empty
-                                    <option value="0">No hay secciones</option>
-                                  @endforelse
-                              </select>
-
-                              @if ($errors->has('typesection_id'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('typesection_id') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
                       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                           <label for="name" class="col-md-4 control-label">Nombre</label>
 

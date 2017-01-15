@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TagArticle extends Model
+class Typeview extends Model
 {
     //
 }
