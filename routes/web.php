@@ -14,10 +14,9 @@ use App\Article;
 
 /* FRONT CONTROLLERS */
 Route::get('/', 'FrontController@getIndex');
-Route::get('articulos', 'FrontController@getArticles');
-Route::get('articulos/{section}/{subSection}/{url}', 'FrontController@getArticle');
-Route::get('videos', 'FrontController@getVideos');
-Route::get('videos/{section}/{url}', 'FrontController@getVideo');
+Route::get('/{section}', 'FrontController@getSection');
+Route::get('/{section}/{subSection}', 'FrontController@getSubSection');
+Route::get('/{section}/{subSection}/{content}', 'FrontController@getContent');
 
 Auth::routes();
 
