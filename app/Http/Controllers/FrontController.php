@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use App\Content;
 use App\Section;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class FrontController extends Controller
 {
+
+  public function __construct() {
+       View::share( 'path', 'http://localhost/psr/public' );
+    }
 
   public function getIndex(){
     $sections = Section::where('level', 1)->get();
@@ -22,6 +27,17 @@ class FrontController extends Controller
     }else{
       return view('errors.404');
     }
+}
+  public function getArticles(){
+    $sections = Section::where('level', 1)
+                        ->get();
+    return view('front.articles.index', compact('sections'));
+  }
+
+  public function getArticle(){
+
+      return view('front.articles.show');
+
   }
 
   public function getSubSection($section, $subSection){

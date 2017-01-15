@@ -1,30 +1,17 @@
-@extends('front.layouts.app')
+@extends('front.layouts.interna')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h3>Secciones</h3>
-                </div>
+@include('front.articles.assets.section-intro',array('title'=>'Economía','img'=>'/img/test/keiser.jpg','txt'=>'Keiser report – Mercados, finanzas, escándalos. Keiser report es una mirada a los escándalos detrás de los titulares financieros globales. Sean las colusiones entre Wall Street y el Congreso o la última oleada de delitos bancarios, las falsas estadísticas económicas gubernamentales o maquinaciones bursátiles, nada escapa al ojo de Max Keiser. Ex agente de valores, inventor de una tecnología virtual y cofundador de la bolsa de valores de Hollywood, Keiser ofrece el resumen de lo que pasa verdaderamente en la economía global, con la aportación de la copresentadora Stacy Herbert e invitados de varias partes del mundo.'))
 
-                <div class="panel-body">
-                      @forelse($sections as $section)
-                        {{ $section->getTree(1) }}
-                      @empty
-                      @endforelse
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h3>Artículos</h3>
-                </div>
-                <div class="panel-body">
+@include('front.articles.assets.content-of-list',array('title'=>'Soberanía Argentina','img'=>'/img/test/malvinas.jpg','url'=>'/economia/malvinas','txt'=>'Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores.'))
+@include('front.articles.assets.content-of-list',array('title'=>'Soberanía Argentina','img'=>'/img/test/malvinas.jpg','url'=>'/economia/malvinas','txt'=>'Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores.'))
+@include('front.articles.assets.content-of-list',array('title'=>'Soberanía Argentina','img'=>'/img/test/malvinas.jpg','url'=>'/economia/malvinas','txt'=>'Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores.'))
+@include('front.articles.assets.content-of-list',array('title'=>'Soberanía Argentina','img'=>'/img/test/malvinas.jpg','url'=>'/economia/malvinas','txt'=>'Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores.'))
+@include('front.articles.assets.content-of-list',array('title'=>'Soberanía Argentina','img'=>'/img/test/malvinas.jpg','url'=>'/economia/malvinas','txt'=>'Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores.'))
+@include('front.articles.assets.content-of-list',array('title'=>'Soberanía Argentina','img'=>'/img/test/malvinas.jpg','url'=>'/economia/malvinas','txt'=>'Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores.'))
+@include('front.articles.assets.content-of-list',array('title'=>'Soberanía Argentina','img'=>'/img/test/malvinas.jpg','url'=>'/economia/malvinas','txt'=>'Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores.'))
+@include('front.articles.assets.content-of-list',array('title'=>'Soberanía Argentina','img'=>'/img/test/malvinas.jpg','url'=>'/economia/malvinas','txt'=>'Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores.'))
+@include('front.articles.assets.content-of-list',array('title'=>'Soberanía Argentina','img'=>'/img/test/malvinas.jpg','url'=>'/economia/malvinas','txt'=>'Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores.'))
+@include('front.articles.assets.content-of-list',array('title'=>'Soberanía Argentina','img'=>'/img/test/malvinas.jpg','url'=>'/economia/malvinas','txt'=>'Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores. Hoy se celebrará una reunión del Consejo OTAN-Rusia a nivel de embajadores.'))
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
