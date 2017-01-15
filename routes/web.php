@@ -14,8 +14,8 @@ use App\Article;
 
 /* FRONT CONTROLLERS */
 Route::get('/', 'FrontController@getIndex');
-Route::get('articulos', 'FrontController@getArticles');
-Route::get('articulos/{section}/{subSection}/{url}', 'FrontController@getArticle');
+Route::get('articulos/economia', 'FrontController@getArticles');
+Route::get('articulos/economia/moneda-soberana', 'FrontController@getArticle');
 Route::get('videos', 'FrontController@getVideos');
 Route::get('videos/{section}/{url}', 'FrontController@getVideo');
 

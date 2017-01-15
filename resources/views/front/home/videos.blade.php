@@ -3,13 +3,13 @@
   <div class="row">
     <div class="col-xs-12 col-md-6 video-nacional">
       <div class="video img-center-responsive">
-        <img src="img/test/video-1.jpg" alt="">
+        <img src="{{$path}}/img/test/video-1.jpg" alt="">
         <span>Chau 2016!!!</span>
       </div>
     </div>
     <div class="col-xs-12 col-md-6 video-internacional">
       <div class="video img-center-responsive">
-        <img src="img/test/video-2.jpg" alt="">
+        <img src="{{$path}}/img/test/video-2.jpg" alt="">
         <span>PSR Internacional: "The Economist": mensajes extraños</span>
       </div>
     </div>

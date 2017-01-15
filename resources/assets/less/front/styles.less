@@ -15,6 +15,7 @@ html,body{
   margin-right: auto;
   margin-left: auto;
   max-width: 1440px; /* or 950px */
+  background-color: white;
 }
 
 a{
@@ -35,11 +36,50 @@ a.vermas{
     font-size: 11px;
     font-weight: 800;
     color:#7a7a7a;
-    &:hover{text-decoration: none}  
+    &:hover{text-decoration: none}
+}
+
+span.stats{
+  padding: 5px 0;
+  display: block;
+  color:#7a7a7a;
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 11px;
+  span.views{
+    margin-left: 20px;
+  }
+  i.eye{
+    font-size: 14px;
+    line-height: 11px;
+    padding-top: 1px;
+    vertical-align: top;
+    padding-right: 5px;
+  }
 }
 
 
 nav.main-menu{
+
+
+  ///DROPDOWN
+  li.dropdown a:visited,li.dropdown a:link{
+    background: transparent!important;
+    color:black!important;
+  }
+  li.dropdown:hover>a,li.dropdown>ul>li:hover>a{
+    color:white!important;
+  }
+  li.dropdown>ul.dropdown-menu{
+    border-top: none;
+    margin-top: 0px;
+    padding: 0;
+  }
+  ul li:hover > ul {
+  		display: block;
+  }
+  ///END DROPDOWN
+
 //	height: 80px;
 	background-color: white;
 	width: 100%;
@@ -66,16 +106,6 @@ nav.main-menu{
     }
 	}
 }
-.navbar-default .navbar-nav>.open>a,
- .navbar-default .navbar-nav>.open>a:focus,
-  .navbar-default .navbar-nav>.open>a:hover,
-  li.dropdown a{
-  background-color: transparent!important;
-  color:white!important;
-  ul.dropdown-menu li a{
-    color:grey!important;
-  }
-}
 
 .navbar-brand{
 	margin: 0;
@@ -96,6 +126,29 @@ nav.main-menu{
 
 	}
 }
+}
+
+body.site.fixed{
+  div.site-content{
+    padding-top: 100px;
+  }
+  nav.main-menu{
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    max-width: 100%;
+    border-bottom: none;
+    .drop-shadow(0, 1px,  5px, 0.2);
+
+
+    ul>li{
+      padding: 0px;
+    }
+    img.logo{
+      height: 40px;
+      padding-top: 5px;
+    }
+  }
 }
 
 div.carousel-border{

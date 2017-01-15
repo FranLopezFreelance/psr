@@ -1,6 +1,7 @@
 @extends('front.layouts.default')
 
 @section('content')
+
 @include('front.home.carousel')
 @include('front.home.videos')
 @include('front.home.pilares')

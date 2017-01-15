@@ -2,7 +2,7 @@
 <div class="articulo-seccion">
   <a class="section" href="{{$url}}">{{$name}}</a>
   <div class="articulo">
-    <img src="{{$img}}" alt="">
+    <img src="{{$path}}{{$img}}" alt="">
     @include('front.home.assets.addthis-articulo-home')
     <span>{{$title}}</span>
     <p>{{$txt}}</p>

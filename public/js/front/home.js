@@ -65,3 +65,12 @@ function getMiniVideo(obj){
   str+='</a></div>';
   return str;
 }
+
+function showVideo($url){
+  console.log($url);
+  var video='<iframe id="ytplayer" type="text/html" width="100%" height="360"';
+  video+='  src="'+$url+'"';
+  video+='frameborder="0"></iframe>"';
+  $('.video-container').append(video);
+  $('.btn-video').remove();
+}

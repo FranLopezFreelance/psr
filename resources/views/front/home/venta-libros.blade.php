@@ -4,16 +4,16 @@
     <ul>
 
       <li class="item">
-        <img src="./img/test/libros/colonialismo.jpg" alt="">
+        <img src="{{$path}}./img/test/libros/colonialismo.jpg" alt="">
       </li>
       <li class="item">
-        <img src="./img/test/libros/colonialismo.jpg" alt="">
+        <img src="{{$path}}./img/test/libros/colonialismo.jpg" alt="">
       </li>
       <li class="item">
-        <img src="./img/test/libros/colonialismo.jpg" alt="">
+        <img src="{{$path}}./img/test/libros/colonialismo.jpg" alt="">
       </li>
       <li class="item">
-        <img src="./img/test/libros/colonialismo.jpg" alt="">
+        <img src="{{$path}}./img/test/libros/colonialismo.jpg" alt="">
       </li>
     </ul>
   </div>
