@@ -48,7 +48,7 @@ gulp.task('styles', function() {
 
 gulp.task('browser-sync', function(){
     browserSync({
-         proxy: "http://localhost/psr",
+         proxy: "http://localhost:8000",
          /*port: 8000*/
     });
 });

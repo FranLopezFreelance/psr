@@ -27,7 +27,9 @@ class FrontController extends Controller
       $sections = $allSections->where('level', 1);
       $subSections = $allSections->where('level', 2);
       $thisSubSections = $allSections->where('level', 2)->where('section_id', $section->id);
-      return view($section->typeView->index_view, compact('section', 'sections', 'thisSubsections', 'subSections'));
+      $contents = Content::where('typeview_id','=',3)->paginate(4);//ver de ordenar el request
+      $next_page = $contents->nextPageUrl();
+      return view($section->typeView->index_view, compact('contents','next_page','section', 'sections', 'thisSubsections', 'subSections'));
     }else{
       return view('errors.404');
     }
@@ -80,5 +82,16 @@ class FrontController extends Controller
       return view('errors.404');
     }
   }
+
+  public function getMoreHomeVideos(Request $request){
+  $posts = Content::where('typeview_id','=',3)->paginate(4);//ver de ordenar el request
+
+  if($request->ajax()) {
+      return [
+          'videos' => view('front.home.assets.ajax-video-render')->with(compact('posts'))->render(),
+          'next_page' => $posts->nextPageUrl()
+      ];
+  }else return view('front.home.assets.ajax-video-render')->with(compact('posts'));
+}
 
 }

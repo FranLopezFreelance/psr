@@ -53,7 +53,7 @@ function verMasVideos(){
   var page = $('.videos-content').data('next-page');
   if(page !== null) {
     $('.spinner').show();
-    $.get('http://localhost:3000/psr/public/moreHomeVideos?page='+page, function(data){
+    $.get('moreHomeVideos?page='+page, function(data){
         //$('.spinner').hide();
         $('.videos-content').append(data.videos);
       if(data.next_page!=null)  $('.videos-content').data('next-page', ++page);
@@ -97,7 +97,7 @@ function infiniteScroll(){
               var scroll_position_for_posts_load = $(window).height() + $(window).scrollTop() + 100;
 
               if(scroll_position_for_posts_load >= $(document).height()) {
-                  $.get('http://localhost:3000/psr/public/moreHomeVideos?page='+page, function(data){
+                  $.get('moreHomeVideos?page='+page, function(data){
                         $('.videos-content').append(data.videos);
                       if(data.next_page!=null)  $('.videos-content').data('next-page', ++page);
                       else $('.videos-content').data('next-page', null);
