@@ -23,7 +23,11 @@ class FrontController extends Controller
 
   public function getSection($section){
     if($section = Section::where('url', $section)->first()){
-      return view($section->typeView->index_view);
+      $allSections = Section::all();
+      $sections = $allSections->where('level', 1);
+      $subSections = $allSections->where('level', 2);
+      $thisSubSections = $allSections->where('level', 2)->where('section_id', $section->id);
+      return view($section->typeView->index_view, compact('section', 'sections', 'thisSubsections', 'subSections'));
     }else{
       return view('errors.404');
     }
@@ -45,9 +49,15 @@ class FrontController extends Controller
     if($subSections = Section::where('url', $subSection)->get()){
       foreach($subSections as $subSection){
         if($subSection->parent->url == $section){
-          return view($subSection->typeView->index_view, compact('section', 'sections', 'subection', 'contents'));
+          $allSections = Section::all();
+          $section = $allSections->where('url', $section)->first();
+          $sections = $allSections->where('level', 1);
+          $subSections = $allSections->where('level', 2);
+          $thisSubSections = $allSections->where('level', 2)->where('section_id', $section->id);
+          $contents = $subSection->contents;
+          return view($subSection->typeView->index_view, compact('section', 'sections', 'subSection', 'subSections','thisSubSections', 'contents'));
         }else{
-          return redirect()->back();
+          return view('errors.404');
         }
       }
     }else{
@@ -58,7 +68,14 @@ class FrontController extends Controller
 
   public function getContent($section, $subSection, $content){
     if($content = Content::where('url', $content)->first()){
-      return view($content->typeView->show_view, compact('section', 'sections', 'subection', 'contents'));
+      $allSections = Section::all();
+      $section = $allSections->where('url', $section)->first();
+      $subSection = $allSections->where('url', $subSection)->where('section_id', $section->id)->first();
+      $sections = $allSections->where('level', 1);
+      $subSections = $allSections->where('level', 2);
+      $thisSubSections = $allSections->where('level', 2)->where('section_id', $section->id);
+      $contents = $subSection->contents;
+      return view($content->typeView->show_view, compact('section', 'sections', 'subSection','subSections', 'thisSubSections', 'contents', 'content'));
     }else{
       return view('errors.404');
     }
