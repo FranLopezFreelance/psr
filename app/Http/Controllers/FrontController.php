@@ -11,7 +11,7 @@ class FrontController extends Controller
 {
 
   public function __construct() {
-       View::share( 'path', '' );
+       View::share( 'path', $_ENV['APP_URL']);
     }
 
   public function getIndex(){
@@ -21,24 +21,25 @@ class FrontController extends Controller
   //  $this->renderView('front.index', $sections);
   }
 
+  public function getMoreHomeVideos(Request $request){
+    $posts = Content::where('typeview_id','=',3)->paginate(4);//ver de ordenar el request
+
+    if($request->ajax()) {
+        return [
+            'videos' => view('front.home.assets.ajax-video-render')->with(compact('posts'))->render(),
+            'next_page' => $posts->nextPageUrl()
+        ];
+    }else return view('front.home.assets.ajax-video-render')->with(compact('posts'));
+  }
+
   public function getSection($section){
     if($section = Section::where('url', $section)->first()){
-      return view($section->typeView->index_view);
+      $contents = Content::where('typeview_id','=',3)->paginate(20);//ver de ordenar el request
+      $page = $contents->nextPageUrl();
+      return view($section->typeView->index_view,compact('contents','nextPage'));
     }else{
       return view('errors.404');
     }
-  }
-
-  public function getArticles(){
-    $sections = Section::where('level', 1)
-                        ->get();
-    return view('front.articles.index', compact('sections'));
-  }
-
-  public function getArticle(){
-
-      return view('front.articles.show');
-
   }
 
   public function getSubSection($section, $subSection){

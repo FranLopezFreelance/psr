@@ -21,6 +21,7 @@ Route::resource('/backend/contents', 'ContentsController');
 
 /* FRONT CONTROLLERS */
 Route::get('/', 'FrontController@getIndex');
+Route::get('/moreHomeVideos', 'FrontController@getMoreHomeVideos');
 Route::get('/{section}', 'FrontController@getSection');
 Route::get('/{section}/{subSection}', 'FrontController@getSubSection');
 Route::get('/{section}/{subSection}/{content}', 'FrontController@getContent');

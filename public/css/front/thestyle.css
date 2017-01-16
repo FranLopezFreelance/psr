@@ -143,6 +143,38 @@ input[type=text]:focus, textarea:focus {
     float: left;
   }
 }
+.spinner {
+  animation: rotator 1.9s linear infinite;
+  display: none;
+}
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  stroke: #4285F4;
+  animation: dash 1.9s ease-in-out infinite;
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    transform: rotate(450deg);
+  }
+}
 @font-face {
   font-family: LucidaFax;
   src: url(../fonts/911Fonts.com_LucidaFaxRegular.ttf);
@@ -306,7 +338,7 @@ div.carousel-border {
   border-bottom: 4px solid black!important;
 }
 div.footer {
-  background-color: grey;
+  background-color: black;
   min-height: 400px;
 }
 .extra-slider {
