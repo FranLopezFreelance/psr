@@ -11,7 +11,7 @@ class FrontController extends Controller
 {
 
   public function __construct() {
-       View::share( 'path', $_ENV['APP_URL']);
+       View::share( 'path', '' );
     }
 
   public function getIndex(){
@@ -21,34 +21,43 @@ class FrontController extends Controller
   //  $this->renderView('front.index', $sections);
   }
 
-  public function getMoreHomeVideos(Request $request){
-    $posts = Content::where('typeview_id','=',3)->paginate(4);//ver de ordenar el request
-
-    if($request->ajax()) {
-        return [
-            'videos' => view('front.home.assets.ajax-video-render')->with(compact('posts'))->render(),
-            'next_page' => $posts->nextPageUrl()
-        ];
-    }else return view('front.home.assets.ajax-video-render')->with(compact('posts'));
-  }
-
   public function getSection($section){
     if($section = Section::where('url', $section)->first()){
-      $contents = Content::where('typeview_id','=',3)->paginate(20);//ver de ordenar el request
-      $page = $contents->nextPageUrl();
-      return view($section->typeView->index_view,compact('contents','nextPage'));
+      $allSections = Section::all();
+      $sections = $allSections->where('level', 1);
+      $subSections = $allSections->where('level', 2);
+      $thisSubSections = $allSections->where('level', 2)->where('section_id', $section->id);
+      return view($section->typeView->index_view, compact('section', 'sections', 'thisSubsections', 'subSections'));
     }else{
       return view('errors.404');
     }
+  }
+
+  public function getArticles(){
+    $sections = Section::where('level', 1)
+                        ->get();
+    return view('front.articles.index', compact('sections'));
+  }
+
+  public function getArticle(){
+
+      return view('front.articles.show');
+
   }
 
   public function getSubSection($section, $subSection){
     if($subSections = Section::where('url', $subSection)->get()){
       foreach($subSections as $subSection){
         if($subSection->parent->url == $section){
-          return view($subSection->typeView->index_view);
+          $allSections = Section::all();
+          $section = $allSections->where('url', $section)->first();
+          $sections = $allSections->where('level', 1);
+          $subSections = $allSections->where('level', 2);
+          $thisSubSections = $allSections->where('level', 2)->where('section_id', $section->id);
+          $contents = $subSection->contents;
+          return view($subSection->typeView->index_view, compact('section', 'sections', 'subSection', 'subSections','thisSubSections', 'contents'));
         }else{
-          return redirect()->back();
+          return view('errors.404');
         }
       }
     }else{
@@ -59,7 +68,14 @@ class FrontController extends Controller
 
   public function getContent($section, $subSection, $content){
     if($content = Content::where('url', $content)->first()){
-      return view($content->typeView->show_view);
+      $allSections = Section::all();
+      $section = $allSections->where('url', $section)->first();
+      $subSection = $allSections->where('url', $subSection)->where('section_id', $section->id)->first();
+      $sections = $allSections->where('level', 1);
+      $subSections = $allSections->where('level', 2);
+      $thisSubSections = $allSections->where('level', 2)->where('section_id', $section->id);
+      $contents = $subSection->contents;
+      return view($content->typeView->show_view, compact('section', 'sections', 'subSection','subSections', 'thisSubSections', 'contents', 'content'));
     }else{
       return view('errors.404');
     }
