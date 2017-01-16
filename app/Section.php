@@ -32,4 +32,17 @@ class Section extends Model
       return $this->hasMany('App\Content');
     }
 
+    public function getLink(){
+      echo "<a href='/".$this->url."'>".$this->name."</a>";
+    }
+
+    public function getBreadcrumb(){
+      if($this->level == 2){
+        echo "<a href='/".$this->parent->url."'>".$this->parent->name."</a>
+        / <a href='/".$this->parent->url."/".$this->url."'>".$this->name."</a>";
+      }else{
+        return false;
+      }
+    }
+
 }

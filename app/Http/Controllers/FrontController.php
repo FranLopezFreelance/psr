@@ -45,7 +45,7 @@ class FrontController extends Controller
     if($subSections = Section::where('url', $subSection)->get()){
       foreach($subSections as $subSection){
         if($subSection->parent->url == $section){
-          return view($subSection->typeView->index_view);
+          return view($subSection->typeView->index_view, compact('section', 'sections', 'subection', 'contents'));
         }else{
           return redirect()->back();
         }
@@ -58,7 +58,7 @@ class FrontController extends Controller
 
   public function getContent($section, $subSection, $content){
     if($content = Content::where('url', $content)->first()){
-      return view($content->typeView->show_view);
+      return view($content->typeView->show_view, compact('section', 'sections', 'subection', 'contents'));
     }else{
       return view('errors.404');
     }
