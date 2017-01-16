@@ -18,15 +18,21 @@
 
   <div class="home-mas-videos container-fluid">
   <h4>Últimos Programas</h4>
-  <div class="videos-content">
-    <div class="row">
-      @include('front.home.assets.mini-video',array('hide'=>false,'img'=>1,'title'=>"“Retiro espiritual” macrista...ZZZZZZZZ..."))
-      @include('front.home.assets.mini-video',array('hide'=>false,'img'=>1,'title'=>"DEUDA, RECESIÓN, DESEMPLEO..."))
-      @include('front.home.assets.mini-video',array('hide'=>false,'img'=>2,'title'=>"RECALCULANDO!!! Avance imparable de los nacionalismos..."))
-      @include('front.home.assets.mini-video',array('hide'=>true,'img'=>2,'title'=>"Castro OUT / Trump IN"))
-    </div>
-  </div>
+  <div class="clearfix"></div>
+  <div class="videos-content" data-next-page="1">
 
-    <button type="button" name="button" onClick=verMasVideos()>Ver Más</button>
+      <?php $colsm = 3; $colmd = 3;?>
+      @include('front.assets.list-content.content-list-video',array('img_url'=>'/img/test/video-1.jpg','title'=>"“Retiro espiritual” macrista...ZZZZZZZZ..."))
+      @include('front.assets.list-content.content-list-video',array('img_url'=>'/img/test/video-1.jpg','title'=>"DEUDA, RECESIÓN, DESEMPLEO..."))
+      @include('front.assets.list-content.content-list-video',array('img_url'=>'/img/test/video-2.jpg','title'=>"RECALCULANDO!!! Avance imparable de los nacionalismos..."))
+      @include('front.assets.list-content.content-list-video',array('img_url'=>'/img/test/video-2.jpg','title'=>"Castro OUT / Trump IN"))
+      <div class="clearfix"></div>
+  </div>
+  <div class="clearfix"></div>
+<div class="row">
+  <button type="button" name="button" class="verMasVideos" onClick=verMasVideos()>Ver Más</button>
+  @include('front.assets.material-loading')
+</div>
+
     </div>
 </div>

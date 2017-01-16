@@ -21,6 +21,9 @@ $(window).bind("scroll", function() {
 
 $("document").ready(function() {
     resolveSlider(), resolveHeader();
+
+    infiniteScroll();
+
     $(".slider-home").extraSlider({
 		type: 'fade',
     auto: 7,
@@ -47,14 +50,18 @@ function doCarousel(){
 }
 
 function verMasVideos(){
-  var videos = [{title:"Agregado",img:1},{title:"Agregado",img:1},{title:"Agregado",img:2},{title:"Agregado",img:2}];
-  var content = $('div.videos-content');
-  var row = $('<div class="row"></div>');
-  for(var i=0;i<videos.length;i++){
-    row.append(getMiniVideo(videos[i]));
+  var page = $('.videos-content').data('next-page');
+  if(page !== null) {
+    $('.spinner').show();
+    $.get('http://localhost:3000/psr/public/moreHomeVideos?page='+page, function(data){
+        //$('.spinner').hide();
+        $('.videos-content').append(data.videos);
+      if(data.next_page!=null)  $('.videos-content').data('next-page', ++page);
+      else $('.verMasVideos').remove();
+    });
   }
-  content.append(row);
 }
+
 function getMiniVideo(obj){
   var str = '';
   str+='<div class="col col-xs-12 col-sm-6 col-md-3" >';
@@ -73,4 +80,33 @@ function showVideo($url){
   video+='frameborder="0"></iframe>"';
   $('.video-container').append(video);
   $('.btn-video').remove();
+}
+
+function infiniteScroll(){
+  $(window).scroll(fetchPosts);
+
+  function fetchPosts() {
+
+      var page = $('.videos-content').data('next-page');
+
+      if(page !== null) {
+
+          clearTimeout( $.data( this, "scrollCheck" ) );
+
+          $.data( this, "scrollCheck", setTimeout(function() {
+              var scroll_position_for_posts_load = $(window).height() + $(window).scrollTop() + 100;
+
+              if(scroll_position_for_posts_load >= $(document).height()) {
+                  $.get('http://localhost:3000/psr/public/moreHomeVideos?page='+page, function(data){
+                        $('.videos-content').append(data.videos);
+                      if(data.next_page!=null)  $('.videos-content').data('next-page', ++page);
+                      else $('.videos-content').data('next-page', null);
+
+                  });
+              }
+          }, 350))
+
+      }
+  }
+
 }
