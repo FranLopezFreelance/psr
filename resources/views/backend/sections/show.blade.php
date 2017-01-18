@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h4><a href="/backend/sections">Secciones</a> / {{ $section->name }} <a class="btn btn-default btn-xs pull-right" href="/articulos" target="_blank">Web</a></h4>          
+                  <h4><a href="/backend/sections">Secciones</a> / {{ $section->name }} <a class="btn btn-default btn-xs pull-right" href="/articulos" target="_blank">Web</a></h4>
                 </div>
                 <div class="panel-body">
                   @if(isset($message))
@@ -24,7 +24,7 @@
 
                   <p><b>Nivel:</b> {{ $section->level }}</p>
                   @if($section->level == 2)
-                    <p><b>Sección Principal:</b> {{ $section->mother->name }}</p>
+                    <p><b>Sección Principal:</b> {{ $section->parent->name }}</p>
                   @endif
                   <p><b>URL:</b> {{ $section->url }}</p>
                   <p><b>Descripción:</b> {{ $section->description }}</p>

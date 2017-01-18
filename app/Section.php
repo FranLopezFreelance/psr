@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Section extends Model
 {
     protected $fillable = [
-        'level', 'section_id', 'name', 'url', 'topnav', 'topnav_back', 'html-title', 'description', 'social_desc', 'typeview_id', 'order', 'active'
+        'level', 'section_id', 'name', 'url', 'topnav', 'topnav_back', 'html_title', 'description', 'social_desc', 'typeview_id', 'order', 'active'
     ];
 
     public function childrens(){

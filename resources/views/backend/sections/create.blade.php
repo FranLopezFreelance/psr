@@ -12,13 +12,23 @@
 
                       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                           <label for="name" class="col-md-4 control-label">Nombre</label>
-
                           <div class="col-md-6">
                               <input id="name" type="text" class="form-control title" name="name" value="{{ old('name') }}" required autofocus>
-
                               @if ($errors->has('name'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('name') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group{{ $errors->has('html_title') ? ' has-error' : '' }}">
+                          <label for="html_title" class="col-md-4 control-label">Título HTML</label>
+                          <div class="col-md-6">
+                              <input id="html_title" type="text" class="form-control title" name="html_title" value="{{ old('html_title') }}" required autofocus>
+                              @if ($errors->has('html_title'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('html_title') }}</strong>
                                   </span>
                               @endif
                           </div>
@@ -86,6 +96,42 @@
                               @if ($errors->has('description'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('description') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group{{ $errors->has('social_desc') ? ' has-error' : '' }}">
+                          <label for="social_desc" class="col-md-4 control-label">Desc. Social</label>
+
+                          <div class="col-md-6">
+                              <textarea id="social_desc" class="form-control" name="social_desc" required/>{{ old('social_desc') }}</textarea>
+
+                              @if ($errors->has('social_desc'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('social_desc') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group{{ $errors->has('typeview_id') ? ' has-error' : '' }}">
+                          <label for="typeview_id" class="col-md-4 control-label">Tipo de Vista</label>
+                          <div class="col-md-6">
+                              <select class="form-control" name="typeview_id" required>
+                                <option value="0">Elegir...</option>
+                                @foreach($typeviews as $typeview)
+                                  @if(old('typeview') && old('typeview') == $typeview->id)
+                                    <option value="{{ $typeview->id }}" selected>{{ $typeview->name }}</option>
+                                  @else
+                                    <option value="{{ $typeview->id }}">{{ $typeview->name }}</option>
+                                  @endif
+                                @endforeach
+                              </select>
+
+                              @if ($errors->has('typeview_id'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('typeview_id') }}</strong>
                                   </span>
                               @endif
                           </div>

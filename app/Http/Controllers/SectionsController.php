@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Section;
+use App\Typeview;
 use Illuminate\Http\Request;
 
 class SectionsController extends Controller
@@ -46,7 +47,8 @@ class SectionsController extends Controller
       $menuSections = Section::where('level', 1)
                               ->where('topnav_back', 1)->get();
       $sections = Section::all();
-      return view('backend.sections.create', compact('sections', 'menuSections'));
+      $typeviews = Typeview::all();
+      return view('backend.sections.create', compact('sections', 'menuSections', 'typeviews'));
     }
 
     /**
@@ -75,7 +77,8 @@ class SectionsController extends Controller
     {
       $menuSections = Section::where('level', 1)
                               ->where('topnav_back', 1)->get();
-      return view('backend.sections.show', compact('section', 'menuSections'));
+      $typeviews = Typeview::all();
+      return view('backend.sections.show', compact('section', 'menuSections', 'typeviews'));
     }
 
     /**
@@ -89,7 +92,8 @@ class SectionsController extends Controller
       $menuSections = Section::where('level', 1)
                               ->where('topnav_back', 1)->get();
       $sections = Section::all();
-      return view('backend.sections.edit', compact('section', 'sections', 'menuSections'));
+      $typeviews = Typeview::all();
+      return view('backend.sections.edit', compact('section', 'sections', 'menuSections', 'typeviews'));
     }
 
     /**
@@ -106,7 +110,8 @@ class SectionsController extends Controller
       $section->update($request->all());
       $sections = Section::all();
       $message = 'Las modificaciones fueron guardadas.';
-      return view('backend.sections.edit', compact('section', 'sections', 'message', 'menuSections'));
+      $typeviews = Typeview::all();
+      return view('backend.sections.edit', compact('section', 'sections', 'message', 'menuSections', 'typeviews'));
     }
 
     /**
