@@ -52,9 +52,9 @@ function doCarousel(){
 function verMasVideos(){
   var page = $('.videos-content').data('next-page');
   if(page !== null) {
-    $('.spinner').show();
+    $('.spinner').addClass('show');
     $.get('moreHomeVideos?page='+page, function(data){
-        //$('.spinner').hide();
+        $('.spinner').removeClass('show');
         $('.videos-content').append(data.videos);
       if(data.next_page!=null)  $('.videos-content').data('next-page', ++page);
       else $('.verMasVideos').remove();
@@ -83,11 +83,12 @@ function showVideo($url){
 }
 
 function infiniteScroll(){
-  $(window).scroll(fetchPosts);
+
+  if($('.list-content').length )$(window).scroll(fetchPosts);
 
   function fetchPosts() {
 
-      var page = $('.videos-content').data('next-page');
+      var page = $('.list-content').data('next-page');
 
       if(page !== null) {
 
@@ -97,11 +98,12 @@ function infiniteScroll(){
               var scroll_position_for_posts_load = $(window).height() + $(window).scrollTop() + 100;
 
               if(scroll_position_for_posts_load >= $(document).height()) {
-                  $.get('moreHomeVideos?page='+page, function(data){
-                        $('.videos-content').append(data.videos);
-                      if(data.next_page!=null)  $('.videos-content').data('next-page', ++page);
-                      else $('.videos-content').data('next-page', null);
-
+                  $('.spinner').addClass('show');
+                  $.get(page, function(data){
+                    //console.log(data.next_page);
+                    $('.list-content').append(data.content);
+                    $('.list-content').data('next-page', data.next_page);
+                    $('.spinner').removeClass('show');
                   });
               }
           }, 350))

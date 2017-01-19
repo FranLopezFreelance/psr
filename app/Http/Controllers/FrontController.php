@@ -9,55 +9,48 @@ use Illuminate\Support\Facades\View;
 
 class FrontController extends Controller
 {
-
+  private $sections;
   public function __construct() {
+      $allSections = Section::all();
+      $this->sections = $allSections->where('level', 1);
+      $recomendados = Content::where('dest','=',1)->take(5)->get();
        View::share( 'path', '' );
+       View::share( 'sections', $this->sections );
+       View::share( 'recomendados', $recomendados );
     }
 
   public function getIndex(){
-    $sections = Section::where('level', 1)->get();
-    //dd($sections);
-    return view('front.index', compact('sections'));
-  //  $this->renderView('front.index', $sections);
+    $target = Section::where('id', 16)->first();
+    $videos = Content::where('typeview_id','=',3)->paginate(4);
+
+    return view('front.index', compact('target','videos'));
   }
 
-  public function getSection($section){
+  public function getSection($section, Request $request){
     if($section = Section::where('url', $section)->first()){
-      $allSections = Section::all();
-      $sections = $allSections->where('level', 1);
-      $subSections = $allSections->where('level', 2);
-      $thisSubSections = $allSections->where('level', 2)->where('section_id', $section->id);
-      $contents = Content::where('typeview_id','=',3)->paginate(4);//ver de ordenar el request
-      $next_page = $contents->nextPageUrl();
-      return view($section->typeView->index_view, compact('contents','next_page','section', 'sections', 'thisSubsections', 'subSections'));
+
+      $contents = $section->contents()->paginate(12);
+      $target = $section;
+
+      if($request->ajax())return  $this->renderAjax($request,$section,$contents);
+
+      return view($section->typeView->index_view, compact('target','contents','section'));
     }else{
       return view('errors.404');
     }
   }
 
-  public function getArticles(){
-    $sections = Section::where('level', 1)
-                        ->get();
-    return view('front.articles.index', compact('sections'));
-  }
-
-  public function getArticle(){
-
-      return view('front.articles.show');
-
-  }
-
-  public function getSubSection($section, $subSection){
+  public function getSubSection($section, $subSection, Request $request){
     if($subSections = Section::where('url', $subSection)->get()){
       foreach($subSections as $subSection){
         if($subSection->parent->url == $section){
-          $allSections = Section::all();
-          $section = $allSections->where('url', $section)->first();
-          $sections = $allSections->where('level', 1);
-          $subSections = $allSections->where('level', 2);
-          $thisSubSections = $allSections->where('level', 2)->where('section_id', $section->id);
-          $contents = $subSection->contents;
-          return view($subSection->typeView->index_view, compact('section', 'sections', 'subSection', 'subSections','thisSubSections', 'contents'));
+
+          $contents = $subSection->contents()->paginate(12);
+          $target = $subSection;
+
+          if($request->ajax())return  $this->renderAjax($request,$subSection,$contents);
+
+          return view($subSection->typeView->index_view, compact('target','section', 'subSection', 'contents'));
         }else{
           return view('errors.404');
         }
@@ -65,33 +58,42 @@ class FrontController extends Controller
     }else{
       return view('errors.404');
     }
-
   }
 
   public function getContent($section, $subSection, $content){
     if($content = Content::where('url', $content)->first()){
-      $allSections = Section::all();
-      $section = $allSections->where('url', $section)->first();
-      $subSection = $allSections->where('url', $subSection)->where('section_id', $section->id)->first();
-      $sections = $allSections->where('level', 1);
-      $subSections = $allSections->where('level', 2);
-      $thisSubSections = $allSections->where('level', 2)->where('section_id', $section->id);
-      $contents = $subSection->contents;
-      return view($content->typeView->show_view, compact('section', 'sections', 'subSection','subSections', 'thisSubSections', 'contents', 'content'));
+
+      $target = $content;
+      return view($content->typeView->show_view, compact('target','section','subSection', 'content'));
     }else{
       return view('errors.404');
     }
   }
 
-  public function getMoreHomeVideos(Request $request){
-  $posts = Content::where('typeview_id','=',3)->paginate(4);//ver de ordenar el request
+  private function renderAjax($request,$section,$contents){
+    if($section->typeview_id == 3) {
+        return [
+            'content' => view('front.home.assets.ajax-video-render')->with(compact('contents'))->render(),
+            'next_page' => $contents->nextPageUrl()
+        ];
+    }
+    else if($section->typeview_id == 2) {
+        return [
+            'content' => view('front.articles.assets.ajax-article-render')->with(compact('contents'))->render(),
+            'next_page' => $contents->nextPageUrl()
+        ];
+    }
+  }
 
-  if($request->ajax()) {
-      return [
-          'videos' => view('front.home.assets.ajax-video-render')->with(compact('posts'))->render(),
-          'next_page' => $posts->nextPageUrl()
-      ];
-  }else return view('front.home.assets.ajax-video-render')->with(compact('posts'));
-}
+  public function getMoreHomeVideos(Request $request){
+  $contents = Content::where('typeview_id','=',3)->paginate(4);//ver de ordenar el request
+
+    if($request->ajax()) {
+        return [
+            'videos' => view('front.home.assets.ajax-video-render')->with(compact('contents'))->render(),
+            'next_page' => $contents->nextPageUrl()
+        ];
+    }else return view('front.home.assets.ajax-video-render')->with(compact('contents'));
+  }
 
 }

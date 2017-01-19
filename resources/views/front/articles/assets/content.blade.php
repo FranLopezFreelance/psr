@@ -14,7 +14,7 @@
     @else
     <img class="main-image" src="{{$path}}{{$img}}" alt="">
     @endif
-    @include('front.articles.assets.addthis')
+    @include('front.assets.addthis')
   </div>
   <div class="col-xs-12">
     <p>{{$txt}}</p>

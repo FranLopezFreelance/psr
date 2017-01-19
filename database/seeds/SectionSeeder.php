@@ -183,6 +183,7 @@ class SectionSeeder extends Seeder
       DB::table('sections')->insert([
         'level' => 2,
         'section_id' => 2,
+        'social_img'=>'/img/test/psr-noticias.jpg',
         'url' => 'economia',
         'name' => 'Economía',
         'html_title' => 'Economía',

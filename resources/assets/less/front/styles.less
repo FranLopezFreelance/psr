@@ -70,10 +70,15 @@ nav.main-menu{
   li.dropdown:hover>a,li.dropdown>ul>li:hover>a{
     color:white!important;
   }
+  li.dropdown{
+    padding-left: 0px!important;
+  }
   li.dropdown>ul.dropdown-menu{
     border-top: none;
     margin-top: 0px;
     padding: 0;
+    right: inherit;
+    margin-left: -1px;
   }
   ul li:hover > ul {
   		display: block;
@@ -90,6 +95,7 @@ nav.main-menu{
 	li{
 		padding: 15px 5px;
 		.transition();
+    .rounded(0);
 		a{
 			color:black;
 			font-weight:600;

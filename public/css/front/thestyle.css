@@ -143,9 +143,25 @@ input[type=text]:focus, textarea:focus {
     float: left;
   }
 }
+.spinner-wrapper {
+  padding: 50px 0;
+  height: 135px;
+}
+.spinner-wrapper.home {
+  padding: 5px 0;
+  height: 40px;
+}
 .spinner {
+  position: absolute;
+  left: 50%;
+  margin-left: -30px;
   animation: rotator 1.9s linear infinite;
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+.spinner.show {
+  visibility: visible;
+  opacity: 1;
 }
 @keyframes rotator {
   0% {
@@ -269,10 +285,15 @@ nav.main-menu li.dropdown:hover > a,
 nav.main-menu li.dropdown > ul > li:hover > a {
   color: white!important;
 }
+nav.main-menu li.dropdown {
+  padding-left: 0px!important;
+}
 nav.main-menu li.dropdown > ul.dropdown-menu {
   border-top: none;
   margin-top: 0px;
   padding: 0;
+  right: inherit;
+  margin-left: -1px;
 }
 nav.main-menu ul li:hover > ul {
   display: block;
@@ -280,6 +301,7 @@ nav.main-menu ul li:hover > ul {
 nav.main-menu ul.nav li {
   padding: 15px 5px;
   transition: all 0.2s ease-out;
+  border-radius: 0;
 }
 nav.main-menu ul.nav li a {
   color: black;
@@ -558,7 +580,10 @@ div.section div.content-of-list img {
 div.section div.content-of-list a.title {
   display: block;
   font-weight: 800;
-  font-size: 18px;
+  font-size: 22px;
+}
+div.section div.breadcumb > span.b-separator:last-child {
+  display: none;
 }
 .video-container {
   position: relative;

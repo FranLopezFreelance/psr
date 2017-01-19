@@ -7,7 +7,7 @@
   </div>
 
   <div class="col-md-3 sidebar">
-      <!--@include('front.layouts.assets.sidebar.sidebar')-->
+      @include('front.layouts.assets.sidebar.sidebar')
   </div>
   </div>
 

@@ -6,9 +6,11 @@
 <div class="list-content" data-next-page="{{$contents->nextPageUrl()}}">
 
   @foreach($contents as $content)
-  @include('front.articles.assets.content-of-list',$content)
+  @include('front.events.assets.content-list-event',$content)
   @endforeach
 
 </div>
-<div class="row"><div class="spinner-wrapper">@include('front.assets.material-loading')</div></div>
+
+
+
 @endsection
