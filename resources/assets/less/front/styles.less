@@ -4,8 +4,9 @@
 }
 
 html, body { height: 100%; padding: 0; }
-html,body,input,div,button,nav,form,a,span,h1,h2,h3,h4,h5,h6{
+html,body,input,div,button,nav,form,a,span,h1,h2,h3,h4,h5,h6,p{
 	font-family: 'Lato', sans-serif;
+  color:black;
 }
 html,body{
 	background-color: #f2f2f2;
@@ -40,14 +41,15 @@ a.vermas{
 }
 
 span.stats{
-  padding: 5px 0;
+  padding: 0px 0;
   display: block;
   color:#7a7a7a;
-  font-weight: 800;
-  font-size: 11px;
+  font-weight: 600;
+  font-size: 13px;
   line-height: 11px;
   span.views{
     margin-left: 20px;
+    color:#7a7a7a;
   }
   i.eye{
     font-size: 14px;
@@ -55,6 +57,43 @@ span.stats{
     padding-top: 1px;
     vertical-align: top;
     padding-right: 5px;
+  }
+}
+
+div.mini-video{
+  padding: 0 5px;
+  color: black;
+  margin-bottom: 20px;
+
+  div.content{
+    padding-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    .transition();
+    &:hover {
+      .transition();
+      box-shadow: 0 8px 8px rgba(0,0,0,0.25), 0 2px 2px rgba(0,0,0,0.22);
+    }
+  }
+
+
+  img{
+    width: 100%;
+  }
+
+
+  &:hover{
+    text-decoration: none;
+  }
+  p.title{
+    font-size: 20px;
+    font-weight: 800;
+    padding: 10px 10px 0px 10px;
+    margin-bottom: 10px;
+    min-height: 60px;
+    line-height: 20px;
+  }
+  span.stats{
+    margin-left: 10px;
   }
 }
 
@@ -162,6 +201,28 @@ div.carousel-border{
 }
 
 div.footer{
-  background-color: black;
+  background-color: #282828;
   min-height: 400px;
+  span,a.link{
+    text-transform: uppercase;
+    color:#0076c0;
+    font-weight: 800;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    display: block;
+  }
+  a{
+    color: white;
+    font-size: 12px;
+    padding-left: 5px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  div.the-end{
+    >div{color:white;padding-top: 2px;}
+    font-size: 12px;
+    border-top: solid 1px rgba(255,255,255,0.2);
+    //text-align: center;
+  }
 }

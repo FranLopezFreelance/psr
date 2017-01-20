@@ -20,7 +20,7 @@ class FrontController extends Controller
     }
 
   public function getIndex(){
-    $target = Section::where('id', 16)->first();
+    $target = Section::where('id', 1)->first();
     $videos = Content::where('typeview_id','=',3)->paginate(4);
 
     return view('front.index', compact('target','videos'));
@@ -72,8 +72,10 @@ class FrontController extends Controller
 
   private function renderAjax($request,$section,$contents){
     if($section->typeview_id == 3) {
+      $colsm = 4;
+      $colmd = 4;
         return [
-            'content' => view('front.home.assets.ajax-video-render')->with(compact('contents'))->render(),
+            'content' => view('front.home.assets.ajax-video-render')->with(compact('contents','colsm','colmd'))->render(),
             'next_page' => $contents->nextPageUrl()
         ];
     }
@@ -86,11 +88,13 @@ class FrontController extends Controller
   }
 
   public function getMoreHomeVideos(Request $request){
-  $contents = Content::where('typeview_id','=',3)->paginate(4);//ver de ordenar el request
+  $contents = Content::where('typeview_id','=',3)->paginate(12);//ver de ordenar el request
 
     if($request->ajax()) {
+      $colsm = 3;
+      $colmd = 3;
         return [
-            'videos' => view('front.home.assets.ajax-video-render')->with(compact('contents'))->render(),
+            'videos' => view('front.home.assets.ajax-video-render')->with(compact('contents','colsm','colmd'))->render(),
             'next_page' => $contents->nextPageUrl()
         ];
     }else return view('front.home.assets.ajax-video-render')->with(compact('contents'));

@@ -17,7 +17,7 @@
   </div>
 
   <div class="home-mas-videos container-fluid">
-  <h4>Últimos Programas</h4>
+  <h4 class="title">Programas Anteriores</h4>
   <div class="clearfix"></div>
   <div class="videos-content" data-next-page="2">
 
@@ -31,8 +31,11 @@
   </div>
   <div class="clearfix"></div>
 <div class="row">
-  <button type="button" name="button" class="verMasVideos" onClick=verMasVideos()>Ver Más</button>
-  <div class="spinner-wrapper home">@include('front.assets.material-loading')</div>
+  <div class="verMas col-xs-12">
+    <a class="verMasVideos" onClick=verMasVideos()>Ver Más</a>
+    <div class="spinner-wrapper home">@include('front.assets.material-loading')</div>
+  </div>
+
 </div>
 
     </div>

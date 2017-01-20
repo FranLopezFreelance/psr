@@ -1,14 +1,7 @@
-<!--<ul class="list-unstyled">
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-</ul>-->
+
+<!-- Go to www.addthis.com/dashboard to customize your tools
+ <div class="addthis_inline_follow_toolbox"></div>
+
 <div class="">
   <div class="fb-page" data-href="https://www.facebook.com/ProyectoSegundaRepublica/"
   data-tabs="timeline" data-small-header="false" data-adapt-container-width="true"
@@ -18,6 +11,11 @@
     Proyecto Segunda República</a></blockquote>
   </div>
 
+</div>
+-->
+
+<div class="">
+  <img class="sidebar" src="/img/test/sidebar.jpg" alt="">
 </div>
 
 <div class="tag-cloud">
@@ -43,11 +41,5 @@
   @foreach($recomendados as $content)
   @include('front.layouts.assets.sidebar.articulo-recomendado',$content)
   @endforeach
-
-</div>
-
-
-<div class="">
-  <img src="{{$path}}/img/test/sputnik.jpg" alt="">
 
 </div>

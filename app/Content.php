@@ -24,21 +24,24 @@ class Content extends Model
 
     public function renderDate(){
       setlocale(LC_TIME, 'Spanish');
-      $param = '%A %d %B';
+      $param = '%d %B %Y';
       return Carbon::parse($this->date)->formatLocalized($param);
     }
 
     public function getFullUrl(){
       $url = '/';
-      if($this->section->parent())$url.=$this->section->parent->url.'/';
+      if($this->section->section_id)$url.=$this->section->parent->url.'/';
       $url.=$this->section->url.'/';
       $url.=$this->url;
       return $url;
     }
 
     public function getBreadcrumb(){
-      echo "<a href='/".$this->section->parent->url."'>".$this->section->parent->name."</a>
-      / <a href='/".$this->section->parent->url."/".$this->section->url."'>".$this->section->name."</a>
-      / <a href='/".$this->section->parent->url."/".$this->section->url."/".$this->url."'>".$this->title."</a>";
+      if($this->section->section_id){
+        return [array('url'=>$this->section->parent->url,'name'=>$this->section->parent->name),
+        array('url'=>$this->section->parent->url."/".$this->section->url,'name'=>$this->section->name)];
+      }else{
+        return [array('url'=>$this->section->url,'name'=>$this->section->name)];
+      }
     }
 }

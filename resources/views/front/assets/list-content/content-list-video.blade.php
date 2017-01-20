@@ -1,7 +1,11 @@
 <div class="col col-xs-12 col-sm-{{$colsm}} col-md-{{$colmd}} col-lg-3 {{!empty($data['hide']) ? 'sm-lg':''}}" >
-  <a class="mini-video" href="home.php">
-    <div class="img-center-responsive"><img src="{{$path}}{{$img_url}}" alt=""></div>
-    <p class="title">{{$title}}</p>
+  <div class="mini-video">
+    <div class="content">
+
+
+    <a href="{{$content->getFullUrl()}}"><img src="{{$img_url}}" alt=""></a>
+    <a href="{{$content->getFullUrl()}}"><p class="title">{{str_limit($title,50)}}</p></a>
     @include('front.assets.stats')
-  </a>
+    </div>
+  </div>
 </div>
