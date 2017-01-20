@@ -1,10 +1,12 @@
 @extends('front.layouts.interna')
 
 @section('content')
-@include('front.assets.section-intro',array('title'=>'Economía','img'=>'/img/test/keiser.jpg','txt'=>'Keiser report – Mercados, finanzas, escándalos. Keiser report es una mirada a los escándalos detrás de los titulares financieros globales. Sean las colusiones entre Wall Street y el Congreso o la última oleada de delitos bancarios, las falsas estadísticas económicas gubernamentales o maquinaciones bursátiles, nada escapa al ojo de Max Keiser. Ex agente de valores, inventor de una tecnología virtual y cofundador de la bolsa de valores de Hollywood, Keiser ofrece el resumen de lo que pasa verdaderamente en la economía global, con la aportación de la copresentadora Stacy Herbert e invitados de varias partes del mundo.'))
+@include('front.assets.section-intro')
+<div class="programas-section">
 
 
-<div class="videos-content" data-next-page="1">
+<div class="row">
+<div class="list-content" data-next-page="{{$contents->nextPageUrl()}}">
 
   @foreach($contents as $content)
   <?php $colsm = 4; $colmd = 4;?>
@@ -12,9 +14,10 @@
 
   @endforeach
 
-
 </div>
-
+</div>
+<div class="row"><div class="spinner-wrapper">@include('front.assets.material-loading')</div></div>
+</div>
 
 
 @endsection

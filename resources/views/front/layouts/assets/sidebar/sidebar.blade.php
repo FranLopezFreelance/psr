@@ -1,16 +1,25 @@
-<ul class="list-unstyled">
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-  <li>ARTICULOS NACIONALES</li>
-</ul>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools
+ <div class="addthis_inline_follow_toolbox"></div>
+
+<div class="">
+  <div class="fb-page" data-href="https://www.facebook.com/ProyectoSegundaRepublica/"
+  data-tabs="timeline" data-small-header="false" data-adapt-container-width="true"
+  data-hide-cover="false" data-show-facepile="true">
+  <blockquote cite="https://www.facebook.com/ProyectoSegundaRepublica/"
+  class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/ProyectoSegundaRepublica/">
+    Proyecto Segunda República</a></blockquote>
+  </div>
+
+</div>
+-->
+
+<div class="">
+  <img class="sidebar" src="/img/test/sidebar.jpg" alt="">
+</div>
 
 <div class="tag-cloud">
+  <h3>TEMAS</h3>
   <a class="tag">Moneda soberana</a>
   <a class="tag">Macri gato</a>
   <a class="tag">Mercosur</a>
@@ -28,14 +37,9 @@
 
 <div class="articulos-recomendados">
   <h4>Artículos Recomendados</h4>
-  @include('front.layouts.assets.sidebar.articulo-recomendado',array('title'=>"La deuda pública de Macri en 2016",'img'=>'/img/test/merkel.jpg','txt'=>'Hace pocas semanas el Ministerio de Economía (MECON) ','url'=>'articulos/nacional/macri-gato'))
-  @include('front.layouts.assets.sidebar.articulo-recomendado',array('title'=>"La deuda pública de Macri en 2016",'img'=>'/img/test/merkel.jpg','txt'=>'Hace pocas semanas el Ministerio de Economía (MECON) ','url'=>'articulos/nacional/macri-gato'))
-  @include('front.layouts.assets.sidebar.articulo-recomendado',array('title'=>"La deuda pública de Macri en 2016",'img'=>'/img/test/merkel.jpg','txt'=>'Hace pocas semanas el Ministerio de Economía (MECON) ','url'=>'articulos/nacional/macri-gato'))
-  @include('front.layouts.assets.sidebar.articulo-recomendado',array('title'=>"La deuda pública de Macri en 2016",'img'=>'/img/test/merkel.jpg','txt'=>'Hace pocas semanas el Ministerio de Economía (MECON) ','url'=>'articulos/nacional/macri-gato'))
-  @include('front.layouts.assets.sidebar.articulo-recomendado',array('title'=>"La deuda pública de Macri en 2016",'img'=>'/img/test/merkel.jpg','txt'=>'Hace pocas semanas el Ministerio de Economía (MECON) ','url'=>'articulos/nacional/macri-gato'))
-</div>
 
-<div class="">
-  <img src="{{$path}}/img/test/sputnik.jpg" alt="">
+  @foreach($recomendados as $content)
+  @include('front.layouts.assets.sidebar.articulo-recomendado',$content)
+  @endforeach
 
 </div>

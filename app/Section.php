@@ -26,6 +26,7 @@ class Section extends Model
         if($this->childrens->count()){
           return $this->childrens;
         }
+        return false;
     }
 
     public function contents(){
@@ -33,16 +34,33 @@ class Section extends Model
     }
 
     public function getLink(){
-      echo "<a href='/".$this->url."'>".$this->name."</a>";
+      return "<a href='/".$this->url."'>".$this->name."</a>";
     }
 
     public function getBreadcrumb(){
       if($this->level == 2){
-        echo "<a href='/".$this->parent->url."'>".$this->parent->name."</a>
-        / <a href='/".$this->parent->url."/".$this->url."'>".$this->name."</a>";
+        return [array('url'=>$this->parent->url,'name'=>$this->parent->name),
+        array('url'=>$this->parent->url."/".$this->url,'name'=>$this->name)];
+      /*  return "<a href='/".$this->parent->url."'>".$this->parent->name."</a>
+        / <a href='/".$this->parent->url."/".$this->url."'>".$this->name."</a>";*/
       }else{
-        return false;
+        return [array('url'=>$this->url,'name'=>$this->name)];
       }
+    }
+
+    //para hacer poliformico el objeto seccion, y que tome el atributto title para el seo y social
+    //<meta property="og:title" content="{{$target->title}}" /> $seccion no posee atributo title
+    public function getTitleAttribute($value){
+      return $this->name;
+    }
+
+    //idem poliformico
+    public function getFullUrl(){
+      $url = '/';
+      //dd($this->parent());
+      if($this->section_id)$url.=$this->parent->url.'/';
+      $url.=$this->url;
+      return $url;
     }
 
 }

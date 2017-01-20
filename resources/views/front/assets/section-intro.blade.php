@@ -1,14 +1,20 @@
+
 <div class="row">
   <div class="col-xs-12">
-    <h1>{{$title}}</h1>
-    <a href="#">Economía</a> / <a href="#">Artículo</a>
+    <h1>{{$target->name}}</h1>
+    <div class="breadcumb">
+    @foreach($target->getBreadcrumb() as $link)
+        <a href="/{{$link['url']}}">{{$link['name']}}</a> <span class="b-separator">/</span>
+    @endforeach
+    </div>
+
   </div>
   <div class="col-sm-6">
-    <img class="intro" src="{{$path}}{{$img}}" alt="">
+    <img class="intro" src="{{$target->social_img}}" alt="">
   </div>
   <div class="col-sm-6">
-    <p>{{$txt}}</p>
-    @include('front.articles.assets.addthis')
+    <p>{{$target->description}}</p>
+    @include('front.assets.addthis')
   </div>
 
 </div>

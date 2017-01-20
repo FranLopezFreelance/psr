@@ -17,21 +17,25 @@
   </div>
 
   <div class="home-mas-videos container-fluid">
-  <h4>Últimos Programas</h4>
+  <h4 class="title">Programas Anteriores</h4>
   <div class="clearfix"></div>
-  <div class="videos-content" data-next-page="1">
+  <div class="videos-content" data-next-page="2">
 
       <?php $colsm = 3; $colmd = 3;?>
-      @include('front.assets.list-content.content-list-video',array('img_url'=>'/img/test/video-1.jpg','title'=>"“Retiro espiritual” macrista...ZZZZZZZZ..."))
-      @include('front.assets.list-content.content-list-video',array('img_url'=>'/img/test/video-1.jpg','title'=>"DEUDA, RECESIÓN, DESEMPLEO..."))
-      @include('front.assets.list-content.content-list-video',array('img_url'=>'/img/test/video-2.jpg','title'=>"RECALCULANDO!!! Avance imparable de los nacionalismos..."))
-      @include('front.assets.list-content.content-list-video',array('img_url'=>'/img/test/video-2.jpg','title'=>"Castro OUT / Trump IN"))
-      <div class="clearfix"></div>
+      @foreach($videos as $content)
+
+      @include('front.assets.list-content.content-list-video',$content)
+
+      @endforeach
+<div class="clearfix"></div>
   </div>
   <div class="clearfix"></div>
 <div class="row">
-  <button type="button" name="button" class="verMasVideos" onClick=verMasVideos()>Ver Más</button>
-  @include('front.assets.material-loading')
+  <div class="verMas col-xs-12">
+    <a class="verMasVideos" onClick=verMasVideos()>Ver Más</a>
+    <div class="spinner-wrapper home">@include('front.assets.material-loading')</div>
+  </div>
+
 </div>
 
     </div>
