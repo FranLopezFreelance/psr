@@ -8,7 +8,7 @@
           <div class="panel-heading">
             <h4>
                 <a href="/backend/sections">Contenidos</a>
-                <a class="btn btn-success article-create" href="/backend/contents/create">Crear</a>
+                <a class="btn btn-success article-create" href="/backend/contents/{{ $section->id }}/createBySection">Crear</a>
                 <a class="btn btn-default btn-xs pull-right" href="/" target="_blank">Web</a>
             </h4>
           </div>

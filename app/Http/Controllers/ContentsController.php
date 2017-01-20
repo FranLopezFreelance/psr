@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Author;
 use App\Content;
 use App\Section;
+use App\TypeView;
 use Illuminate\Http\Request;
 
 class ContentsController extends Controller
@@ -58,6 +60,21 @@ class ContentsController extends Controller
     public function create()
     {
         //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createBySection(Section $section)
+    {
+        $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)->get();
+        $sections = Section::all();
+        $typeviews = Typeview::all();
+        $authors = Author::all();
+        return view('backend.contents.create', compact('section', 'sections', 'typeviews', 'authors', 'menuSections'));
     }
 
     /**

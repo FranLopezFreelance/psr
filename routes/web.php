@@ -18,6 +18,7 @@ Auth::routes();
 Route::get('/backend', 'BackendController@index');
 Route::resource('/backend/sections', 'SectionsController');
 Route::resource('/backend/contents', 'ContentsController');
+Route::resource('/backend/contents/{section}/createBySection', 'ContentsController@createBySection');
 
 /* FRONT CONTROLLERS */
 Route::get('/', 'FrontController@getIndex');
