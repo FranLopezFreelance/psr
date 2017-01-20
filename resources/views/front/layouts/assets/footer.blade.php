@@ -1,8 +1,8 @@
 </div><!--END SITE CONTENT-->
-<div class="footer container-fluid hidden-xs">
+<div class="footer container-fluid">
 <div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-2">
+  <div class="col-md-1 hidden-xs"></div>
+  <div class="col-xs-6 col-sm-3 col-md-2">
     @if($sections[3]->getSubSections())
     <span>{{$sections[3]->name}}</span>
     <ul class="list-unstyled">
@@ -27,7 +27,7 @@
 
   </div>
 
-  <div class="col-md-3">
+  <div class="col-xs-6 col-sm-3 col-md-3">
     <span>{{$sections[1]->name}}</span>
     <ul class="list-unstyled">
       @foreach($sections[1]->getSubSections() as $subsection)
@@ -36,7 +36,7 @@
     </ul>
   </div>
 
-  <div class="col-md-2">
+  <div class="col-xs-6 col-sm-3 col-md-2">
 
     @if($sections[4]->getSubSections())
     <span>{{$sections[4]->name}}</span>
@@ -84,7 +84,7 @@
 
   </div>
 
-  <div class="col-md-2">
+  <div class="col-xs-6 col-sm-3 col-md-2">
 
     @if($sections[8]->getSubSections())
     <span>{{$sections[8]->name}}</span>
