@@ -18,6 +18,24 @@
   <img class="sidebar" src="/img/test/sidebar.jpg" alt="">
 </div>
 
+<div class="">
+  <div class="fb-page" data-href="https://www.facebook.com/ProyectoSegundaRepublica/"
+   data-small-header="false" data-adapt-container-width="true"
+  data-hide-cover="false" data-show-facepile="true">
+  <blockquote cite="https://www.facebook.com/ProyectoSegundaRepublica/"
+  class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/ProyectoSegundaRepublica/">
+    Proyecto Segunda República</a></blockquote>
+  </div>
+
+</div>
+
+<div class="">
+  <img class="sidebar" src="/img/sidebar/contactateconpsr.jpg" alt="">
+</div>
+<div class="">
+  <img class="sidebar" src="/img/test/follow.jpg" alt="">
+</div>
+
 <div class="tag-cloud">
   <h3>TEMAS</h3>
   <a class="tag">Moneda soberana</a>

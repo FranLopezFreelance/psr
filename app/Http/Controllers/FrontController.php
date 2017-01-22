@@ -41,10 +41,11 @@ class FrontController extends Controller
   }
 
   public function getSubSection($section, $subSection, Request $request){
+
     if($subSections = Section::where('url', $subSection)->get()){
       foreach($subSections as $subSection){
         if($subSection->parent->url == $section){
-
+          $section = Section::where('url', $section)->first();
           $contents = $subSection->contents()->paginate(12);
           $target = $subSection;
 

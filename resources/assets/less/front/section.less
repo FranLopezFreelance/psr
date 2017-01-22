@@ -1,8 +1,29 @@
 div.section{
 
-  h1{}
+  h1{
+    text-transform: uppercase;
+    font-weight: 800;
+    color:black;
+    line-height: 30px;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10px;
+  }
   img.intro{
     width: 100%;
+  }
+
+  div.section-intro{
+    padding-top: 30px;
+    div.breadcumb{
+      margin-bottom: 15px;
+    }
+    div.border-bottom-hard{
+      border-bottom: solid 1px rgba(0,0,0,0.4);
+      margin-left: 20px;
+      padding-top: 20px;
+    }
   }
 
   div.border-bottom{
@@ -18,7 +39,12 @@ div.section{
       display: block;
       font-weight: 800;
       font-size: 22px;
+      line-height: 25px;
     }
+    span.stats{
+      padding: 11px 0 8px 0;
+    }
+  
 
   }
   div.breadcumb{float: left;}
@@ -29,28 +55,9 @@ div.section{
     font-size: 12px;
     letter-spacing: 1px;
     color:@blue-breadcumb;
-    .transition();
-    &:hover{
-      color:#08122b;
-      .transition();
+
+    &:first-child{
+      color: #282828;
     }
   }
 }
-
-//YOUTUBE RESPONSIVE
-.video-container {
-	position:relative;
-	padding-bottom:56.25%;
-	padding-top:30px;
-	height:0;
-	overflow:hidden;
-}
-
-.video-container iframe, .video-container object, .video-container embed {
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-}
-//END YOUTUBE RESPONSIVE

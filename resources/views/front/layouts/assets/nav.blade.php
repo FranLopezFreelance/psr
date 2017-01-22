@@ -8,8 +8,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand hidden-xs" href="/"><img class="logo"src="{{$path}}/img/logo.png" alt="" /></a>
-      <a class="navbar-brand visible-xs" href="/"><img  src="{{$path}}/img/logo_2.png" alt="" /></a>
+      <a class="navbar-brand" href="/"><img class="logo" src="/img/logo.png" alt="" /></a>
+
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,12 +17,21 @@
 
       <ul class="nav navbar-nav navbar-right">
 
+
         @foreach($sections as $section)
             @if($section->topnav != 1)@continue
             @elseif($section->getSubSections())
-            <li class="dropdown">
-              <a href="#" class=""  role="button" aria-haspopup="true" aria-expanded="false">{{$section->name}} <span class="caret"></span></a>
-              <ul class="dropdown-menu">
+            <li class="dropdown hidden-xs">
+              <a href="#" class="dropdown-toggle"  role="button" aria-haspopup="true" aria-expanded="false">{{$section->name}} <span class="caret"></span></a>
+              <ul class="dropdown-menu" >
+                @foreach($section->getSubSections() as $subsection)
+                <li><a href="{{$subsection->getFullUrl()}}">{{$subsection->name}}</a></li>
+                @endforeach
+              </ul>
+            </li>
+            <li class="dropdown visible-xs">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{$section->name}} <span class="caret"></span></a>
+              <ul class="dropdown-menu" >
                 @foreach($section->getSubSections() as $subsection)
                 <li><a href="{{$subsection->getFullUrl()}}">{{$subsection->name}}</a></li>
                 @endforeach

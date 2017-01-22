@@ -1,5 +1,5 @@
 function resolveHeader() {
-    headerH = $(window).width() > 768 ? 180 : 285
+    headerH = $(window).width() > 768 ? 80 : 80
 }
 
 function resolveSlider() {
@@ -79,8 +79,24 @@ function showVideo($url){
   video+='  src="'+$url+'"';
   video+='frameborder="0"></iframe>"';
   $('.video-container').append(video);
+  $('.video-container').removeClass('hidden');
   $('.btn-video').remove();
 }
+function showModalVideo($url){
+  var video='<iframe id="ytplayer" type="text/html" width="100%" height="360"';
+  video+='  src="http://www.youtube.com/embed/'+$url+'/?autoplay=1"';
+  video+='frameborder="0"></iframe>"';
+  $('.video-container').append(video);
+  $('.video-container').removeClass('hidden');
+  $('body').addClass('hard-backdrop');
+  $('#modal-video').modal();
+}
+
+$('#modal-video').on('hidden.bs.modal', function () {
+  $('.video-container').empty();
+  $('.video-container').addClass('hidden');
+  $('body').removeClass('hard-backdrop');
+})
 
 function infiniteScroll(){
 
