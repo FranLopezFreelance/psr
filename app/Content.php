@@ -7,7 +7,8 @@ use Carbon\Carbon;
 
 class Content extends Model
 {
-    protected $dates = ['created_at', 'updated_at', 'date'];
+    protected $fillable = ['section_id', 'videotype_id', 'url', 'title', 'html_title', 'description', 'social_desc',
+    'social_img', 'typeview_id', 'text', 'author_id', 'tags', 'video_id', 'img_url', 'date'];
 
     public function typeView(){
         return $this->belongsTo('App\Typeview', 'typeview_id');
@@ -15,6 +16,14 @@ class Content extends Model
 
     public function section(){
         return $this->belongsTo('App\Section');
+    }
+
+    public function author(){
+        return $this->belongsTo('App\Author');
+    }
+
+    public function tags(){
+        return $this->belongsToMany('App\Tag', 'tagscontents', 'content_id', 'tag_id');
     }
 
     public function getViewsAttribute($value){

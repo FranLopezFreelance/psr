@@ -1,4 +1,7 @@
 $( document ).ready(function() {
+
+    $(".tags").select2();
+
   //Generar el link a partir del Título de un artículo
     $('.title').focusout(function(){
       var url = $('.title').val().replace(/ /g, '-');

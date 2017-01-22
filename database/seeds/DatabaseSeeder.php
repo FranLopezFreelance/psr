@@ -14,7 +14,10 @@ class DatabaseSeeder extends Seeder
         $this->call(SectionSeeder::class);
         $this->call(TypeviewSeeder::class);
         $this->call(ContentSeeder::class);
-        $this->call(AuthorSeeder::class);
-        $this->call(TypesectionSeeder::class);
+        $this->call(AuthorsSeeder::class);
+        $this->call(TypeviewSeeder::class);
+        $this->call(TagsSeeder::class);
+        $this->call(VideotypesSeeder::class);
+        $this->call(UsersSeeder::class);
     }
 }

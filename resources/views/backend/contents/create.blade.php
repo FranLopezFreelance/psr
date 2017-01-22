@@ -7,11 +7,18 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h4><a href="/backend/contents/section/{{ $section->id }}">Contenidos</a> / Nuevo Contenido</h4></div>
                 <div class="panel-body">
-                  <form class="form-horizontal" role="form" method="POST" action="/backend/sections">
+
+                  @if(isset($message))
+                      <div class="alert alert-success message">
+                          <h5>{{ $message }}</h5>
+                      </div>
+                  @endif
+
+                  <form class="form-horizontal" role="form" method="POST" action="/backend/contents">
                       {{ csrf_field() }}
 
                       <div class="form-group{{ $errors->has('typeview_id') ? ' has-error' : '' }}">
-                          <label for="typeview_id" class="col-md-4 control-label">Tipo de Contenido</label>
+                          <label for="typeview_id" class="col-md-4 control-label">Sección</label>
                           <div class="col-md-6">
                               <select class="form-control" name="typeview_id" required>
                                 @if(isset($section))
@@ -36,6 +43,63 @@
                           </div>
                       </div>
 
+                      <div class="form-group{{ $errors->has('section_id') ? ' has-error' : '' }}">
+                          <label for="section_id" class="col-md-4 control-label">Sub Sección</label>
+                          <div class="col-md-6">
+                            <select class="form-control" name="section_id" required>
+                                <option value="0">Elegir...</option>
+                                  @foreach($subSections as $subSection)
+                                    @if(old('section_id') && old('section_id') == $subSection->id)
+                                      <option value="{{ $subSection->id }}" selected>{{ $subSection->name }}</option>
+                                    @else
+                                      <option value="{{ $subSection->id }}">{{ $subSection->name }}</option>
+                                    @endif
+                                  @endforeach
+                            </select>
+
+                              @if ($errors->has('section_id'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('section_id') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      @if($section->id == 4)
+                        <div class="form-group{{ $errors->has('videotype_id') ? ' has-error' : '' }}">
+                            <label for="videotype_id" class="col-md-4 control-label">Tipo de Video</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="videotype_id" required>
+                                    <option value="0">Elegir...</option>
+                                      @foreach($videoTypes as $videotype)
+                                        @if(old('videotype_id') && old('videotype_id') == $videotype->id)
+                                          <option value="{{ $videotype->id }}" selected>{{ $videotype->name }}</option>
+                                        @else
+                                          <option value="{{ $videotype->id }}">{{ $videotype->name }}</option>
+                                        @endif
+                                      @endforeach
+                                </select>
+
+                                @if ($errors->has('videotype_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('videotype_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('video_id') ? ' has-error' : '' }}">
+                            <label for="video_id" class="col-md-4 control-label">Video ID</label>
+                            <div class="col-md-6">
+                                <input id="video_id" type="text" class="form-control video_id" name="video_id" value="{{ old('video_id') }}" required autofocus>
+                                @if ($errors->has('video_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('video_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                      @endif
 
                       <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                           <label for="title" class="col-md-4 control-label">Título</label>
@@ -56,45 +120,6 @@
                               @if ($errors->has('html_title'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('html_title') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
-                      <!-- <div class="form-group{{ $errors->has('level') ? ' has-error' : '' }}">
-                          <label for="level" class="col-md-4 control-label">Nivel</label>
-                          <div class="col-md-6">
-                              <select class="form-control level" name="level" required>
-                                <option value="0">Elegir...</option>
-                                <option value="1">Principal</option>
-                                <option value="2">Sub Sección</option>
-                              </select>
-
-                              @if ($errors->has('level'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('level') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div> -->
-
-                      <div class="form-group{{ $errors->has('section_id') ? ' has-error' : '' }} principal">
-                          <label for="section_id" class="col-md-4 control-label">Sección Principal</label>
-                          <div class="col-md-6">
-                              <select class="form-control" name="section_id" required>
-                                <option value="0">Elegir...</option>
-                                  @forelse($sections as $section)
-                                    @if($section->level == 1)
-                                      <option value="{{ $section->id }}">{{ $section->name }}</option>
-                                    @endif
-                                  @empty
-                                    <option value="0">No hay secciones</option>
-                                  @endforelse
-                              </select>
-
-                              @if ($errors->has('section_id'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('section_id') }}</strong>
                                   </span>
                               @endif
                           </div>
@@ -142,69 +167,69 @@
                           </div>
                       </div>
 
-                      <div class="form-group{{ $errors->has('text') ? ' has-error' : '' }}">
-                          <label for="text" class="col-md-4 control-label">Texto</label>
+                      @if($section->id < 4)
+                        <div class="form-group{{ $errors->has('text') ? ' has-error' : '' }}">
+                            <label for="text" class="col-md-4 control-label">Texto</label>
 
+                            <div class="col-md-6">
+                                <textarea id="text" class="form-control" name="text" required/>{{ old('text') }}</textarea>
+
+                                @if ($errors->has('text'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('text') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                      @else
+                        <input type="hidden" type="text" name="text" value="-" />
+                      @endif
+
+                      <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
+                          <label for="tags" class="col-md-4 control-label">Tags</label>
                           <div class="col-md-6">
-                              <textarea id="text" class="form-control" name="text" required/>{{ old('text') }}</textarea>
-
-                              @if ($errors->has('text'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('text') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
-                      <div class="form-group{{ $errors->has('tag_ids') ? ' has-error' : '' }}">
-                          <label for="tag_ids" class="col-md-4 control-label">Tags</label>
-
-                          <div class="col-md-6">
-                              <textarea id="tag_ids" class="form-control" name="tag_ids" required/>{{ old('tag_ids') }}</textarea>
-
-                              @if ($errors->has('tag_ids'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('tag_ids') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
-                      <div class="form-group{{ $errors->has('author_id') ? ' has-error' : '' }}">
-                          <label for="author_id" class="col-md-4 control-label">Autor</label>
-                          <div class="col-md-6">
-                              <select class="form-control" name="author_id" required>
+                              <select class="form-control tags" name="tags[]" multiple="multiple" required>
                                 <option value="0">Elegir...</option>
-                                @foreach($authors as $author)
-                                  @if(old('author') && old('author') == $author->id)
-                                    <option value="{{ $author->id }}" selected>{{ $author->name }}</option>
+                                @foreach($tags as $tag)
+                                  @if(old('tag_id') && old('tag_id') == $tag->id)
+                                    <option value="{{ $tag->id }}" selected>{{ $tag->name }}</option>
                                   @else
-                                    <option value="{{ $author->id }}">{{ $author->name }}</option>
+                                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                   @endif
                                 @endforeach
                               </select>
 
-                              @if ($errors->has('author_id'))
+                              @if ($errors->has('tags'))
                                   <span class="help-block">
-                                      <strong>{{ $errors->first('author_id') }}</strong>
+                                      <strong>{{ $errors->first('tags') }}</strong>
                                   </span>
                               @endif
                           </div>
                       </div>
 
-                      <div class="form-group{{ $errors->has('video_id') ? ' has-error' : '' }}">
-                          <label for="video_id" class="col-md-4 control-label">Video ID</label>
+                      @if($section->id == 2)
+                        <div class="form-group{{ $errors->has('author_id') ? ' has-error' : '' }}">
+                            <label for="author_id" class="col-md-4 control-label">Autor</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="author_id" required>
+                                  <option value="0">Elegir...</option>
+                                  @foreach($authors as $author)
+                                    @if(old('author') && old('author') == $author->id)
+                                      <option value="{{ $author->id }}" selected>{{ $author->name }}</option>
+                                    @else
+                                      <option value="{{ $author->id }}">{{ $author->name }}</option>
+                                    @endif
+                                  @endforeach
+                                </select>
 
-                          <div class="col-md-6">
-                              <input id="video_id" type="text" class="form-control video_id" name="video_id" value="{{ old('video_id') }}" required>
-
-                              @if ($errors->has('video_id'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('video_id') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
+                                @if ($errors->has('author_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('author_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                      @endif
 
                       <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                           <label for="date" class="col-md-4 control-label">Fecha</label>

@@ -221,6 +221,18 @@ class SectionSeeder extends Seeder
         'topnav_back' => 1,
         'order' => 2,
       ]);
+      DB::table('sections')->insert([
+        'level' => 2,
+        'section_id' => 4,
+        'url' => 'especiales',
+        'name' => 'Especiales',
+        'html_title' => 'Especiales| Programas | Proyecto Segunda República',
+        'typeview_id' => 3,
+        'description' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'topnav_back' => 1,
+        'order' => 2,
+      ]);
 //secciones de articulos
       DB::table('sections')->insert([
         'level' => 2,

@@ -13,7 +13,7 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/backend/others.css" rel="stylesheet">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     <!-- Social Sharing -->
 
 
@@ -23,6 +23,7 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    
 </head>
 <body>
     <div id="app">
@@ -108,5 +109,6 @@
     <!-- Scripts -->
     <script src="/js/app.js"></script>
     <script src="/js/backend/functions.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 </body>
 </html>

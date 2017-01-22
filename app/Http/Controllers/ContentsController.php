@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Author;
 use App\Content;
 use App\Section;
+use App\Tag;
 use App\TypeView;
+use App\Videotype;
 use Illuminate\Http\Request;
 
 class ContentsController extends Controller
@@ -72,9 +74,13 @@ class ContentsController extends Controller
         $menuSections = Section::where('level', 1)
                               ->where('topnav_back', 1)->get();
         $sections = Section::all();
+        $videoTypes = Videotype::all();
+        $subSections = $sections->where('section_id', $section->id);
         $typeviews = Typeview::all();
         $authors = Author::all();
-        return view('backend.contents.create', compact('section', 'sections', 'typeviews', 'authors', 'menuSections'));
+        $tags = Tag::all();
+        return view('backend.contents.create', compact('section', 'sections', 'subSections',
+        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes'));
     }
 
     /**
@@ -85,7 +91,22 @@ class ContentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $content = new Content($request->except('tags'));
+      $content->save();
+      $content->tags()->sync($request->input('tags'), false);
+
+      $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)->get();
+      $sections = Section::all();
+      $videoTypes = Videotype::all();
+      $section = $sections->where('id', $request->input('section_id'))->first();
+      $subSections = $sections->where('section_id', $section->id);
+      $typeviews = Typeview::all();
+      $authors = Author::all();
+      $tags = Tag::all();
+      $message = 'El contenido ha sido creado.';
+      return view('backend.contents.create', compact('section', 'sections', 'subSections',
+      'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'message'));
     }
 
     /**
@@ -94,9 +115,25 @@ class ContentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Content $content)
     {
-        //
+      $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)->get();
+
+      $subSection = $content->section;
+      $section = $subSection->parent;
+      $sections = $section->getSubSections();
+      return view('backend.contents.show', compact('content', 'sections', 'section', 'subSection', 'menuSections'));
+    }
+
+    public function getContentBySubSection(Section $subSection){
+      $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)->get();
+
+      $content = $subSection->contents()->first();
+      $section = $subSection->parent;
+      $sections = $section->getSubSections();
+      return view('backend.contents.show', compact('content', 'sections', 'section', 'subSection', 'menuSections'));
     }
 
     /**

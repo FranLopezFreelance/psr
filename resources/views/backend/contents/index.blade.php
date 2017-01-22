@@ -41,7 +41,7 @@
       <div class="col-md-8">
           <div class="panel panel-default">
               <div class="panel-heading">
-                <h3>{{ $subSection->getBreadcrumb() }}</h3>
+                <h3>{{ $subSection->name }}</h3>
               </div>
               <div class="panel-body">
                 @if(isset($message))
@@ -53,7 +53,7 @@
                       @if(isset($contents))
                         @forelse($contents as $content)
                             <li class="list-group-item">
-                              <a href="/backend/contents/{{ $content->id }}">{{ $content->getBreadcrumb() }}</a>
+                              <a href="/backend/contents/{{ $content->id }}">{{ $content->title }}</a>
                               {!! Form::open(['method' => 'DELETE','route' => ['contents.destroy', $content->id],'style'=>'display:inline']) !!}
                               {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs pull-right']) !!}
                               {!! Form::close() !!}
