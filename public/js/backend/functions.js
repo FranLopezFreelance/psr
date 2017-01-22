@@ -1,6 +1,21 @@
 $( document ).ready(function() {
 
+  //JS para Tags
     $(".tags").select2();
+
+  //JS para Text Editor
+  tinymce.init({
+    selector: '.text',
+    height: 500,
+    menubar: false,
+    plugins: [
+      'advlist autolink lists link image charmap print preview anchor',
+      'searchreplace visualblocks code fullscreen',
+      'insertdatetime media table contextmenu paste code'
+    ],
+    toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+    content_css: '//www.tinymce.com/css/codepen.min.css'
+  });
 
   //Generar el link a partir del Título de un artículo
     $('.title').focusout(function(){

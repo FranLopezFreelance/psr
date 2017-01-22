@@ -168,11 +168,12 @@
                       </div>
 
                       @if($section->id < 4)
+                        <hr />
                         <div class="form-group{{ $errors->has('text') ? ' has-error' : '' }}">
-                            <label for="text" class="col-md-4 control-label">Texto</label>
+                            <label for="text" class="col-md-1 control-label">Texto</label>
 
-                            <div class="col-md-6">
-                                <textarea id="text" class="form-control" name="text" required/>{{ old('text') }}</textarea>
+                            <div class="col-md-10">
+                                <textarea id="text" class="form-control text" name="text" required/>{{ old('text') }}</textarea>
 
                                 @if ($errors->has('text'))
                                     <span class="help-block">
@@ -181,6 +182,7 @@
                                 @endif
                             </div>
                         </div>
+                        <hr />
                       @else
                         <input type="hidden" type="text" name="text" value="-" />
                       @endif

@@ -23,7 +23,7 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-    
+
 </head>
 <body>
     <div id="app">
@@ -110,5 +110,7 @@
     <script src="/js/app.js"></script>
     <script src="/js/backend/functions.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="/js/backend/tinymce/tinymce.min.js"></script>
+    <!-- <script src="/js/backend/tinymce/jquery.tinymce.min.js"></script> -->
 </body>
 </html>

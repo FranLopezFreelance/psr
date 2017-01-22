@@ -31,7 +31,7 @@
                               @endforelse
                             </ul>
                         @else
-                          <li><a href="/backend/subSection/contents/{{ $section->id }}">{{ $section->name }}</a></li>
+                          <li><a href="/backend/contents/{{ $section->id }}/getBySection">{{ $section->name }}</a></li>
                         @endif
                       @empty
                       @endforelse
@@ -52,12 +52,32 @@
                 @endif
                 <iframe width="100%" height="400" src="https://www.youtube.com/embed/{{ $content->video_id }}" frameborder="0" allowfullscreen>
                 </iframe>
-                <h5><b>Título HTML: </b> {{ $content->html_title }}</h5>
-                <h5><b>URL: </b> {{ $content->url }}</h5>
-                <h5><b>Descripción: </b> {{ $content->description }}</h5>
-                <h5><b>Desc. Social: </b> {{ $content->social_desc }}</h5>
-                <h5><b>Vistas: </b> {{ $content->getViewsAttribute(1) }}</h5>
-                <h5><b>Fecha: </b> {{ $content->renderDate() }}</h5>
+
+                <hr />
+
+                <p><b>Video ID: </b>
+                  @if($content->video_id)
+                    {{ $content->video_id }}
+                  @else
+                    No hay ID especificado.
+                  @endif
+                </p>
+                <p><b>Título HTML: </b> {{ $content->html_title }}</p>
+                <p><b>URL: </b> {{ $content->url }}</p>
+                <p><b>Descripción: </b> {{ $content->description }}</p>
+                <p><b>Desc. Social: </b> {{ $content->social_desc }}</p>
+                <p><b>Tags: </b>
+                  @if(isset($content->tags))
+                    @forelse($content->tags as & $tag)
+                      <span class="label label-default">{{ $tag->name }}</span>
+                    @empty
+                      No hay Tags asociados.
+                    @endforelse
+                  @else
+                    No hay Tags asociados.
+                  @endif
+                </p>
+                <p><b>Fecha: </b> {{ $content->renderDate() }}</p>
               </div>
           </div>
       </div>
