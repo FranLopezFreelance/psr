@@ -98,6 +98,7 @@
 @sm: 768px;
 @md: 992px;
 @xl: 1200px;
+@x1300: 1351px;
 
 
 @sm-max: (@md - 1px);
@@ -107,6 +108,8 @@
 @xs2md-q: ~"(min-width: @{xs}) and (max-width:@{sm-max})";
 @sm-q: ~"(min-width: @{sm}) and (max-width:@{sm-max})";
 @md-q: ~"(min-width: @{md}) and (max-width: @{xl-max})";
+@q1300: ~"(min-width: 1201px) and (max-width: 1300px)";
+@q1350: ~"(min-width: 1301px) and (max-width: 1350px)";
 
 .qm(@size,@rules) {
   @query: ~"(max-width: @{size})";

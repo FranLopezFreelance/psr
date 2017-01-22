@@ -1,13 +1,15 @@
-<script type="text/javascript" src="{{$path}}/js/front/jquery-2.2.0.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<script src="{{$path}}/js/front/bootstrap.js"></script>
-<script src="{{$path}}/js/front/extra.slider.min.js"></script>
+<script type="text/javascript" src="/js/front/jquery-2.2.0.min.js"></script>
+
+<script src="/js/front/bootstrap.js"></script>
+<script src="/js/front/extra.slider.min.js"></script>
 <!-- Load Greensock's TweenMax -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
 
 <!-- Load Greensock's Draggable plugin -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/utils/Draggable.min.js"></script>
-<script type="text/javascript" src="{{$path}}/js/front/home.js"></script>
+<script type="text/javascript" src="/js/front/home.js"></script>
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5856a7c2f26f87c3"></script>
