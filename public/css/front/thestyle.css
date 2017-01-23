@@ -370,15 +370,7 @@ nav.main-menu ul.nav li {
     padding: 10px 0px!important;
   }
 }
-@media (min-width: 1201px) and (max-width: 1300px) {
-  nav.main-menu ul.nav li a {
-    padding: 20px 10px!important;
-  }
-  nav.main-menu ul.nav li {
-    padding: 10px 0px!important;
-  }
-}
-@media (min-width: 1301px) and (max-width: 1350px) {
+@media (min-width: 1201px) and (max-width: 1350px) {
   nav.main-menu ul.nav li a {
     padding: 20px 15px!important;
   }
@@ -433,16 +425,10 @@ nav.main-menu .navbar-brand {
     margin-left: 20px;
   }
 }
-@media (min-width: 1201px) and (max-width: 1300px) {
+@media (min-width: 1201px) and (max-width: 1350px) {
   nav.main-menu .navbar-brand img {
     width: 130px;
     margin-left: 20px;
-  }
-}
-@media (min-width: 1301px) and (max-width: 1350px) {
-  nav.main-menu .navbar-brand img {
-    width: 130px;
-    margin-left: 40px;
   }
 }
 @media (min-width: 1351px) {
@@ -745,7 +731,7 @@ div.section h1 {
   text-transform: uppercase;
   font-weight: 800;
   color: black;
-  line-height: 30px;
+  line-height: 35px;
   letter-spacing: 1px;
   margin: 0;
   padding: 0;
