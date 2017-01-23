@@ -14,13 +14,13 @@ use App\Article;
 
 Auth::routes();
 //
-// /* BACKEND CONTROLLERS */
+/* BACKEND CONTROLLERS
 Route::get('/backend', 'BackendController@index');
 Route::resource('/backend/sections', 'SectionsController');
 Route::resource('/backend/contents', 'ContentsController');
 Route::resource('/backend/contents/{section}/createBySection', 'ContentsController@createBySection');
 Route::resource('/backend/subSection/contents/{subSection}', 'ContentsController@getContentBySubSection');
-
+*/
 /* FRONT CONTROLLERS */
 Route::get('/', 'FrontController@getIndex');
 Route::get('/moreHomeVideos', 'FrontController@getMoreHomeVideos');
