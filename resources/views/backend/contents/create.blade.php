@@ -173,7 +173,7 @@
                             <label for="text" class="col-md-1 control-label">Texto</label>
 
                             <div class="col-md-10">
-                                <textarea id="text" class="form-control text" name="text" required/>{{ old('text') }}</textarea>
+                                <textarea id="text" class="form-control text" name="text" />{{ old('text') }}</textarea>
 
                                 @if ($errors->has('text'))
                                     <span class="help-block">

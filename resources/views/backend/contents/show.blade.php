@@ -22,7 +22,7 @@
                   <ul>
                       @forelse($sections as $section)
                         @if($section->id == $subSection->id)
-                          <li>{{ $subSection->name }}</li>
+                          <li><a href="/backend/contents/{{ $content->id }}">{{ $subSection->name }}</a></li>
                             <ul>
                               @forelse($subSection->contents as $content)
                                 <li><a href="/backend/contents/{{ $content->id }}">{{ $content->title }}</a></li>
@@ -42,7 +42,9 @@
       <div class="col-md-8">
           <div class="panel panel-default">
               <div class="panel-heading">
-                <h3>{{ $content->title }}</h3>
+                <h3>{{ $content->title }}
+                    <a class="btn btn-success article-create" href="/backend/contents/{{ $content->id }}/edit">Editar</a>
+                </h3>
               </div>
               <div class="panel-body">
                 @if(isset($message))

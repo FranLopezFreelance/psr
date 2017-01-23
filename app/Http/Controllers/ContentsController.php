@@ -6,7 +6,7 @@ use App\Author;
 use App\Content;
 use App\Section;
 use App\Tag;
-use App\TypeView;
+use App\Typeview;
 use App\Videotype;
 use Illuminate\Http\Request;
 
