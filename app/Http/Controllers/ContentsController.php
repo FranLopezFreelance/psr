@@ -136,7 +136,6 @@ class ContentsController extends Controller
       //Guardando Tags asociados
       $content->tags()->sync($request->input('tags'), false);
 
-
       //Cargando los datos de la vista
       $menuSections = Section::where('level', 1)->where('topnav_back', 1)->get();
       $subSection = $content->section;

@@ -60,21 +60,21 @@
                   <hr />
 
                   <p><b>Video ID: </b>
+                    @if($content->video_id)
+                      {{ $content->video_id }}
+                    @else
+                      No hay ID especificado.
+                    @endif
+                  </p>
+
                 @elseif($content->typeview_id == 2 || $content->typeview_id == 3)
 
-                  <p><b>Texto:</b> {{ $content->text }}</p>
+                  <p><b>Texto:</b> {!! $content->text !!}</p>
 
                   <hr />
 
-                  <p><b>Video ID: </b>
                 @endif
 
-                  @if($content->video_id)
-                    {{ $content->video_id }}
-                  @else
-                    No hay ID especificado.
-                  @endif
-                </p>
                 <p><b>Título HTML: </b> {{ $content->html_title }}</p>
                 <p><b>URL: </b> {{ $content->url }}</p>
                 <p><b>Descripción: </b> {{ $content->description }}</p>
@@ -94,6 +94,9 @@
                   <p><b>Autor: </b> {{ $content->author->name }}</p>
                 @endif
                 <p><b>Fecha: </b> {{ $content->renderDate() }}</p>
+                <!-- <img src="{{ $content->getStandardImg($content->typeview_id) }}" />
+                <img src="{{ $content->getMediumImg($content->typeview_id) }}" /> -->
+                <img src="{{ $content->getSmallImg($content->typeview_id) }}" />
               </div>
           </div>
       </div>

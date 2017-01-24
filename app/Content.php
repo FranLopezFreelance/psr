@@ -53,4 +53,28 @@ class Content extends Model
         return [array('url'=>$this->section->url,'name'=>$this->section->name)];
       }
     }
+
+    public function getStandardImg($tipeView){
+      if($tipeView == 3){
+        return '/img/articulos/standard/'.$this->img_url;
+      }elseif($tipeView == 4){
+        return '/img/programas/standard/'.$this->img_url;
+      }
+    }
+
+    public function getMediumImg($tipeView){
+      if($tipeView == 3){
+        return '/img/articulos/medium/'.$this->img_url;
+      }elseif($tipeView == 4){
+        return '/img/programas/medium/'.$this->img_url;
+      }
+    }
+
+    public function getSmallImg($tipeView){
+      if($tipeView == 3){
+        return '/img/articulos/small/'.$this->img_url;
+      }elseif($tipeView == 4){
+        return '/img/programas/small/'.$this->img_url;
+      }
+    }
 }
