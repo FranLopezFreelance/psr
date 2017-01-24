@@ -68,8 +68,9 @@
                   </p>
 
                 @elseif($content->typeview_id == 2 || $content->typeview_id == 3)
-
-                  <p><b>Texto:</b> {!! $content->text !!}</p>
+                  <img src="{{ $content->getSmallImg($content->typeview_id) }}" />
+                  <hr />
+                  <p>{!! $content->text !!}</p>
 
                   <hr />
 
@@ -96,7 +97,7 @@
                 <p><b>Fecha: </b> {{ $content->renderDate() }}</p>
                 <!-- <img src="{{ $content->getStandardImg($content->typeview_id) }}" />
                 <img src="{{ $content->getMediumImg($content->typeview_id) }}" /> -->
-                <img src="{{ $content->getSmallImg($content->typeview_id) }}" />
+
               </div>
           </div>
       </div>
