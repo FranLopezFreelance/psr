@@ -8,6 +8,8 @@ use App\Section;
 use App\Tag;
 use App\Typeview;
 use App\Videotype;
+
+use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 
 class ContentsController extends Controller
@@ -91,22 +93,60 @@ class ContentsController extends Controller
      */
     public function store(Request $request)
     {
-      $content = new Content($request->except('tags'));
+      //Store del contenido
+      $content = new Content($request->except('tags','url', 'img'));
+
+      //Saco los acentos de url y lo guardo en content
+      $string = trim($request->input('url'));
+      $url = str_replace(
+        array('á', 'é', 'í', 'ó', 'ú'),
+        array('a', 'e', 'i', 'o', 'u'),
+        $string
+      );
+      $content->url = $url;
+
+      //Subiendo las imagenes y haciendo resize
+      if($request->input('typeview_id') == 3){
+        $path = 'img/articulos/';
+        $contentName = 'Artículo';
+      }elseif($request->input('typeview_id') == 4){
+        $path = 'img/programas/';
+        $contentName = 'Programa';
+      }
+
+      $file = $request->file('img');
+
+  		$name = $url.'.'.$file->getClientOriginalExtension();
+
+      $imageFile = Image::make($request->file('img'));
+      $imageFile->save($path.'standard/'.$name);
+      $imageMedium = $imageFile->resize(640, 380);
+      $imageMedium->save($path.'medium/'.$name);
+      $imageSmall = $imageFile->resize(320, 190);
+      $imageSmall->save($path.'small/'.$name);
+
+      $url = str_replace(
+        array('á', 'é', 'í', 'ó', 'ú'),
+        array('a', 'e', 'i', 'o', 'u'),
+        $string
+      );
+      $content->img_url = $name;
       $content->save();
+
+      //Guardando Tags asociados
       $content->tags()->sync($request->input('tags'), false);
 
-      $menuSections = Section::where('level', 1)
-                              ->where('topnav_back', 1)->get();
-      $sections = Section::all();
-      $videoTypes = Videotype::all();
-      $section = $sections->where('id', $request->input('section_id'))->first();
-      $subSections = $sections->where('section_id', $section->id);
-      $typeviews = Typeview::all();
-      $authors = Author::all();
-      $tags = Tag::all();
-      $message = 'El contenido ha sido creado.';
-      return view('backend.contents.create', compact('section', 'sections', 'subSections',
-      'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'message'));
+
+      //Cargando los datos de la vista
+      $menuSections = Section::where('level', 1)->where('topnav_back', 1)->get();
+      $subSection = $content->section;
+      $section = $subSection->parent;
+      $sections = $section->getSubSections();
+
+      //Mensaje
+      $message = 'El '.$contentName.' ha sido creado.';
+
+      return view('backend.contents.show', compact('content', 'sections', 'section', 'subSection', 'menuSections', 'message'));
     }
 
     /**

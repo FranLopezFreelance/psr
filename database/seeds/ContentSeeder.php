@@ -56,6 +56,7 @@ $video = [
   'img_url' => '/img/test/video-1.jpg',
   'title' => 'Ejemplo de Video',
   'html_title' => 'Ejemplo de Video',
+  'video_id' => 'HhEFM94lZKY',
   'typeview_id' => 3,
   'date' => '2017-01-01',
   'description' => 'Todo lo relacionado al Primer Pilar del PSR.',
@@ -66,22 +67,19 @@ $video = [
           Correspondientemente, hoy el Pueblo Argentino tiene la Misión de luchar por la recuperación del Estado Soberano que le ha sido quitado.   Esto no se logra con “reformas y emparches” del Estado Colonial que nos han impuesto, sino impulsando una auténtica REVOLUCIÓN del pensamiento, de las ideas, de la Voluntad, del autorespeto y de la solidaridad.',
 ];
 
-for ($i = 1; $i <= 100; $i++) {
-    $vid = array_merge($video);
-    $vid['url']= $vid['url'].$i;
-    $vid['title']= $vid['title'].'--'.$i;
-    DB::table('contents')->insert($vid);
-}
-$video['section_id']=18;
-for ($i = 1; $i <= 100; $i++) {
-    $vid = array_merge($video);
-    $vid['url']= $vid['url'].$i;
-    $vid['title']= $vid['title'].'--'.$i;
-    DB::table('contents')->insert($vid);
-}
-
-
-
+  for ($i = 1; $i <= 100; $i++) {
+      $vid = array_merge($video);
+      $vid['url']= $vid['url'].$i;
+      $vid['title']= $vid['title'].'--'.$i;
+      DB::table('contents')->insert($vid);
+  }
+  $video['section_id']=18;
+  for ($i = 1; $i <= 100; $i++) {
+      $vid = array_merge($video);
+      $vid['url']= $vid['url'].$i;
+      $vid['title']= $vid['title'].'--'.$i;
+      DB::table('contents')->insert($vid);
+  }
 
   }
 }

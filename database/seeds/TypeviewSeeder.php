@@ -12,6 +12,14 @@ class TypeviewSeeder extends Seeder
     public function run()
     {
       DB::table('typeviews')->insert([
+          'name' => 'Home',
+          'index_view' => 'front.home.index',
+          'back_index_view' => 'back.home.index',
+          'show_view' => 'front.home.show',
+          'back_show_view' => 'back.home.show',
+          'dynamic' => 0
+      ]);
+      DB::table('typeviews')->insert([
           'name' => 'Pilar',
           'index_view' => 'front.pillars.index',
           'back_index_view' => 'back.pillars.index',

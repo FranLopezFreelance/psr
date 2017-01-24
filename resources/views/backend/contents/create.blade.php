@@ -14,7 +14,7 @@
                       </div>
                   @endif
 
-                  <form class="form-horizontal" role="form" method="POST" action="/backend/contents">
+                  <form class="form-horizontal" role="form" enctype='multipart/form-data' method="POST" action="/backend/contents">
                       {{ csrf_field() }}
 
                       <div class="form-group{{ $errors->has('typeview_id') ? ' has-error' : '' }}">
@@ -236,10 +236,22 @@
                       <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                           <label for="date" class="col-md-4 control-label">Fecha</label>
                           <div class="col-md-6">
-                              <input id="date" type="date" class="form-control title" name="date" value="{{ old('date') }}" required autofocus>
+                              <input id="date" type="date" class="form-control" name="date" value="{{ old('date') }}" required>
                               @if ($errors->has('date'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('date') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
+                          <label for="img" class="col-md-4 control-label">Imágen</label>
+                          <div class="col-md-6">
+                              <input id="img" type="file" class="form-control" name="img" value="{{ old('img') }}" >
+                              @if ($errors->has('img'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('img') }}</strong>
                                   </span>
                               @endif
                           </div>

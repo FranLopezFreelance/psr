@@ -52,12 +52,23 @@
                         <h5>{{ $message }}</h5>
                     </div>
                 @endif
-                <iframe width="100%" height="400" src="https://www.youtube.com/embed/{{ $content->video_id }}" frameborder="0" allowfullscreen>
-                </iframe>
 
-                <hr />
+                @if($content->typeview_id == 4)
+                  <iframe width="100%" height="400" src="https://www.youtube.com/embed/{{ $content->video_id }}" frameborder="0" allowfullscreen>
+                  </iframe>
 
-                <p><b>Video ID: </b>
+                  <hr />
+
+                  <p><b>Video ID: </b>
+                @elseif($content->typeview_id == 2 || $content->typeview_id == 3)
+
+                  <p><b>Texto:</b> {{ $content->text }}</p>
+
+                  <hr />
+
+                  <p><b>Video ID: </b>
+                @endif
+
                   @if($content->video_id)
                     {{ $content->video_id }}
                   @else
@@ -79,6 +90,9 @@
                     No hay Tags asociados.
                   @endif
                 </p>
+                @if($content->typeview_id == 3)
+                  <p><b>Autor: </b> {{ $content->author->name }}</p>
+                @endif
                 <p><b>Fecha: </b> {{ $content->renderDate() }}</p>
               </div>
           </div>
