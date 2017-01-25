@@ -16,7 +16,12 @@
 
 </div>
 </div>
-<div class="row"><div class="spinner-wrapper">@include('front.assets.material-loading')</div></div>
+<div class="row">
+  <div class="verMas col-xs-12">
+    <a class="verMasContenido" onClick=loadContent()>Ver Más</a>
+    <div class="spinner-wrapper">@include('front.assets.material-loading')</div>
+  </div>
+</div>
 </div>
 
 

@@ -14,7 +14,8 @@ class FrontController extends Controller
       $allSections = Section::all();
       $this->sections = $allSections->where('level', 1);
       $recomendados = Content::where('dest','=',1)->take(5)->get();
-       View::share( 'path', '' );
+
+       View::share( 'path', '');
        View::share( 'sections', $this->sections );
        View::share( 'recomendados', $recomendados );
     }

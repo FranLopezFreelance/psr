@@ -311,8 +311,23 @@ div.mini-video p.title {
 div.mini-video span.stats {
   margin-left: 10px;
 }
+div.verMas {
+  text-align: center;
+  text-transform: uppercase;
+}
+div.verMas a {
+  padding-top: 30px;
+  display: none;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+body.portrait div.verMas a {
+  display: block;
+}
 nav.main-menu {
   min-height: 30px;
+  text-align: center;
   background-color: white;
   width: 100%;
   margin-bottom: 0px;
@@ -325,7 +340,8 @@ nav.main-menu li.dropdown a:link {
 }
 nav.main-menu li.dropdown > ul.dropdown-menu > li > a {
   color: #282828!important;
-  padding: 10px 30px 10px 50px!important;
+  padding: 10px 30px 10px 10px!important;
+  text-align: center;
 }
 @media (min-width: 768px) {
   nav.main-menu li.dropdown > ul.dropdown-menu > li > a {
@@ -412,23 +428,29 @@ nav.main-menu ul.nav li:select {
 nav.main-menu .navbar-brand {
   margin: 0;
   padding: 0px;
-  padding-top: 12px;
+  padding-top: 8px;
+}
+nav.main-menu .navbar-brand img {
+  width: 80px;
 }
 @media (min-width: 768px) and (max-width:991px) {
   nav.main-menu .navbar-brand img {
     width: 80px;
+    padding-top: 12px;
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   nav.main-menu .navbar-brand img {
     width: 100px;
     margin-left: 20px;
+    padding-top: 12px;
   }
 }
 @media (min-width: 1201px) and (max-width: 1350px) {
   nav.main-menu .navbar-brand img {
     width: 130px;
     margin-left: 20px;
+    padding-top: 12px;
   }
 }
 @media (min-width: 1351px) {
@@ -731,7 +753,7 @@ div.section h1 {
   text-transform: uppercase;
   font-weight: 800;
   color: black;
-  line-height: 35px;
+  line-height: 40px;
   letter-spacing: 1px;
   margin: 0;
   padding: 0;
@@ -1153,7 +1175,7 @@ div.modal#modal-video div.v-container {
   max-width: 1440px;
   position: absolute;
   z-index: -1000;
-  width: 96%;
+  width: 80%;
   margin-left: -7px;
   top: 50%;
   left: 50%;
@@ -1205,7 +1227,7 @@ div.programas-section div.mini-video p.title.short {
   font-size: 18px;
 }
 div.section div.content {
-  padding: 20px 40px 40px 40px;
+  padding: 30px 40px 40px 40px;
 }
 div.section div.content h1 {
   text-transform: uppercase;
@@ -1213,6 +1235,7 @@ div.section div.content h1 {
   color: black;
   padding-bottom: 10px;
   line-height: 40px;
+  font-size: 30px;
   letter-spacing: 1px;
 }
 div.section div.content img.main-image {

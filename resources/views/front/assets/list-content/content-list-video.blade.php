@@ -1,4 +1,4 @@
-<div class="col col-xs-12 col-sm-{{$colsm}} col-md-{{$colmd}} col-lg-3 {{!empty($data['hide']) ? 'sm-lg':''}}" >
+<div class="col col-xs-6 col-sm-{{$colsm}} col-md-{{$colmd}} col-lg-3 {{!empty($data['hide']) ? 'sm-lg':''}}" >
   <div class="mini-video">
     <div class="content-mini">
 
