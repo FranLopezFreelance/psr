@@ -5,17 +5,28 @@ $( document ).ready(function() {
 
   //JS para Text Editor
   tinymce.init({
-    selector: '.text',
-    height: 500,
-    menubar: false,
-    plugins: [
-      'advlist autolink lists link image charmap print preview anchor',
-      'searchreplace visualblocks code fullscreen',
-      'insertdatetime media table contextmenu paste code'
-    ],
-    toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-    content_css: '//www.tinymce.com/css/codepen.min.css'
-  });
+  selector: '.text',
+  language: 'es',
+  height: 500,
+  theme: 'modern',
+  plugins: [
+    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+    'searchreplace wordcount visualblocks visualchars code fullscreen',
+    'insertdatetime media nonbreaking save table contextmenu directionality',
+    'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
+  ],
+  toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+  toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
+  image_advtab: true,
+  templates: [
+    { title: 'Test template 1', content: 'Test 1' },
+    { title: 'Test template 2', content: 'Test 2' }
+  ],
+  content_css: [
+    '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+    '//www.tinymce.com/css/codepen.min.css'
+  ]
+ });
 
   //Generar el link a partir del Título de un artículo
     $('.title').focusout(function(){
@@ -69,5 +80,20 @@ $( document ).ready(function() {
     //     $(this).prop('checked', true);
     //   }
     // });
+
+    $('.saveNewTag').click(function(){
+      var newTag = $('.newTag').val();
+      var data = 'newTag=' + newTag;
+      var url = '/backend/tags/create/';
+        $.ajax({
+              type: "POST",
+              url: url,
+              data: newTag, // serializes the form's elements.
+              success: function(data)
+              {
+                data = data;
+              }
+        });
+    });
 
 });

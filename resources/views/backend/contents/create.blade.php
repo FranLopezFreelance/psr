@@ -209,6 +209,33 @@
                           </div>
                       </div>
 
+                      <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
+                          <div for="tags" class="col-md-4 control-label"></div>
+                          <div class="col-md-6">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-summary btn-sm" data-toggle="modal" data-target="#myModal">
+                              Agregar Tag
+                            </button>
+                            <!-- Modal -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Nuevo Tag</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <input type="text" class="form-control newTag" />
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary saveNewTag">Guardar</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                          </div>
+                      </div>
+
                       @if($section->id == 3)
                         <div class="form-group{{ $errors->has('author_id') ? ' has-error' : '' }}">
                             <label for="author_id" class="col-md-4 control-label">Autor</label>

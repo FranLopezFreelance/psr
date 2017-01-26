@@ -208,4 +208,8 @@ class ContentsController extends Controller
     {
         //
     }
+
+    public function addNewTag(Request $request){
+      dd($request->input('newTag'));
+    }
 }
