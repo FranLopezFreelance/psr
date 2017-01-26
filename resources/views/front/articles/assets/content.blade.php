@@ -1,6 +1,5 @@
 <div class="content">
 
-
 <div class="row">
   <div class="col-xs-12">
     <h1>{{$content->title}}</h1>
@@ -15,18 +14,19 @@
   </div>
   <div class="col-xs-12">
     @if ($video)
-    <a class="btn-video" onclick="showVideo('{{$content->video_id}}')"><img class="main-image" src="{{$content->img_url}}" alt=""></a>
+    <a class="btn-video" onclick="showVideo('{{$content->video_id}}')"><img class="main-image" src="{{$content->getImageByType(1)}}" alt=""></a>
     <div class="video-container hidden"></div>
     @else
-    <img class="main-image" src="{{$content->img_url}}" alt="">
+    <img class="main-image" src="{{$content->getImageByType(1)}}" alt="">
     @endif
 
 </div>
   <div class="col-xs-12">
-    <p class="text">{{$content->text}}</p>
+    <div class="text">{!!$content->text!!}</div>
   </div>
   <div class="col-xs-12">
-    @if(!$video)
+
+    @if($video == false)
     <div class="col-xs-12 col-sm-6">
       <div class="author">
         <img src="/img/authors/giuliano.png" alt="">

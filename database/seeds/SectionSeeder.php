@@ -203,7 +203,7 @@ class SectionSeeder extends Seeder
         'url' => 'bloque-nacional',
         'name' => 'Bloque Nacional',
         'html_title' => 'Bloque Nacional | Programas | Proyecto Segunda República',
-        'typeview_id' => 2,
+        'typeview_id' => 4,
         'description' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'topnav_back' => 1,

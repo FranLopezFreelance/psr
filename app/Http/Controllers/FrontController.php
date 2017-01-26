@@ -66,6 +66,7 @@ class FrontController extends Controller
     if($content = Content::where('url', $content)->first()){
 
       $target = $content;
+      
       return view($content->typeView->show_view, compact('target','section','subSection', 'content'));
     }else{
       return view('errors.404');
