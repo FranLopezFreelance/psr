@@ -26,6 +26,7 @@
     <p class="text">{{$content->text}}</p>
   </div>
   <div class="col-xs-12">
+    @if(!$video)
     <div class="col-xs-12 col-sm-6">
       <div class="author">
         <img src="/img/authors/giuliano.png" alt="">
@@ -44,6 +45,18 @@
         <a class="tag">Nueva República</a>
       </div>
     </div>
+    @else
+    <div class="tags">
+      <span>En éste artículo: </span>
+      <a class="tag">Moneda soberana</a>
+      <a class="tag">Mercosur</a>
+      <a class="tag">Energía</a>
+      <a class="tag">Medio Ambiente</a>
+      <a class="tag">Economía</a>
+      <a class="tag">Política</a>
+      <a class="tag">Nueva República</a>
+    </div>
+    @endif
   </div>
   <div class="bottom-line col-xs-12"></div>
 

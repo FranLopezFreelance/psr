@@ -58,6 +58,7 @@ $video = [
   'html_title' => 'Ejemplo de Video',
   'video_id' => 'HhEFM94lZKY',
   'typeview_id' => 3,
+  'video_id' => 'HhEFM94lZKY',
   'date' => '2017-01-01',
   'description' => 'Todo lo relacionado al Primer Pilar del PSR.',
   'social_desc' => 'Todo lo relacionado al Primer Pilar del PSR.',

@@ -14,11 +14,11 @@
 </div>
 -->
 
-<div class="">
+<div class="col-xs-6 col-md-12">
   <img class="sidebar" src="/img/test/sidebar.jpg" alt="">
 </div>
 
-<div class="">
+<div class="col-xs-6 col-md-12 hidden-xs hidden-sm">
   <div class="fb-page" data-href="https://www.facebook.com/ProyectoSegundaRepublica/"
    data-small-header="false" data-adapt-container-width="true"
   data-hide-cover="false" data-show-facepile="true">
@@ -29,13 +29,13 @@
 
 </div>
 
-<div class="">
+<div class="col-xs-6 col-md-12">
   <img class="sidebar" src="/img/sidebar/contactateconpsr.jpg" alt="">
 </div>
-<div class="">
+<div class="col-xs-6 col-md-12">
   <img class="sidebar" src="/img/test/follow.jpg" alt="">
 </div>
-
+<div class="clearfix"></div>
 <div class="tag-cloud">
   <h3>TEMAS</h3>
   <a class="tag">Moneda soberana</a>

@@ -4,7 +4,7 @@
   <a href="tags/argentina" class="tag">Argentina</a>
 </div>
 
-  <img src="{{$path}}{{$img}}" alt="">
+  <img src="/{{$img}}" alt="">
   @include('front.home.assets.addthis-articulo-home')
   <h5 class="title">{{$title}}</h5>
   <span class="stats">17 diciembre 2016 | 15:26 GMT<span class="views">10.100</span></span>
