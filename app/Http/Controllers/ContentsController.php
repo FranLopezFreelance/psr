@@ -209,7 +209,25 @@ class ContentsController extends Controller
         //
     }
 
-    public function addNewTag(Request $request){
-      dd($request->input('newTag'));
+    public function addNewTag($name){
+      $url = str_replace(
+        array('á', 'é', 'í', 'ó', 'ú', ' '),
+        array('a', 'e', 'i', 'o', 'u', '-'),
+        $name
+      );
+      $url = strtolower($url);
+
+      $tag = new Tag([
+        'name' => $name,
+        'url' => $url
+      ]);
+
+      $tag->save();
+      $id = $tag->id;
+
+      return response()->json([
+        'id' => $id,
+        'name' => $name
+      ]);
     }
 }

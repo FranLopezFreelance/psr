@@ -81,17 +81,21 @@ $( document ).ready(function() {
     //   }
     // });
 
+    //Agregar Tag
     $('.saveNewTag').click(function(){
       var newTag = $('.newTag').val();
-      var data = 'newTag=' + newTag;
-      var url = '/backend/tags/create/';
+        $('.newTag').val('');
+      var url = '/backend/tags/create/'+ newTag;
         $.ajax({
-              type: "POST",
+              type: "GET",
               url: url,
               data: newTag, // serializes the form's elements.
               success: function(data)
               {
-                data = data;
+                $('.tags').append($('<option>', {
+                    value: data.id,
+                    text : data.name
+                }));
               }
         });
     });

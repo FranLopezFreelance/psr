@@ -228,7 +228,7 @@
                                         <input type="text" class="form-control newTag" />
                                       </div>
                                       <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary saveNewTag">Guardar</button>
+                                        <button type="button" class="btn btn-primary saveNewTag" data-dismiss="modal">Guardar</button>
                                       </div>
                                     </div>
                                   </div>
