@@ -202,7 +202,11 @@
                             <label for="text" class="col-md-1 control-label">Texto</label>
 
                             <div class="col-md-10">
-                                <textarea id="text" class="form-control text" name="text" />{{ old('text') }}</textarea>
+                                @if(old('text'))
+                                  <textarea id="text" class="form-control text" name="text" />{!! old('text') !!}</textarea>
+                                @else
+                                  <textarea id="text" class="form-control text" name="text" />{!! $content->text !!}</textarea>
+                                @endif
 
                                 @if ($errors->has('text'))
                                     <span class="help-block">
@@ -238,19 +242,46 @@
                           </div>
                       </div>
 
-                      @if($section->id == 2)
+                      <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
+                          <div for="tags" class="col-md-4 control-label"></div>
+                          <div class="col-md-6">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-summary btn-sm" data-toggle="modal" data-target="#myModal">
+                              Agregar Tag
+                            </button>
+                            <!-- Modal -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Nuevo Tag</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <input type="text" class="form-control newTag" />
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary saveNewTag" data-dismiss="modal">Guardar</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                          </div>
+                      </div>
+
+                      @if($section->id == 3)
                         <div class="form-group{{ $errors->has('author_id') ? ' has-error' : '' }}">
                             <label for="author_id" class="col-md-4 control-label">Autor</label>
                             <div class="col-md-6">
                                 <select class="form-control" name="author_id" required>
                                   <option value="0">Elegir...</option>
-                                  @foreach($authors as $author)
-                                    @if(old('author') && old('author') == $author->id)
-                                      <option value="{{ $author->id }}" selected>{{ $author->name }}</option>
-                                    @else
-                                      <option value="{{ $author->id }}">{{ $author->name }}</option>
-                                    @endif
-                                  @endforeach
+                                    @foreach($authors as $author)
+                                      @if($author->id == $content->author_id)
+                                        <option value="{{ $author->id }}" selected>{{ $author->name }}</option>
+                                      @else
+                                        <option value="{{ $author->id }}">{{ $author->name }}</option>
+                                      @endif
+                                    @endforeach
                                 </select>
 
                                 @if ($errors->has('author_id'))

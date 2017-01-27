@@ -115,7 +115,7 @@
     <script>
       //JS para Tags
       @if(isset($content))
-        $(".tags").select2().val({!! $content->tags !!}).trigger('change');
+        $(".tags").select2().val({!! json_encode($content->tags()->getRelatedIds()) !!}).trigger('change');
       @endif
     </script>
 </body>

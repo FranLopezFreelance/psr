@@ -214,7 +214,7 @@ class ContentsController extends Controller
         $content->save();
 
         //Guardando Tags asociados
-        $content->tags()->sync($request->input('tags'), false);
+        $content->tags()->sync($request->input('tags'));
 
         $menuSections = Section::where('level', 1)
                               ->where('topnav_back', 1)->get();
