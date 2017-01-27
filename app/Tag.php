@@ -13,4 +13,8 @@ class Tag extends Model
   public function contents(){
       return $this->belongsToMany('App\Content', 'tagscontents', 'tag_id', 'content_id');
   }
+
+  public function getFullUrl(){
+    return '/temas/'. $this->url;
+  }
 }

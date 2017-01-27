@@ -13,22 +13,22 @@ class AuthorsSeeder extends Seeder
     {
       DB::table('authors')->insert([
           'name' => 'Adrián Salbuchi',
-          'img' => 'default.jpg',
+          'img' => 'adrian-salbuchi.png',
           'active' => 1,
       ]);
       DB::table('authors')->insert([
           'name' => 'Enrique Romero',
-          'img' => 'default.jpg',
+          'img' => 'enrique-romero.png',
           'active' => 1,
       ]);
       DB::table('authors')->insert([
           'name' => 'Héctor Giuliano',
-          'img' => 'default.jpg',
+          'img' => 'hector-giuliano.png',
           'active' => 1,
       ]);
       DB::table('authors')->insert([
           'name' => 'Denes Martos',
-          'img' => 'default.jpg',
+          'img' => 'denes-martos.png',
           'active' => 1,
       ]);
     }

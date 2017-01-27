@@ -82,8 +82,9 @@ class Content extends Model
       switch ($type) {
         case 1:$subfolder='standard'; break;
         case 2:$subfolder='medium'; break;
-        case 3:$subfolder='small'; break;        
+        case 3:$subfolder='small'; break;
       }
+      //dd($this->typeview_id);
       switch ($this->typeview_id) {
         case 3:$folder='articulos'; break;
         case 4:$folder='programas'; break;

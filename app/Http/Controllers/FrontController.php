@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Content;
 use App\Section;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -14,10 +15,12 @@ class FrontController extends Controller
       $allSections = Section::all();
       $this->sections = $allSections->where('level', 1);
       $recomendados = Content::where('dest','=',1)->take(5)->get();
+      $tags =  Tag::take(5)->get();
 
        View::share( 'path', '');
        View::share( 'sections', $this->sections );
        View::share( 'recomendados', $recomendados );
+       View::share( 'tags', $tags );
     }
 
   public function getIndex(){
@@ -66,7 +69,7 @@ class FrontController extends Controller
     if($content = Content::where('url', $content)->first()){
 
       $target = $content;
-      
+
       return view($content->typeView->show_view, compact('target','section','subSection', 'content'));
     }else{
       return view('errors.404');
@@ -74,7 +77,7 @@ class FrontController extends Controller
   }
 
   private function renderAjax($request,$section,$contents){
-    if($section->typeview_id == 3) {
+    if($section->typeview_id == 4) {
       $colsm = 4;
       $colmd = 4;
         return [
@@ -82,7 +85,7 @@ class FrontController extends Controller
             'next_page' => $contents->nextPageUrl()
         ];
     }
-    else if($section->typeview_id == 2) {
+    else if($section->typeview_id == 3) {
         return [
             'content' => view('front.articles.assets.ajax-article-render')->with(compact('contents'))->render(),
             'next_page' => $contents->nextPageUrl()
@@ -91,7 +94,7 @@ class FrontController extends Controller
   }
 
   public function getMoreHomeVideos(Request $request){
-  $contents = Content::where('typeview_id','=',3)->paginate(12);//ver de ordenar el request
+  $contents = Content::where('typeview_id','=',4)->paginate(12);//ver de ordenar el request
 
     if($request->ajax()) {
       $colsm = 3;
