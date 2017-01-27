@@ -1,7 +1,7 @@
 $( document ).ready(function() {
 
   //JS para Tags
-    $(".tags").select2();
+  $(".tags").select2();
 
   //JS para Text Editor
   tinymce.init({
