@@ -112,5 +112,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="/js/backend/tinymce/tinymce.min.js"></script>
     <!-- <script src="/js/backend/tinymce/jquery.tinymce.min.js"></script> -->
+    <script>
+      //JS para Tags
+      @if(isset($content))
+        $(".tags").select2().val({!! $content->tags !!}).trigger('change');
+      @endif
+    </script>
 </body>
 </html>

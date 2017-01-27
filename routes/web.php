@@ -20,7 +20,7 @@ Route::resource('/backend/sections', 'SectionsController');
 Route::resource('/backend/contents', 'ContentsController');
 Route::get('/backend/contents/{section}/createBySection', 'ContentsController@createBySection');
 Route::get('/backend/contents/{subSection}/getBySection/', 'ContentsController@getContentBySubSection');
-Route::post('backend/tags/create', 'ContentsController@addNewTag');
+Route::get('backend/tags/create/{tag}', 'ContentsController@addNewTag');
 
 /* FRONT CONTROLLERS */
 Route::get('/', 'FrontController@getIndex');

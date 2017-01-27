@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><h4><a href="/backend/contents/section/{{ $section->id }}">Contenidos</a> / Nuevo Contenido</h4></div>
+                <div class="panel-heading"><h4><a href="/backend/contents/section/{{ $section->id }}">Contenidos</a> / Editar {{ $content->typeview->name }}</h4></div>
                 <div class="panel-body">
 
                   @if(isset($message))
@@ -14,25 +14,22 @@
                       </div>
                   @endif
 
-                  <form class="form-horizontal" role="form" method="POST" action="/backend/contents">
+                  <form class="form-horizontal" role="form" method="POST" action="/backend/contents/{{ $content->id }}">
                       {{ csrf_field() }}
+                      {!! method_field('patch') !!}
 
                       <div class="form-group{{ $errors->has('typeview_id') ? ' has-error' : '' }}">
                           <label for="typeview_id" class="col-md-4 control-label">Sección</label>
                           <div class="col-md-6">
                               <select class="form-control" name="typeview_id" required>
-                                @if(isset($section))
-                                  <option value="{{ $section->id }}">{{ $section->name }}</option>
-                                @else
-                                  <option value="0">Elegir...</option>
-                                    @foreach($typeviews as $typeview)
-                                      @if(old('typeview') && old('typeview') == $typeview->id)
-                                        <option value="{{ $typeview->id }}" selected>{{ $typeview->name }}</option>
-                                      @else
-                                        <option value="{{ $typeview->id }}">{{ $typeview->name }}</option>
-                                      @endif
-                                    @endforeach
-                                @endif
+                                <option value="0">Elegir...</option>
+                                  @foreach($menuSections as $principalSection)
+                                    @if($principalSection->id == $section->id)
+                                      <option value="{{ $principalSection->id }}" selected>{{ $principalSection->name }}</option>
+                                    @else
+                                      <option value="{{ $principalSection->id }}">{{ $principalSection->name }}</option>
+                                    @endif
+                                  @endforeach
                               </select>
 
                               @if ($errors->has('typeview_id'))
@@ -49,7 +46,7 @@
                             <select class="form-control" name="section_id" required>
                                 <option value="0">Elegir...</option>
                                   @foreach($subSections as $subSection)
-                                    @if(old('section_id') && old('section_id') == $subSection->id)
+                                    @if($subSection->id == $content->section->id)
                                       <option value="{{ $subSection->id }}" selected>{{ $subSection->name }}</option>
                                     @else
                                       <option value="{{ $subSection->id }}">{{ $subSection->name }}</option>
@@ -71,11 +68,11 @@
                             <div class="col-md-6">
                                 <select class="form-control" name="videotype_id" required>
                                     <option value="0">Elegir...</option>
-                                      @foreach($videoTypes as $videotype)
-                                        @if(old('videotype_id') && old('videotype_id') == $videotype->id)
-                                          <option value="{{ $videotype->id }}" selected>{{ $videotype->name }}</option>
+                                      @foreach($videoTypes as $videoType)
+                                        @if($videoType->id == $content->videotype_id)
+                                          <option value="{{ $videoType->id }}" selected>{{ $videoType->name }}</option>
                                         @else
-                                          <option value="{{ $videotype->id }}">{{ $videotype->name }}</option>
+                                          <option value="{{ $videoType->id }}">{{ $videoType->name }}</option>
                                         @endif
                                       @endforeach
                                 </select>
@@ -91,7 +88,13 @@
                         <div class="form-group{{ $errors->has('video_id') ? ' has-error' : '' }}">
                             <label for="video_id" class="col-md-4 control-label">Video ID</label>
                             <div class="col-md-6">
-                                <input id="video_id" type="text" class="form-control video_id" name="video_id" value="{{ old('video_id') }}" required autofocus>
+                                <input id="video_id" type="text" class="form-control video_id" name="video_id"
+                                  @if(old('video_id'))
+                                    value="{{ old('video_id') }}"
+                                  @else
+                                    value="{{ $content->video_id }}"
+                                  @endif
+                                required>
                                 @if ($errors->has('video_id'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('video_id') }}</strong>
@@ -104,7 +107,14 @@
                       <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                           <label for="title" class="col-md-4 control-label">Título</label>
                           <div class="col-md-6">
-                              <input id="title" type="text" class="form-control title" name="title" value="{{ old('title') }}" required autofocus>
+                              <input id="title" type="text" class="form-control title" name="title"
+                                @if(old('title'))
+                                  value="{{ old('title') }}"
+                                @else
+                                  value="{{ $content->title }}"
+                                @endif
+                              required>
+
                               @if ($errors->has('title'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('title') }}</strong>
@@ -116,7 +126,13 @@
                       <div class="form-group{{ $errors->has('html_title') ? ' has-error' : '' }}">
                           <label for="html_title" class="col-md-4 control-label">Título HTML</label>
                           <div class="col-md-6">
-                              <input id="html_title" type="text" class="form-control title" name="html_title" value="{{ old('html_title') }}" required autofocus>
+                              <input id="html_title" type="text" class="form-control title" name="html_title"
+                                @if(old('html_title'))
+                                  value="{{ old('html_title') }}"
+                                @else
+                                  value="{{ $content->html_title }}"
+                                @endif
+                              required>
                               @if ($errors->has('html_title'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('html_title') }}</strong>
@@ -129,7 +145,13 @@
                           <label for="url" class="col-md-4 control-label">URL</label>
 
                           <div class="col-md-6">
-                              <input id="url" type="text" class="form-control url" name="url" value="{{ old('url') }}" required>
+                              <input id="url" type="text" class="form-control url" name="url"
+                                @if(old('title'))
+                                  value="{{ old('url') }}"
+                                @else
+                                  value="{{ $content->url }}"
+                                @endif
+                              required>
 
                               @if ($errors->has('url'))
                                   <span class="help-block">
@@ -143,7 +165,11 @@
                           <label for="description" class="col-md-4 control-label">Descripción</label>
 
                           <div class="col-md-6">
-                              <textarea id="description" class="form-control" name="description" required/>{{ old('description') }}</textarea>
+                              @if(old('description'))
+                                <textarea id="description" class="form-control" name="description" required/>{{ old('description') }}</textarea>
+                              @else
+                                <textarea id="description" class="form-control" name="description" required/>{{ $content->description }}</textarea>
+                              @endif
 
                               @if ($errors->has('description'))
                                   <span class="help-block">
@@ -157,8 +183,11 @@
                           <label for="social_desc" class="col-md-4 control-label">Desc. Social</label>
 
                           <div class="col-md-6">
-                              <textarea id="social_desc" class="form-control" name="social_desc" required/>{{ old('social_desc') }}</textarea>
-
+                              @if(old('description'))
+                                <textarea id="description" class="form-control" name="social_desc" required/>{{ old('social_desc') }}</textarea>
+                              @else
+                                <textarea id="description" class="form-control" name="social_desc" required/>{{ $content->social_desc }}</textarea>
+                              @endif
                               @if ($errors->has('social_desc'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('social_desc') }}</strong>
@@ -236,7 +265,13 @@
                       <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                           <label for="date" class="col-md-4 control-label">Fecha</label>
                           <div class="col-md-6">
-                              <input id="date" type="date" class="form-control title" name="date" value="{{ old('date') }}" required autofocus>
+                              <input id="date" type="date" class="form-control title" name="date"
+                                @if(old('date'))
+                                  value="{{ old('date') }}"
+                                @else
+                                  value="{{ $content->date }}"
+                                @endif
+                              required autofocus>
                               @if ($errors->has('date'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('date') }}</strong>
@@ -248,7 +283,7 @@
                       <div class="form-group">
                           <div class="col-md-6 col-md-offset-4">
                               <button type="submit" class="btn btn-primary">
-                                  Crear
+                                  Guardar
                               </button>
                           </div>
                       </div>

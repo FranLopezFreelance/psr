@@ -118,6 +118,7 @@ class ContentsController extends Controller
 
   		$name = $url.'.'.$file->getClientOriginalExtension();
 
+      //Redimensiono y Guardo las Imágenes
       $imageFile = Image::make($request->file('img'));
       $imageFile->save($path.'standard/'.$name);
       $imageMedium = $imageFile->resize(640, 380);
@@ -125,11 +126,6 @@ class ContentsController extends Controller
       $imageSmall = $imageFile->resize(320, 190);
       $imageSmall->save($path.'small/'.$name);
 
-      $url = str_replace(
-        array('á', 'é', 'í', 'ó', 'ú'),
-        array('a', 'e', 'i', 'o', 'u'),
-        $string
-      );
       $content->img_url = $name;
       $content->save();
 
@@ -181,9 +177,19 @@ class ContentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Content $content)
     {
-        //
+      $menuSections = Section::where('level', 1)
+                            ->where('topnav_back', 1)->get();
+      $section = $content->section->parent;
+      $sections = Section::all();
+      $videoTypes = Videotype::all();
+      $subSections = $sections->where('section_id', $section->id);
+      $typeviews = Typeview::all();
+      $authors = Author::all();
+      $tags = Tag::all();
+      return view('backend.contents.edit', compact('section', 'content', 'sections', 'subSections',
+      'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes'));
     }
 
     /**
@@ -193,9 +199,35 @@ class ContentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Content $content)
     {
-        //
+        $content->update($request->except('tags','url', 'img'));
+
+        //Saco los acentos de url y lo guardo en content
+        $string = trim($request->input('url'));
+        $url = str_replace(
+          array('á', 'é', 'í', 'ó', 'ú'),
+          array('a', 'e', 'i', 'o', 'u'),
+          $string
+        );
+        $content->url = $url;
+        $content->save();
+
+        //Guardando Tags asociados
+        $content->tags()->sync($request->input('tags'), false);
+
+        $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)->get();
+        $section = $content->section->parent;
+        $sections = Section::all();
+        $videoTypes = Videotype::all();
+        $subSections = $sections->where('section_id', $section->id);
+        $typeviews = Typeview::all();
+        $authors = Author::all();
+        $tags = Tag::all();
+        $message = "El ".$content->typeview->name." se ha modificado correctamente.";
+        return view('backend.contents.edit', compact('section', 'content', 'sections', 'subSections',
+        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'message'));
     }
 
     /**
@@ -209,7 +241,25 @@ class ContentsController extends Controller
         //
     }
 
-    public function addNewTag(Request $request){
-      dd($request->input('newTag'));
+    public function addNewTag($name){
+      $url = str_replace(
+        array('á', 'é', 'í', 'ó', 'ú', ' '),
+        array('a', 'e', 'i', 'o', 'u', '-'),
+        $name
+      );
+      $url = strtolower($url);
+
+      $tag = new Tag([
+        'name' => $name,
+        'url' => $url
+      ]);
+
+      $tag->save();
+      $id = $tag->id;
+
+      return response()->json([
+        'id' => $id,
+        'name' => $name
+      ]);
     }
 }
