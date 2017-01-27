@@ -49,13 +49,13 @@ class FrontController extends Controller
     if($subSections = Section::where('url', $subSection)->get()){
       foreach($subSections as $subSection){
         if($subSection->parent->url == $section){
-          $section = Section::where('url', $section)->first();
+          //$section = Section::where('url', $section)->first();
           $contents = $subSection->contents()->paginate(12);
           $target = $subSection;
 
           if($request->ajax())return  $this->renderAjax($request,$subSection,$contents);
 
-          return view($subSection->typeView->index_view, compact('target','section', 'subSection', 'contents'));
+          return view($subSection->typeView->index_view, compact('target', 'subSection', 'contents'));
         }else{
           return view('errors.404');
         }
@@ -105,5 +105,31 @@ class FrontController extends Controller
         ];
     }else return view('front.home.assets.ajax-video-render')->with(compact('contents'));
   }
+
+  public function getProgramasByTemporada($bloque,$temporada,Request $request){
+    if($temporadas = Section::where('url', $temporada)->get()){
+      foreach($temporadas as $temporada){
+        if($temporada->parent->url == $bloque){
+
+          $contents = $temporada->contents()->paginate(12);
+          $target = $temporada;
+
+          if($request->ajax())return  $this->renderAjax($request,$temporada,$contents);
+
+          return view($temporada->typeView->index_view, compact('target', 'contents'));
+        }else{
+          return view('errors.404');
+        }
+      }
+    }else{
+      return view('errors.404');
+    }
+  }
+
+  public function getProgramaByNameContent($bloque,$temporada,$content){
+
+  }
+
+
 
 }

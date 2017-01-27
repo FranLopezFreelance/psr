@@ -325,17 +325,31 @@ class SectionSeeder extends Seeder
         'order' => 1,
       ]);
 //secciones de programas
-/*DB::table('sections')->insert([
+DB::table('sections')->insert([
   'level' => 3,
   'section_id' => 17,
   'social_img'=>'/img/test/psr-noticias.jpg',
   'url' => '2017',
   'name' => 'Temporada 2017',
-  'html_title' => 'Temporada 2017 | Proyecto Segunda República',
+  'html_title' => 'Temporada 2017 | Bloque Nacional | Proyecto Segunda República',
   'typeview_id' => 4,
   'description' => 'Temporada 2017',
   'social_desc' => 'Temporada 2017',
   'order' => 1,
-]);*/
+]);
+
+DB::table('sections')->insert([
+  'level' => 3,
+  'section_id' => 18,
+  'social_img'=>'/img/test/psr-noticias.jpg',
+  'url' => '2017',
+  'name' => 'Temporada 2017',
+  'html_title' => 'Temporada 2017 | Bloque Internacional | Proyecto Segunda República',
+  'typeview_id' => 4,
+  'description' => 'Temporada 2017',
+  'social_desc' => 'Temporada 2017',
+  'order' => 1,
+]);
+
     }
 }
