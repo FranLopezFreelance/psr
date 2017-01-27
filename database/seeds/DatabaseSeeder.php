@@ -10,7 +10,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {//$this->call(ContentSeeder::class);return;
         $this->call(SectionSeeder::class);
         $this->call(TypeviewSeeder::class);
         $this->call(ContentSeeder::class);

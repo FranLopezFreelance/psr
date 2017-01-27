@@ -2,7 +2,7 @@
 <div class="row ">
   <div class="content-of-list">
     <div class="col-xs-4 col-sm-4">
-      <a href="{{$content->getFullUrl()}}"><img src="{{$img_url}}" alt=""></a>
+      <a href="{{$content->getFullUrl()}}"><img src="{{$content->getImageByType(3)}}" alt=""></a>
     </div>
     <div class="col-xs-8 col-sm-8">
     <a class="title" href="{{$content->getFullUrl()}}">{{$title}}</a>

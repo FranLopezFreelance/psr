@@ -77,4 +77,18 @@ class Content extends Model
         return '/img/programas/small/'.$this->img_url;
       }
     }
+
+    public function getImageByType($type){
+      switch ($type) {
+        case 1:$subfolder='standard'; break;
+        case 2:$subfolder='medium'; break;
+        case 3:$subfolder='small'; break;
+      }
+      //dd($this->typeview_id);
+      switch ($this->typeview_id) {
+        case 3:$folder='articulos'; break;
+        case 4:$folder='programas'; break;
+      }
+      return '/img/'.$folder.'/'.$subfolder.'/'.$this->img_url;
+    }
 }

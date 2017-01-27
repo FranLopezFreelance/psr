@@ -1,6 +1,5 @@
 <div class="content">
 
-
 <div class="row">
   <div class="col-xs-12">
     <h1>{{$content->title}}</h1>
@@ -15,46 +14,40 @@
   </div>
   <div class="col-xs-12">
     @if ($video)
-    <a class="btn-video" onclick="showVideo('{{$content->video_id}}')"><img class="main-image" src="{{$content->img_url}}" alt=""></a>
+    <a class="btn-video" onclick="showVideo('{{$content->video_id}}')"><img class="main-image" src="{{$content->getImageByType(1)}}" alt=""></a>
     <div class="video-container hidden"></div>
     @else
-    <img class="main-image" src="{{$content->img_url}}" alt="">
+    <img class="main-image" src="{{$content->getImageByType(1)}}" alt="">
     @endif
 
 </div>
   <div class="col-xs-12">
-    <p class="text">{{$content->text}}</p>
+    <div class="text">{!!$content->text!!}</div>
   </div>
   <div class="col-xs-12">
-    @if(!$video)
+
+    @if($video == false)
     <div class="col-xs-12 col-sm-6">
-      <div class="author">
-        <img src="/img/authors/giuliano.png" alt="">
-        <span>Lic. héctor Giuliano</span>
+      <div class="author {{($content->tags()->count()) ? 'border':''}}">
+        <img src="{{$content->author->getFullImgUrl()}}" alt="">
+        <span>{{$content->author->name}}</span>
       </div>
     </div>
+
     <div class="col-xs-12 col-sm-6">
       <div class="tags">
-        <span>En éste artículo: </span>
-        <a class="tag">Moneda soberana</a>
-        <a class="tag">Mercosur</a>
-        <a class="tag">Energía</a>
-        <a class="tag">Medio Ambiente</a>
-        <a class="tag">Economía</a>
-        <a class="tag">Política</a>
-        <a class="tag">Nueva República</a>
+        @if($content->tags()->count())<span>En éste artículo: </span>@endif
+          @foreach($content->tags as $tag)
+          <a class="tag" href="{{$tag->getFullUrl()}}">{{$tag->name}}</a>
+        @endforeach
       </div>
     </div>
     @else
     <div class="tags">
-      <span>En éste artículo: </span>
-      <a class="tag">Moneda soberana</a>
-      <a class="tag">Mercosur</a>
-      <a class="tag">Energía</a>
-      <a class="tag">Medio Ambiente</a>
-      <a class="tag">Economía</a>
-      <a class="tag">Política</a>
-      <a class="tag">Nueva República</a>
+      @if($content->tags()->count())<span>En éste artículo: </span>@endif
+        @foreach($content->tags as $tag)
+        <a class="tag" href="{{$tag->getFullUrl()}}">{{$tag->name}}</a>
+      @endforeach
     </div>
     @endif
   </div>

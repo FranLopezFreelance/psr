@@ -38,19 +38,9 @@
 <div class="clearfix"></div>
 <div class="tag-cloud">
   <h3>TEMAS</h3>
-  <a class="tag">Moneda soberana</a>
-  <a class="tag">Macri gato</a>
-  <a class="tag">Mercosur</a>
-  <a class="tag">Energía</a>
-  <a class="tag">Peronismo</a>
-  <a class="tag">Religión</a>
-  <a class="tag">Medio Ambiente</a>
-  <a class="tag">Conspiración</a>
-  <a class="tag">Esoterismo</a>
-  <a class="tag">Plan quinqunal</a>
-  <a class="tag">Economía</a>
-  <a class="tag">Política</a>
-  <a class="tag">Nueva República</a>
+  @foreach($tags as $tag)
+  <a class="tag" href="{{$tag->getFullUrl()}}">{{$tag->name}}</a>
+  @endforeach
 </div>
 
 <div class="articulos-recomendados">

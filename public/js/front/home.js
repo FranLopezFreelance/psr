@@ -58,7 +58,7 @@ function verMasVideos(){
   var page = $('.videos-content').data('next-page');
   if(page !== null) {
     $('.spinner').addClass('show');
-    $.get('moreHomeVideos?page='+page, function(data){
+    $.get({url:'moreHomeVideos?page='+page,cache:false}, function(data){
         $('.spinner').removeClass('show');
         $('.videos-content').append(data.videos);
       if(data.next_page!=null)  $('.videos-content').data('next-page', ++page);
@@ -96,7 +96,7 @@ $('#modal-video').on('hidden.bs.modal', function () {
 function loadContent(){
   var page = $('.list-content').data('next-page');
   $('.spinner').addClass('show');
-  $.get(page, function(data){
+  $.get({url:page,cache: false}, function(data){
     //console.log(data.next_page);
     $('.list-content').append(data.content);
     $('.list-content').data('next-page', data.next_page);
@@ -119,7 +119,7 @@ function fetchPosts() {
 
             if(scroll_position_for_posts_load >= $(document).height()) {
                 $('.spinner').addClass('show');
-                $.get(page, function(data){
+                $.get({url:page,cache: false}, function(data){
                   //console.log(data.next_page);
                   $('.list-content').append(data.content);
                   $('.list-content').data('next-page', data.next_page);

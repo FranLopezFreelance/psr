@@ -16,7 +16,7 @@ class ContentSeeder extends Seeder
         'url' => 'primer-pilar',
         'title' => 'Primer Pilar',
         'html_title' => 'Restablecer los Valores Éticos y Morales',
-        'typeview_id' => 1,
+        'typeview_id' => 2,
         'date' => '2017-01-01',
         'description' => 'Todo lo relacionado al Primer Pilar del PSR.',
         'social_desc' => 'Todo lo relacionado al Primer Pilar del PSR.',
@@ -30,9 +30,10 @@ class ContentSeeder extends Seeder
         'section_id' => 20,
         'url' => 'moneda-soberana',
         'title' => 'Moneda Soberana',
-        'img_url' => '/img/test/bonos.jpg',
+        'img_url' => 'articulo.jpg',
         'html_title' => 'Moneda Soberana',
-        'typeview_id' => 2,
+        'typeview_id' => 3,
+        'author_id'=>1,
         'date' => '2017-01-01',
         'description' => 'Todo lo relacionado al Primer Pilar del PSR.',
         'social_desc' => 'Todo lo relacionado al Primer Pilar del PSR.',
@@ -42,7 +43,7 @@ class ContentSeeder extends Seeder
                 Correspondientemente, hoy el Pueblo Argentino tiene la Misión de luchar por la recuperación del Estado Soberano que le ha sido quitado.   Esto no se logra con “reformas y emparches” del Estado Colonial que nos han impuesto, sino impulsando una auténtica REVOLUCIÓN del pensamiento, de las ideas, de la Voluntad, del autorespeto y de la solidaridad.',
       ];
 
-      for ($i = 1; $i <= 100; $i++) {
+      for ($i = 1; $i <= 10; $i++) {
           $art = array_merge($articulo);
           $art['url']= $art['url'].$i;
           $art['title']= $art['title'].'--'.$i;
@@ -53,12 +54,12 @@ class ContentSeeder extends Seeder
 $video = [
   'section_id' => 17,
   'url' => 'videoZZZ',
-  'img_url' => '/img/test/video-1.jpg',
+  'img_url' => 'video.jpg',
   'title' => 'Ejemplo de Video',
   'html_title' => 'Ejemplo de Video',
   'video_id' => 'HhEFM94lZKY',
-  'typeview_id' => 3,
-  'video_id' => 'HhEFM94lZKY',
+  'typeview_id' => 4,
+  'author_id'=>2,
   'date' => '2017-01-01',
   'description' => 'Todo lo relacionado al Primer Pilar del PSR.',
   'social_desc' => 'Todo lo relacionado al Primer Pilar del PSR.',
