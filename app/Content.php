@@ -46,12 +46,23 @@ class Content extends Model
     }
 
     public function getBreadcrumb(){
+      $result = [];
+      $current = $this->section;
+      while($current->section_id){
+        $results[] = array('url'=>$current->parent->url,'name'=>$current->parent->name);
+        $current = $current->parent;
+      }
+      $results = array_reverse($results);
+      $results[] = array('url'=>$this->section->url,'name'=>$this->section->name);
+      return $results;
+      /*
       if($this->section->section_id){
         return [array('url'=>$this->section->parent->url,'name'=>$this->section->parent->name),
         array('url'=>$this->section->parent->url."/".$this->section->url,'name'=>$this->section->name)];
       }else{
         return [array('url'=>$this->section->url,'name'=>$this->section->name)];
       }
+      */
     }
 
     public function getStandardImg($tipeView){

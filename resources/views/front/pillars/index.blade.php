@@ -1,8 +1,8 @@
-@extends('front.layouts.pilar-layout')
+@extends('front.layouts.interna-innermenu-layout')
 @section('content')
 
 <?php
-$subs = $section->getSubSections();
+$subs = ($target->parent) ? $target->parent->getSubSections() : $target->getSubSections();
 $subs[0]->headerTitle = 'Refundar El Estado Nacional Soberano';$subs[0]->btnName = 'Primer Pilar';$subs[0]->pilarType = 'Filosófico';
 $subs[1]->headerTitle = 'Recuperar Nuestra Moneda Soberana';$subs[1]->btnName = 'Segundo Pilar';$subs[1]->pilarType = 'Práctico';
 $subs[2]->headerTitle = 'Rechazar el Sistema de Deuda';$subs[2]->btnName = 'Tercer Pilar';$subs[2]->pilarType = 'Práctico';

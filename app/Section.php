@@ -39,14 +39,15 @@ class Section extends Model
     }
 
     public function getBreadcrumb(){
-      if($this->level == 2){
-        return [array('url'=>$this->parent->url,'name'=>$this->parent->name),
-        array('url'=>$this->parent->url."/".$this->url,'name'=>$this->name)];
-      /*  return "<a href='/".$this->parent->url."'>".$this->parent->name."</a>
-        / <a href='/".$this->parent->url."/".$this->url."'>".$this->name."</a>";*/
-      }else{
-        return [array('url'=>$this->url,'name'=>$this->name)];
+      $results = [];
+      $current = $this;
+      while($current->section_id){
+        $results[] = array('url'=>$current->parent->getFullUrl(),'name'=>$current->parent->name);
+        $current = $current->parent;
       }
+      $results = array_reverse($results);
+      $results[] = array('url'=>$this->getFullUrl(),'name'=>$this->name);
+      return $results;
     }
 
     //para hacer poliformico el objeto seccion, y que tome el atributto title para el seo y social
@@ -57,11 +58,16 @@ class Section extends Model
 
     //idem poliformico
     public function getFullUrl(){
-      $url = '/';
-      //dd($this->parent());
-      if($this->section_id)$url.=$this->parent->url.'/';
-      $url.=$this->url;
-      return $url;
+      $results = [];
+      $current = $this;
+      while($current->section_id){
+        $results[] = $current->url;
+        $current = $current->parent;
+      }
+      $results[] = $current->url;
+      $results = array_reverse($results);
+      //dd($results);
+      return '/'.implode("/", $results);
     }
 
 }

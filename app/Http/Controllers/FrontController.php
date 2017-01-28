@@ -38,7 +38,7 @@ class FrontController extends Controller
 
       if($request->ajax())return  $this->renderAjax($request,$section,$contents);
 
-      return view($section->typeView->index_view, compact('target','contents','section'));
+      return view($section->typeView->index_view, compact('target','contents'));
     }else{
       return view('errors.404');
     }
@@ -49,13 +49,13 @@ class FrontController extends Controller
     if($subSections = Section::where('url', $subSection)->get()){
       foreach($subSections as $subSection){
         if($subSection->parent->url == $section){
-          $section = Section::where('url', $section)->first();
+          //$section = Section::where('url', $section)->first();
           $contents = $subSection->contents()->paginate(12);
           $target = $subSection;
 
           if($request->ajax())return  $this->renderAjax($request,$subSection,$contents);
 
-          return view($subSection->typeView->index_view, compact('target','section', 'subSection', 'contents'));
+          return view($subSection->typeView->index_view, compact('target','contents'));
         }else{
           return view('errors.404');
         }
@@ -67,10 +67,10 @@ class FrontController extends Controller
 
   public function getContent($section, $subSection, $content){
     if($content = Content::where('url', $content)->first()){
-
+      // !!!!! FALTA IF SUBSECTION Y SECCION
       $target = $content;
 
-      return view($content->typeView->show_view, compact('target','section','subSection', 'content'));
+      return view($content->typeView->show_view, compact('target','content'));
     }else{
       return view('errors.404');
     }

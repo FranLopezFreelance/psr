@@ -6,7 +6,7 @@
     <h1 class="hidden-sm hidden-md hidden-lg">{{$target->name}}</h1>
     <div class="breadcumb">
     @foreach($target->getBreadcrumb() as $link)
-        <a href="/{{$link['url']}}">{{$link['name']}}</a> <span class="b-separator">>></span>
+        <a href="{{$link['url']}}">{{$link['name']}}</a> <span class="b-separator">>></span>
     @endforeach
     </div>
 
