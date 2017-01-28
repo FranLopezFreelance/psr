@@ -1,28 +1,23 @@
-@extends('front.layouts.interna')
-
+@extends('front.layouts.interna-innermenu-layout')
 @section('content')
-@include('front.assets.section-intro')
-<div class="programas-section">
 
+<div class="container-fluid section programas-section">
 
-<div class="row">
-<div class="list-content" data-next-page="{{$contents->nextPageUrl()}}">
+  <div class="row">
 
-  @foreach($contents as $content)
-  <?php $colsm = 4; $colmd = 4;?>
-  @include('front.assets.list-content.content-list-video',$content)
-
-  @endforeach
-
-</div>
-</div>
-<div class="row">
-  <div class="verMas col-xs-12">
-    <a class="verMasContenido" onClick=loadContent()>Ver Más</a>
-    <div class="spinner-wrapper">@include('front.assets.material-loading')</div>
+  <div class="col-md-9">
+      @include('front.assets.section-intro')
+      @include('front.programs.assets.botonera')
+      @include('front.programs.assets.list-programas')
   </div>
+
+  <div class="col-md-3 sidebar">
+      @include('front.layouts.assets.sidebar.sidebar')
+  </div>
+  </div>
+
 </div>
-</div>
+
 
 
 @endsection

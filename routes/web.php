@@ -25,8 +25,6 @@ Route::get('backend/tags/create/{tag}', 'ContentsController@addNewTag');
 /* FRONT CONTROLLERS */
 Route::get('/', 'FrontController@getIndex');
 Route::get('/moreHomeVideos', 'FrontController@getMoreHomeVideos');
-Route::get('/programas/{bloque}/{temporada}', 'FrontController@getProgramasByTemporada');
-Route::get('/programas/{bloque}/{temporada}/{content}', 'FrontController@getProgramaByNameContent');
 Route::get('/{section}', 'FrontController@getSection');
 Route::get('/{section}/{subSection}', 'FrontController@getSubSection');
 Route::get('/{section}/{subSection}/{content}', 'FrontController@getContent');
