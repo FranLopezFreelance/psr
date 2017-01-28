@@ -56,7 +56,7 @@ $(window).resize(function() {
 
 function verMasVideos(){
   var page = $('.videos-content').data('next-page');
-  if(page !== null) {
+  if(page !== null && page !== undefined && page !== '') {
     $('.spinner').addClass('show');
     $.get({url:'moreHomeVideos?page='+page,cache:false}, function(data){
         $('.spinner').removeClass('show');
@@ -68,9 +68,9 @@ function verMasVideos(){
 }
 
 function showVideo($url){
-  console.log($url);
+  //console.log($url);
   var video='<iframe id="ytplayer" type="text/html" width="100%" height="360"';
-  video+='  src="http://www.youtube.com/embed/'+$url+'/?autoplay=1"';
+  video+='  src="http://www.youtube.com/embed/'+$url+'/?autoplay=1&playlist=F7S61o-_4C0"';
   video+='frameborder="0"></iframe>';
   $('.video-container').append(video);
   $('.video-container').removeClass('hidden');
@@ -95,6 +95,9 @@ $('#modal-video').on('hidden.bs.modal', function () {
 
 function loadContent(){
   var page = $('.list-content').data('next-page');
+
+  if(page == null || page == undefined || page == '') return;
+
   $('.spinner').addClass('show');
   $.get({url:page,cache: false}, function(data){
     //console.log(data.next_page);
@@ -109,8 +112,8 @@ function loadContent(){
 function fetchPosts() {
 
     var page = $('.list-content').data('next-page');
-
-    if(page !== null) {
+ //console.log(page);
+    if(page !== null && page !== undefined && page !== '') {
 
         clearTimeout( $.data( this, "scrollCheck" ) );
 

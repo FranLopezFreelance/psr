@@ -21,7 +21,7 @@
   <div class="clearfix"></div>
   <div class="videos-content" data-next-page="2">
 
-      <?php $colsm = 3; $colmd = 3;?>
+      <?php $colsm = 3; $colmd = 3; ?>
       @foreach($videos as $content)
 
       @include('front.assets.list-content.content-list-video',$content)

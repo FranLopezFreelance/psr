@@ -13,7 +13,7 @@ class ContentSeeder extends Seeder
     public function run()
     {
       DB::table('contents')->insert([
-        'section_id' => 11,
+        'section_id' => 12,
         'url' => 'primer-pilar',
         'title' => 'Primer Pilar',
         'html_title' => 'Restablecer los Valores Éticos y Morales',
