@@ -10,30 +10,6 @@
                   <form class="form-horizontal" role="form" method="POST" action="/backend/sections">
                       {{ csrf_field() }}
 
-                      <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                          <label for="name" class="col-md-4 control-label">Nombre</label>
-                          <div class="col-md-6">
-                              <input id="name" type="text" class="form-control title" name="name" value="{{ old('name') }}" required autofocus>
-                              @if ($errors->has('name'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('name') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
-                      <div class="form-group{{ $errors->has('html_title') ? ' has-error' : '' }}">
-                          <label for="html_title" class="col-md-4 control-label">Título HTML</label>
-                          <div class="col-md-6">
-                              <input id="html_title" type="text" class="form-control title" name="html_title" value="{{ old('html_title') }}" required autofocus>
-                              @if ($errors->has('html_title'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('html_title') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
                       <div class="form-group{{ $errors->has('level') ? ' has-error' : '' }}">
                           <label for="level" class="col-md-4 control-label">Nivel</label>
                           <div class="col-md-6">
@@ -73,6 +49,30 @@
                           </div>
                       </div>
 
+                      <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                          <label for="name" class="col-md-4 control-label">Nombre</label>
+                          <div class="col-md-6">
+                              <input id="name" type="text" class="form-control title" name="name" value="{{ old('name') }}" required autofocus>
+                              @if ($errors->has('name'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('name') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group{{ $errors->has('html_title') ? ' has-error' : '' }}">
+                          <label for="html_title" class="col-md-4 control-label">Título HTML</label>
+                          <div class="col-md-6">
+                              <input id="html_title" type="text" class="form-control title" name="html_title" value="{{ old('html_title') }}" required autofocus>
+                              @if ($errors->has('html_title'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('html_title') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
                       <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
                           <label for="url" class="col-md-4 control-label">URL</label>
 
@@ -100,6 +100,24 @@
                               @endif
                           </div>
                       </div>
+
+                      <hr />
+
+                        <div class="form-group{{ $errors->has('text') ? ' has-error' : '' }}">
+                            <label for="text" class="col-md-2 control-label">Texto</label>
+
+                            <div class="col-md-8">
+                                <textarea id="text" class="form-control text" name="text" />{{ old('text') }}</textarea>
+
+                                @if ($errors->has('text'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('text') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                      <hr />
 
                       <div class="form-group{{ $errors->has('social_desc') ? ' has-error' : '' }}">
                           <label for="social_desc" class="col-md-4 control-label">Desc. Social</label>

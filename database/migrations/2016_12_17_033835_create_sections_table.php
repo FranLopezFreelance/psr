@@ -20,6 +20,7 @@ class CreateSectionsTable extends Migration
             $table->string('name');
             $table->string('html_title');
             $table->text('social_desc');
+            $table->text('text');
             $table->integer('typeview_id');
             $table->string('social_img')->default('default.jpg');
             $table->string('url');
