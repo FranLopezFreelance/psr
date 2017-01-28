@@ -18,7 +18,8 @@ Auth::routes();
 Route::get('/backend', 'BackendController@index');
 Route::resource('/backend/sections', 'SectionsController');
 Route::resource('/backend/contents', 'ContentsController');
-Route::get('/backend/contents/{section}/createBySection', 'ContentsController@createBySection');
+Route::get('/backend/contents/createBySection/{section}', 'ContentsController@createBySection');
+Route::get('/backend/contents/createBySection/{section}/{subSection}', 'ContentsController@createBySubSection');
 Route::get('/backend/contents/{subSection}/getBySection/', 'ContentsController@getContentBySubSection');
 Route::get('backend/tags/create/{tag}', 'ContentsController@addNewTag');
 

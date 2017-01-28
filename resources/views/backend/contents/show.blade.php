@@ -8,7 +8,7 @@
           <div class="panel-heading">
             <h4>
                 <a href="/backend/sections">Contenidos</a>
-                <a class="btn btn-success article-create" href="/backend/contents/{{ $section->id }}/createBySection">Crear</a>
+                <!-- <a class="btn btn-success article-create" href="/backend/contents/{{ $section->id }}/createBySection">Crear</a> -->
                 <a class="btn btn-default btn-xs pull-right" href="/" target="_blank">Web</a>
             </h4>
           </div>
@@ -20,18 +20,25 @@
             </div>
               <div class="panel-body">
                   <ul>
-                      @forelse($sections as $section)
+                      @forelse($sections->where('active', 1) as $section)
                         @if($section->id == $subSection->id)
-                          <li><a href="/backend/contents/{{ $content->id }}">{{ $subSection->name }}</a></li>
+                          <li><a href="/backend/contents/subSection/{{ $subSection->id }}">{{ $subSection->name }}</a></li>
                             <ul>
-                              @forelse($subSection->contents as $content)
-                                <li><a href="/backend/contents/{{ $content->id }}">{{ $content->title }}</a></li>
+                              @forelse($subSection->contents as $contentNav)
+                                <li><a href="/backend/contents/{{ $contentNav->id }}">{{ $contentNav->title }}</a></li>
                               @empty
                                 No hay contenidos aquí.
                               @endforelse
                             </ul>
                         @else
                           <li><a href="/backend/contents/{{ $section->id }}/getBySection">{{ $section->name }}</a></li>
+                            @if($section->childrens()->count() > 0)
+                              <ul>
+                                @foreach($section->childrens->where('active', 1) as $children)
+                                  <li><a href="/backend/contents/getBySection/{{ $children->id }}">{{ $children->name }}</a></li>
+                                @endforeach
+                              </ul>
+                            @endif
                         @endif
                       @empty
                       @endforelse
@@ -42,9 +49,9 @@
       <div class="col-md-8">
           <div class="panel panel-default">
               <div class="panel-heading">
-                <h3>{{ $content->title }}
+                <h4>{{ $content->title }}
                     <a class="btn btn-success article-create" href="/backend/contents/{{ $content->id }}/edit">Editar</a>
-                </h3>
+                </h4>
               </div>
               <div class="panel-body">
                 @if(isset($message))

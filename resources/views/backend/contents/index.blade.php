@@ -7,8 +7,8 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4>
-                <a href="/backend/sections">Contenidos</a>
-                <a class="btn btn-success article-create" href="/backend/contents/{{ $section->id }}/createBySection">Crear</a>
+                <a href="/backend/contents/section/2  ">Contenidos</a>
+                <!-- <a class="btn btn-success article-create" href="/backend/contents/createBySection/{{ $section->id }}">Crear</a> -->
                 <a class="btn btn-default btn-xs pull-right" href="/" target="_blank">Web</a>
             </h4>
           </div>
@@ -24,8 +24,17 @@
                         <li><a href="/backend/contents/section/{{ $principalSection->id }}">{{ $principalSection->name }}</a></li>
                           @if($principalSection->id == $section->id)
                             <ul>
-                              @forelse($principalSection->childrens as $children)
-                                <li><a href="/backend/contents/subSection/{{ $children->id }}">{{ $children->name }}</a></li>
+                              @forelse($principalSection->childrens->where('active', 1) as $children)
+                                @if($children->childrens()->count() > 0)
+                                  <li><a href="">{{ $children->name }}</a></li>
+                                    <ul>
+                                      @foreach($children->childrens->where('active', 1) as $subChildren)
+                                        <li><a href="/backend/contents/subSection/{{ $subChildren->id }}">{{ $subChildren->name }}</a></li>
+                                      @endforeach
+                                    </ul>
+                                @else
+                                  <li><a href="/backend/contents/subSection/{{ $children->id }}">{{ $children->name }}</a></li>
+                                @endif
                               @empty
 
                               @endforelse
@@ -41,7 +50,9 @@
       <div class="col-md-8">
           <div class="panel panel-default">
               <div class="panel-heading">
-                <h3>{{ $subSection->name }}</h3>
+                <h4>{{ $subSection->parent->name }} / {{ $subSection->name }}
+                  <a class="btn btn-success article-create" href="/backend/contents/createBySection/{{ $section->id }}/{{ $subSection->id }}">Crear</a>
+                </h4>
               </div>
               <div class="panel-body">
                 @if(isset($message))
@@ -54,10 +65,12 @@
                         @forelse($contents as $content)
                             <li class="list-group-item">
                               <a href="/backend/contents/{{ $content->id }}">{{ $content->title }}</a>
-                              {!! Form::open(['method' => 'DELETE','route' => ['contents.destroy', $content->id],'style'=>'display:inline']) !!}
-                              {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs pull-right']) !!}
-                              {!! Form::close() !!}
-                              <a href="/backend/contents/{{ $content->id }}/edit" class="btn btn-primary btn-xs pull-right article-edit">Editar</a>
+                              <div class="actions">
+                                <a href="/backend/contents/{{ $content->id }}/edit" class="btn btn-primary btn-xs article-edit">Editar</a>
+                                {!! Form::open(['method' => 'DELETE','route' => ['contents.destroy', $content->id],'style'=>'display:inline']) !!}
+                                {!! Form::submit('Eliminar', ['class' => 'btn btn-danger pull-right btn-xs']) !!}
+                                {!! Form::close() !!}
+                              </div>
                             </li>
                         @empty
                           - No hay contenidos aquí.

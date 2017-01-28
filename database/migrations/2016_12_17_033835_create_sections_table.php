@@ -19,7 +19,6 @@ class CreateSectionsTable extends Migration
             $table->integer('section_id')->default(0);
             $table->string('name');
             $table->string('html_title');
-            $table->text('description');
             $table->text('social_desc');
             $table->integer('typeview_id');
             $table->string('social_img')->default('default.jpg');

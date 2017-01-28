@@ -18,7 +18,6 @@ class SectionSeeder extends Seeder
           'name' => 'Proyecto Segunda República',
           'html_title' => 'Proyecto Segunda República',
           'typeview_id' => 1,
-          'description' => 'Home description',
           'social_desc' => 'Home social description',
           'topnav' => 0,
           'topnav_back' => 0,
@@ -32,7 +31,6 @@ class SectionSeeder extends Seeder
           'name' => 'Pilares',
           'html_title' => 'Pilares | Proyecto Segunda República',
           'typeview_id' => 2,
-          'description' => 'Estos son los 5 Pilares, base estructural del Proyecto Segunda República.',
           'social_desc' => 'Estos son los 5 Pilares, base estructural del Proyecto Segunda República.',
           'topnav_back' => 1,
           'order' => 2,
@@ -44,7 +42,6 @@ class SectionSeeder extends Seeder
         'name' => 'Artículos',
         'html_title' => 'Artículos | Proyecto Segunda República',
         'typeview_id' => 3,
-        'description' => 'Estos son los artículos realizados por el equipo de Proyecto Segunda República.',
         'social_desc' => 'Estos son los artículos realizados por el equipo de Proyecto Segunda República.',
         'topnav_back' => 1,
         'order' => 3,
@@ -57,7 +54,6 @@ class SectionSeeder extends Seeder
         'name' => 'Programas',
         'html_title' => 'Programas | Proyecto Segunda República',
         'typeview_id' => 4,
-        'description' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'topnav_back' => 1,
         'order' => 4,
@@ -70,7 +66,6 @@ class SectionSeeder extends Seeder
         'name' => 'Radio',
         'html_title' => 'Radio',
         'typeview_id' => 5,
-        'description' => 'Estos son los porgramas de Radio que se emiten a lo largo de todo el País.',
         'social_desc' => 'Estos son los porgramas de Radio que se emiten a lo largo de todo el País.',
         'topnav_back' => 1,
         'order' => 5,
@@ -82,7 +77,6 @@ class SectionSeeder extends Seeder
         'name' => 'Prensa',
         'html_title' => 'Prensa',
         'typeview_id' => 6,
-        'description' => 'Aquí podrás ver todos los artículos, y videos relacionados a la Prensa de PSR.',
         'social_desc' => 'Aquí podrás ver todos los artículos, y videos relacionados a la Prensa de PSR.',
         'order' => 6,
       ]);
@@ -93,7 +87,6 @@ class SectionSeeder extends Seeder
         'name' => 'Eventos',
         'html_title' => 'Eventos',
         'typeview_id' => 7,
-        'description' => 'Aquí podrás encontrar todos los eventos organizados por el PSR.',
         'social_desc' => 'Aquí podrás encontrar todos los eventos organizados por el PSR.',
         'order' => 7,
       ]);
@@ -104,7 +97,6 @@ class SectionSeeder extends Seeder
         'name' => 'Fotos',
         'html_title' => 'Fotos',
         'typeview_id' => 8,
-        'description' => 'Fotos de las actividades y militancia del PSR.',
         'social_desc' => 'Fotos de las actividades y militancia del PSR.',
         'order' => 8,
       ]);
@@ -115,7 +107,6 @@ class SectionSeeder extends Seeder
         'name' => 'Libros',
         'html_title' => 'Libros',
         'typeview_id' => 9,
-        'description' => 'Estos son los libros que ofrecemos para dar una orientación del Proyecto Segunda República.',
         'social_desc' => 'Estos son los libros que ofrecemos para dar una orientación del Proyecto Segunda República.',
         'order' => 9,
       ]);
@@ -126,7 +117,6 @@ class SectionSeeder extends Seeder
         'name' => 'Contacto',
         'html_title' => 'Contacto',
         'typeview_id' => 10,
-        'description' => 'Ponete en contacto con PSR.',
         'social_desc' => 'Ponete en contacto con PSR.',
         'order' => 10,
       ]);
@@ -137,7 +127,6 @@ class SectionSeeder extends Seeder
         'name' => 'PSR en Acción',
         'html_title' => 'PSR en Acción',
         'typeview_id' => 11,
-        'description' => 'Todas las iniciativas de la militancia de PSR.',
         'social_desc' => 'Todas las iniciativas de la militancia de PSR.',
         'order' => 11,
       ]);
@@ -148,7 +137,6 @@ class SectionSeeder extends Seeder
         'name' => 'Estado Nacional Soberano',
         'html_title' => 'Estado Nacional Soberano',
         'typeview_id' => 2,
-        'description' => 'Todo lo relacionado al Primer Pilar del PSR: Refundar un Estado Nacional Soberano.',
         'social_desc' => 'Todo lo relacionado al Primer Pilar del PSR: Refundar un Estado Nacional Soberano.',
         'order' => 1,
       ]);
@@ -159,7 +147,6 @@ class SectionSeeder extends Seeder
         'name' => 'Moneda Soberana',
         'html_title' => 'Moneda Soberana',
         'typeview_id' => 2,
-        'description' => 'Todo lo relacionado al Segundo Pilar del PSR: Establecer una Moneda Soberana.',
         'social_desc' => 'Todo lo relacionado al Segundo Pilar del PSR: Establecer una Moneda Soberana.',
         'order' => 2,
       ]);
@@ -170,7 +157,6 @@ class SectionSeeder extends Seeder
         'name' => 'Rechazar el Sistema de Deuda',
         'html_title' => 'Rechazar el Sistema de Deuda',
         'typeview_id' => 2,
-        'description' => 'Todo lo relacionado al Tercer Pilar del PSR: Rechazar el Sistema de deuda Pública Externa e Interna.',
         'social_desc' => 'Todo lo relacionado al Tercer Pilar del PSR: Rechazar el Sistema de deuda Pública Externa e Interna.',
         'order' => 3,
       ]);
@@ -181,7 +167,6 @@ class SectionSeeder extends Seeder
         'name' => 'Rescatar las Instituciones Republicanas',
         'html_title' => 'Rescatar las Instituciones Republicanas',
         'typeview_id' => 2,
-        'description' => 'Todo lo relacionado al Cuarto Pilar del PSR: Rescatar las Instituciones Republicanas de su dependencia del Dinero.',
         'social_desc' => 'Todo lo relacionado al Cuarto Pilar del PSR: Rescatar las Instituciones Republicanas de su dependencia del Dinero.',
         'order' => 4,
       ]);
@@ -192,7 +177,6 @@ class SectionSeeder extends Seeder
         'name' => 'Restablecer los Valores Éticos y Morales',
         'html_title' => 'Restablecer los Valores Éticos y Morales',
         'typeview_id' => 2,
-        'description' => 'Todo lo relacionado al Quinto Pilar del PSR: Restablecer los Valores Éticos y Morales.',
         'social_desc' => 'Todo lo relacionado al Quinto Pilar del PSR: Restablecer los Valores Éticos y Morales.',
         'order' => 5,
       ]);
@@ -204,7 +188,6 @@ class SectionSeeder extends Seeder
         'name' => 'Bloque Nacional',
         'html_title' => 'Bloque Nacional | Programas | Proyecto Segunda República',
         'typeview_id' => 4,
-        'description' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'topnav_back' => 1,
         'order' => 1,
@@ -216,7 +199,6 @@ class SectionSeeder extends Seeder
         'name' => 'Bloque Interacional',
         'html_title' => 'Bloque Interacional | Programas | Proyecto Segunda República',
         'typeview_id' => 4,
-        'description' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'topnav_back' => 1,
         'order' => 2,
@@ -228,7 +210,6 @@ class SectionSeeder extends Seeder
         'name' => 'Especiales',
         'html_title' => 'Especiales| Programas | Proyecto Segunda República',
         'typeview_id' => 4,
-        'description' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'topnav_back' => 1,
         'order' => 2,
@@ -242,7 +223,6 @@ class SectionSeeder extends Seeder
         'name' => 'Soberanía y Estado',
         'html_title' => 'Soberanía y Estado | Proyecto Segunda República',
         'typeview_id' => 3,
-        'description' => 'Todo lo relacionado a Soberanía y Estado.',
         'social_desc' => 'Todo lo relacionado a Soberanía y Estado.',
         'order' => 1,
       ]);
@@ -255,7 +235,6 @@ class SectionSeeder extends Seeder
         'name' => 'Economía',
         'html_title' => 'Economía',
         'typeview_id' => 3,
-        'description' => 'Todo lo relacionado a Economía.',
         'social_desc' => 'Todo lo relacionado a Economía.',
         'order' => 1,
       ]);
@@ -268,7 +247,6 @@ class SectionSeeder extends Seeder
         'name' => 'Política Internacional',
         'html_title' => 'Política Internacional | Proyecto Segunda República',
         'typeview_id' => 3,
-        'description' => 'Todo lo relacionado a Política Internacional.',
         'social_desc' => 'Todo lo relacionado a Política Internacional.',
         'order' => 1,
       ]);
@@ -281,7 +259,6 @@ class SectionSeeder extends Seeder
         'name' => 'Deuda Externa',
         'html_title' => 'Deuda Externa | Proyecto Segunda República',
         'typeview_id' => 3,
-        'description' => 'Todo lo relacionado a Deuda Externa.',
         'social_desc' => 'Todo lo relacionado a Deuda Externa.',
         'order' => 1,
       ]);
@@ -294,7 +271,6 @@ class SectionSeeder extends Seeder
         'name' => 'Energía y Medio Ambiente',
         'html_title' => 'Energía y Medio Ambiente | Proyecto Segunda República',
         'typeview_id' => 3,
-        'description' => 'Todo lo relacionado a Energía y Medio Ambiente.',
         'social_desc' => 'Todo lo relacionado a Energía y Medio Ambiente.',
         'order' => 1,
       ]);
@@ -307,7 +283,6 @@ class SectionSeeder extends Seeder
         'name' => 'Cultura',
         'html_title' => 'Cultura | Proyecto Segunda República',
         'typeview_id' => 3,
-        'description' => 'Todo lo relacionado a Cultura.',
         'social_desc' => 'Todo lo relacionado a Cultura.',
         'order' => 1,
       ]);
@@ -320,22 +295,8 @@ class SectionSeeder extends Seeder
         'name' => 'Geopolítica',
         'html_title' => 'Geopolítica | Proyecto Segunda República',
         'typeview_id' => 3,
-        'description' => 'Todo lo relacionado a Geopolítica.',
         'social_desc' => 'Todo lo relacionado a Geopolítica.',
         'order' => 1,
       ]);
-//secciones de programas
-/*DB::table('sections')->insert([
-  'level' => 3,
-  'section_id' => 17,
-  'social_img'=>'/img/test/psr-noticias.jpg',
-  'url' => '2017',
-  'name' => 'Temporada 2017',
-  'html_title' => 'Temporada 2017 | Proyecto Segunda República',
-  'typeview_id' => 4,
-  'description' => 'Temporada 2017',
-  'social_desc' => 'Temporada 2017',
-  'order' => 1,
-]);*/
     }
 }

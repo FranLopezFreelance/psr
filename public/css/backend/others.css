@@ -12,3 +12,12 @@
 .label-warning {
   margin-left: 15px;
 }
+
+.actions {
+  margin-top: 10px;
+  display: block;
+}
+
+.list-group-item:hover {
+  background-color: #EFF8FB;
+}

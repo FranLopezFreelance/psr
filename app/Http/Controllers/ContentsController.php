@@ -26,10 +26,14 @@ class ContentsController extends Controller
     public function index()
     {
         $menuSections = Section::where('level', 1)
-                                ->where('topnav_back', 1)->get();
+                                ->where('topnav_back', 1)
+                                ->where('active', 1)->get();
+
         $sections = Section::all();
         $principalSections = $sections->where('level', 1)
-                                      ->where('topnav_back', 1)->all();
+                                      ->where('topnav_back', 1)
+                                      ->where('active', 1)->get();
+
         $section = $sections->where('level', 1)->first();
         $subSections = $sections->where('level', 2);
         $subSection = $sections->where('level', 2)->first();
@@ -40,7 +44,9 @@ class ContentsController extends Controller
     public function getBySection(Section $section)
     {
         $menuSections = Section::where('level', 1)
-                                ->where('topnav_back', 1)->get();
+                                ->where('topnav_back', 1)
+                                ->where('active', 1)->get();
+
         if($subSection = $section->childrens()->first()){
           $contents = $subSection->contents;
         }
@@ -50,8 +56,15 @@ class ContentsController extends Controller
     public function getBySubSection(Section $subSection)
     {
         $menuSections = Section::where('level', 1)
-                                ->where('topnav_back', 1)->get();
-        $section = $subSection->parent;
+                                ->where('topnav_back', 1)
+                                ->where('active', 1)->get();
+
+        if($subSection->level == 2){
+          $section = $subSection->parent;
+        }elseif($subSection->level == 3){
+          $section = $subSection->parent->parent;
+        }
+
         $contents = $subSection->contents;
         return view('backend.contents.index', compact('section', 'subSection', 'contents', 'menuSections'));
     }
@@ -74,7 +87,9 @@ class ContentsController extends Controller
     public function createBySection(Section $section)
     {
         $menuSections = Section::where('level', 1)
-                              ->where('topnav_back', 1)->get();
+                              ->where('topnav_back', 1)
+                              ->where('active', 1)->get();
+
         $sections = Section::all();
         $videoTypes = Videotype::all();
         $subSections = $sections->where('section_id', $section->id);
@@ -83,6 +98,31 @@ class ContentsController extends Controller
         $tags = Tag::all();
         return view('backend.contents.create', compact('section', 'sections', 'subSections',
         'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes'));
+    }
+
+    public function createBySubSection(Section $section, Section $subSection)
+    {
+        $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)
+                              ->where('active', 1)->get();
+
+        $sections = Section::all();
+        $videoTypes = Videotype::all();
+        $subSections = $sections->where('section_id', $section->id);
+
+        $subSubSections = "";
+
+        if($subSection->level ==3){
+          $subSubSections = $sections->where('section_id', $subSection->parent->id);
+          $subSubSection = $subSection;
+          $subSection = $subSection->parent;
+        }
+
+        $typeviews = Typeview::all();
+        $authors = Author::all();
+        $tags = Tag::all();
+        return view('backend.contents.create', compact('section', 'subSection', 'sections', 'subSections',
+        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'subSubSection', 'subSubSections'));
     }
 
     /**
@@ -94,7 +134,7 @@ class ContentsController extends Controller
     public function store(Request $request)
     {
       //Store del contenido
-      $content = new Content($request->except('tags','url', 'img'));
+      $content = new Content($request->except('tags','url', 'img', 'secondSection'));
 
       //Saco los acentos de url y lo guardo en content
       $string = trim($request->input('url'));
@@ -133,7 +173,7 @@ class ContentsController extends Controller
       $content->tags()->sync($request->input('tags'), false);
 
       //Cargando los datos de la vista
-      $menuSections = Section::where('level', 1)->where('topnav_back', 1)->get();
+      $menuSections = Section::where('level', 1)->where('topnav_back', 1)->where('active', 1)->get();
       $subSection = $content->section;
       $section = $subSection->parent;
       $sections = $section->getSubSections();
@@ -153,7 +193,8 @@ class ContentsController extends Controller
     public function show(Content $content)
     {
       $menuSections = Section::where('level', 1)
-                              ->where('topnav_back', 1)->get();
+                              ->where('topnav_back', 1)
+                              ->where('active', 1)->get();
 
       $subSection = $content->section;
       $section = $subSection->parent;
@@ -163,7 +204,8 @@ class ContentsController extends Controller
 
     public function getContentBySubSection(Section $subSection){
       $menuSections = Section::where('level', 1)
-                              ->where('topnav_back', 1)->get();
+                              ->where('topnav_back', 1)
+                              ->where('active', 1)->get();
 
       $content = $subSection->contents()->first();
       $section = $subSection->parent;
@@ -180,16 +222,29 @@ class ContentsController extends Controller
     public function edit(Content $content)
     {
       $menuSections = Section::where('level', 1)
-                            ->where('topnav_back', 1)->get();
-      $section = $content->section->parent;
+                            ->where('topnav_back', 1)
+                            ->where('active', 1)->get();
+
       $sections = Section::all();
-      $videoTypes = Videotype::all();
+
+      if($content->section->level == 3){
+        $section = $content->section->parent->parent;
+        $subSection = $content->section->parent;
+        $subSubSection = $content->section;
+        $subSubSections = $sections->where('section_id', $subSection->id);
+      }else{
+        $section = $content->section->parent;
+        $subSection = $content->section;
+        $subSubSection = "";
+      }
+
       $subSections = $sections->where('section_id', $section->id);
+      $videoTypes = Videotype::all();
       $typeviews = Typeview::all();
       $authors = Author::all();
       $tags = Tag::all();
-      return view('backend.contents.edit', compact('section', 'content', 'sections', 'subSections',
-      'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes'));
+      return view('backend.contents.edit', compact('section', 'subSection', 'subSubSection', 'content', 'sections', 'subSections',
+      'typeviews', 'authors', 'menuSections', 'tags', 'subSubSections', 'videoTypes'));
     }
 
     /**
@@ -201,7 +256,7 @@ class ContentsController extends Controller
      */
     public function update(Request $request, Content $content)
     {
-        $content->update($request->except('tags','url', 'img'));
+        $content->update($request->except('tags','url', 'img', 'secondSection'));
 
         //Saco los acentos de url y lo guardo en content
         $string = trim($request->input('url'));
@@ -217,17 +272,31 @@ class ContentsController extends Controller
         $content->tags()->sync($request->input('tags'));
 
         $menuSections = Section::where('level', 1)
-                              ->where('topnav_back', 1)->get();
-        $section = $content->section->parent;
+                              ->where('topnav_back', 1)
+                              ->where('active', 1)->get();
+
         $sections = Section::all();
-        $videoTypes = Videotype::all();
+
+        if($content->section->level == 3){
+          $section = $content->section->parent->parent;
+          $subSection = $content->section->parent;
+          $subSubSection = $content->section;
+          $subSubSections = $sections->where('section_id', $subSection->id);
+        }else{
+          $section = $content->section->parent;
+          $subSection = $content->section;
+          $subSubSection = "";
+        }
+
         $subSections = $sections->where('section_id', $section->id);
+
+        $videoTypes = Videotype::all();
         $typeviews = Typeview::all();
         $authors = Author::all();
         $tags = Tag::all();
         $message = "El ".$content->typeview->name." se ha modificado correctamente.";
-        return view('backend.contents.edit', compact('section', 'content', 'sections', 'subSections',
-        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'message'));
+        return view('backend.contents.edit', compact('section', 'subSection', 'subSubSection', 'content', 'sections', 'subSections',
+        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'subSubSections', 'message'));
     }
 
     /**

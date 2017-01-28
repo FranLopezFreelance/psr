@@ -18,7 +18,6 @@ class ContentSeeder extends Seeder
         'html_title' => 'Restablecer los Valores Éticos y Morales',
         'typeview_id' => 2,
         'date' => '2017-01-01',
-        'description' => 'Todo lo relacionado al Primer Pilar del PSR.',
         'social_desc' => 'Todo lo relacionado al Primer Pilar del PSR.',
         'text' => 'Refundar el Estado Nacional Soberano conforma nuestro Primer Pilar.  Es, lejos, lo más importante pues sin la refundación de un Estado Nacional Soberano, nada de los que propone nuestro Proyecto Segunda República es factible.
                 A lo largo de las últimas décadas, el Estado Argentino fue debilitado, erosionado y distorsionado hasta convertirse en lo que es hoy: un Ente de Administración Colonial que no sólo no opera a favor de intereses de la vasta mayoría del Pueblo Argentino, sino hoy es evidente que lo hace en contra del Pueblo Argentino.
@@ -35,7 +34,6 @@ class ContentSeeder extends Seeder
         'typeview_id' => 3,
         'author_id'=>1,
         'date' => '2017-01-01',
-        'description' => 'Todo lo relacionado al Primer Pilar del PSR.',
         'social_desc' => 'Todo lo relacionado al Primer Pilar del PSR.',
         'text' => 'Refundar el Estado Nacional Soberano conforma nuestro Primer Pilar.  Es, lejos, lo más importante pues sin la refundación de un Estado Nacional Soberano, nada de los que propone nuestro Proyecto Segunda República es factible.
                 A lo largo de las últimas décadas, el Estado Argentino fue debilitado, erosionado y distorsionado hasta convertirse en lo que es hoy: un Ente de Administración Colonial que no sólo no opera a favor de intereses de la vasta mayoría del Pueblo Argentino, sino hoy es evidente que lo hace en contra del Pueblo Argentino.
@@ -61,7 +59,6 @@ $video = [
   'typeview_id' => 4,
   'author_id'=>2,
   'date' => '2017-01-01',
-  'description' => 'Todo lo relacionado al Primer Pilar del PSR.',
   'social_desc' => 'Todo lo relacionado al Primer Pilar del PSR.',
   'text' => 'Refundar el Estado Nacional Soberano conforma nuestro Primer Pilar.  Es, lejos, lo más importante pues sin la refundación de un Estado Nacional Soberano, nada de los que propone nuestro Proyecto Segunda República es factible.
           A lo largo de las últimas décadas, el Estado Argentino fue debilitado, erosionado y distorsionado hasta convertirse en lo que es hoy: un Ente de Administración Colonial que no sólo no opera a favor de intereses de la vasta mayoría del Pueblo Argentino, sino hoy es evidente que lo hace en contra del Pueblo Argentino.

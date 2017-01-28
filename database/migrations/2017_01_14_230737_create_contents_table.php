@@ -20,7 +20,6 @@ class CreateContentsTable extends Migration
             $table->string('url');
             $table->string('title');
             $table->string('html_title');
-            $table->text('description');
             $table->text('social_desc');
             $table->string('social_img')->default('default.jpg');
             $table->integer('typeview_id');

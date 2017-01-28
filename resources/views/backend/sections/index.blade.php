@@ -44,10 +44,12 @@
                       @forelse($subSections as $subSection)
                           <li class="list-group-item">
                             <a href="/backend/contents/subSection/{{ $subSection->id }}">{{ $subSection->name }}</a>
-                            {!! Form::open(['method' => 'DELETE','route' => ['sections.destroy', $subSection->id],'style'=>'display:inline']) !!}
-                            {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs pull-right']) !!}
-                            {!! Form::close() !!}
-                            <a href="/backend/sections/{{ $subSection->id }}/edit" class="btn btn-primary btn-xs pull-right article-edit">Editar</a>
+                              <div class="actions">
+                                <a href="/backend/sections/{{ $subSection->id }}/edit" class="btn btn-primary btn-xs article-edit">Editar</a>
+                                {!! Form::open(['method' => 'DELETE','route' => ['sections.destroy', $subSection->id],'style'=>'display:inline']) !!}
+                                {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs pull-right']) !!}
+                                {!! Form::close() !!}
+                              </div>
                           </li>
                       @empty
                         - No hay subsecciones aquí.

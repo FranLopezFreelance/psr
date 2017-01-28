@@ -17,9 +17,7 @@ class CreateTypeviewsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('index_view');
-            $table->string('back_index_view');
             $table->string('show_view');
-            $table->string('back_show_view');
             $table->integer('dynamic');
             $table->timestamps();
         });
