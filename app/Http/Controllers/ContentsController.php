@@ -154,19 +154,19 @@ class ContentsController extends Controller
         $contentName = 'Programa';
       }
 
-      $file = $request->file('img');
+      //Redimensiono y Guardo las Imágenes (Si la imágene se cargo)
+      if($request->file('img')){
+        $file = $request->file('img');
+    		$name = $url.'.'.$file->getClientOriginalExtension();
+        $imageFile = Image::make($request->file('img'));
+        $imageFile->save($path.'standard/'.$name);
+        $imageMedium = $imageFile->resize(640, 380);
+        $imageMedium->save($path.'medium/'.$name);
+        $imageSmall = $imageFile->resize(320, 190);
+        $imageSmall->save($path.'small/'.$name);
+        $content->img_url = $name;
+      }
 
-  		$name = $url.'.'.$file->getClientOriginalExtension();
-
-      //Redimensiono y Guardo las Imágenes
-      $imageFile = Image::make($request->file('img'));
-      $imageFile->save($path.'standard/'.$name);
-      $imageMedium = $imageFile->resize(640, 380);
-      $imageMedium->save($path.'medium/'.$name);
-      $imageSmall = $imageFile->resize(320, 190);
-      $imageSmall->save($path.'small/'.$name);
-
-      $content->img_url = $name;
       $content->save();
 
       //Guardando Tags asociados

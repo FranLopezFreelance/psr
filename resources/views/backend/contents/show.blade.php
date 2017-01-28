@@ -9,20 +9,20 @@
             <h4>
                 <a href="/backend/sections">Contenidos</a>
                 <!-- <a class="btn btn-success article-create" href="/backend/contents/{{ $section->id }}/createBySection">Crear</a> -->
-                <a class="btn btn-default btn-xs pull-right" href="/" target="_blank">Web</a>
+
             </h4>
           </div>
         </div>
       </div>
       <div class="col-md-4">
           <div class="panel panel-default">
-            <div class="panel-heading"><h3>Sub Sección</h3>
+            <div class="panel-heading"><h3>{{ $section->name }}</h3>
             </div>
               <div class="panel-body">
                   <ul>
                       @forelse($sections->where('active', 1) as $section)
                         @if($section->id == $subSection->id)
-                          <li><a href="/backend/contents/subSection/{{ $subSection->id }}">{{ $subSection->name }}</a></li>
+                          <li><a href="/backend/contents/{{ $section->contents()->first()->id }}">{{ $subSection->name }} ({{ $section->contents()->count() }})</a></li>
                             <ul>
                               @forelse($subSection->contents as $contentNav)
                                 <li><a href="/backend/contents/{{ $contentNav->id }}">{{ $contentNav->title }}</a></li>
@@ -31,14 +31,11 @@
                               @endforelse
                             </ul>
                         @else
-                          <li><a href="/backend/contents/{{ $section->id }}/getBySection">{{ $section->name }}</a></li>
-                            @if($section->childrens()->count() > 0)
-                              <ul>
-                                @foreach($section->childrens->where('active', 1) as $children)
-                                  <li><a href="/backend/contents/getBySection/{{ $children->id }}">{{ $children->name }}</a></li>
-                                @endforeach
-                              </ul>
-                            @endif
+                          @if($section->contents()->count() > 0)
+                            <li><a href="/backend/contents/{{ $section->contents()->first()->id }}">{{ $section->name }} ({{ $section->contents()->count() }})</a></li>
+                          @else
+                            <li><a href="">{{ $section->name }} ({{ $section->contents()->count() }})</a></li>
+                          @endif
                         @endif
                       @empty
                       @endforelse
@@ -51,6 +48,7 @@
               <div class="panel-heading">
                 <h4>{{ $content->title }}
                     <a class="btn btn-success article-create" href="/backend/contents/{{ $content->id }}/edit">Editar</a>
+                    <a class="btn btn-default btn-xs pull-right" href="{{ $content->getFullUrl() }}" target="_blank">Ver Online</a>
                 </h4>
               </div>
               <div class="panel-body">
