@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Content;
 
 class ContentSeeder extends Seeder
 {
@@ -26,7 +27,7 @@ class ContentSeeder extends Seeder
       ]);
 
       $articulo = [
-        'section_id' => 20,
+        'section_id' => 17,
         'url' => 'moneda-soberana',
         'title' => 'Moneda Soberana',
         'img_url' => 'articulo.jpg',
@@ -50,7 +51,7 @@ class ContentSeeder extends Seeder
 
 
 $video = [
-  'section_id' => 17,
+  'section_id' => 24,
   'url' => 'videoZZZ',
   'img_url' => 'video.jpg',
   'title' => 'Ejemplo de Video',
@@ -66,18 +67,25 @@ $video = [
           Correspondientemente, hoy el Pueblo Argentino tiene la Misión de luchar por la recuperación del Estado Soberano que le ha sido quitado.   Esto no se logra con “reformas y emparches” del Estado Colonial que nos han impuesto, sino impulsando una auténtica REVOLUCIÓN del pensamiento, de las ideas, de la Voluntad, del autorespeto y de la solidaridad.',
 ];
 
+
   for ($i = 1; $i <= 100; $i++) {
       $vid = array_merge($video);
       $vid['url']= $vid['url'].$i;
       $vid['title']= $vid['title'].'--'.$i;
-      DB::table('contents')->insert($vid);
+      $vid =  \App\Content::create($vid);
+      $tid = ($i%2==0) ? 15 : 14;
+      $tag = ['tag_id'=>$tid,'content_id'=> $vid->id];
+      DB::table('tagscontents')->insert($tag);
   }
-  $video['section_id']=18;
+  $video['section_id']=25;
   for ($i = 1; $i <= 100; $i++) {
       $vid = array_merge($video);
       $vid['url']= $vid['url'].$i;
       $vid['title']= $vid['title'].'--'.$i;
-      DB::table('contents')->insert($vid);
+      $vid =  \App\Content::create($vid);
+      $tid = ($i%2==0) ? 15 : 14;
+      $tag = ['tag_id'=>$tid,'content_id'=> $vid->id];
+      DB::table('tagscontents')->insert($tag);
   }
 
   }

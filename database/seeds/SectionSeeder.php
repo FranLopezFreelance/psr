@@ -180,7 +180,6 @@ class SectionSeeder extends Seeder
         'social_desc' => 'Todo lo relacionado al Quinto Pilar del PSR: Restablecer los Valores Éticos y Morales.',
         'order' => 5,
       ]);
-
       DB::table('sections')->insert([
         'level' => 2,
         'section_id' => 4,
@@ -296,6 +295,90 @@ class SectionSeeder extends Seeder
         'html_title' => 'Geopolítica | Proyecto Segunda República',
         'typeview_id' => 3,
         'social_desc' => 'Todo lo relacionado a Geopolítica.',
+        'order' => 1,
+      ]);
+      //secciones de programas
+      DB::table('sections')->insert([
+        'level' => 2,
+        'section_id' => 4,
+        'url' => 'temporada-2017',
+        'name' => 'Temporada 2017',
+        'html_title' => 'Proyecto Segunda República | Temporada 2017',
+        'typeview_id' => 4,
+        'description' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'topnav_back' => 1,
+        'topnav' => 1,
+        'order' => 1,
+      ]);
+
+      DB::table('sections')->insert([
+        'level' => 2,
+        'section_id' => 4,
+        'url' => 'temporada-2016',
+        'name' => 'Temporada 2016',
+        'html_title' => 'Proyecto Segunda República | Temporada 2016',
+        'typeview_id' => 4,
+        'description' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'topnav_back' => 1,
+        'topnav' => 1,
+        'order' => 1,
+      ]);
+
+      DB::table('sections')->insert([
+        'level' => 2,
+        'section_id' => 4,
+        'url' => 'temporada-2015',
+        'name' => 'Temporada 2015',
+        'html_title' => 'Proyecto Segunda República | Temporada 2015',
+        'typeview_id' => 4,
+        'description' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'topnav_back' => 1,
+        'topnav' => 1,
+        'order' => 1,
+      ]);
+
+      DB::table('sections')->insert([
+        'level' => 2,
+        'section_id' => 4,
+        'url' => 'temporada-2014',
+        'name' => 'Temporada 2014',
+        'html_title' => 'Proyecto Segunda República | Temporada 2014',
+        'typeview_id' => 4,
+        'description' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'topnav_back' => 1,
+        'topnav' => 0,
+        'order' => 1,
+      ]);
+
+      DB::table('sections')->insert([
+        'level' => 2,
+        'section_id' => 4,
+        'url' => 'temporada-2013',
+        'name' => 'Temporada 2013',
+        'html_title' => 'Proyecto Segunda República | Temporada 2013',
+        'typeview_id' => 4,
+        'description' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'topnav_back' => 1,
+        'topnav' => 0,
+        'order' => 1,
+      ]);
+
+      DB::table('sections')->insert([
+        'level' => 2,
+        'section_id' => 4,
+        'url' => 'temporada-2012',
+        'name' => 'Temporada 2012',
+        'html_title' => 'Proyecto Segunda República | Temporada 2012',
+        'typeview_id' => 4,
+        'description' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
+        'topnav_back' => 1,
+        'topnav' => 0,
         'order' => 1,
       ]);
     }
