@@ -235,6 +235,9 @@ body {
   /* or 950px */
   background-color: white;
 }
+.full-width {
+  width: 100%;
+}
 a {
   color: black;
 }
@@ -317,7 +320,6 @@ div.verMas {
 }
 div.verMas a {
   padding-top: 30px;
-  display: none;
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;
@@ -781,20 +783,56 @@ div.sidebar {
 div.sidebar img.sidebar {
   width: 100%;
 }
-div.sidebar div.tag-cloud {
-  padding: 20px 0px;
+div.sidebar div.sidebar-item {
+  margin-top: 35px;
 }
 div.sidebar div.tag-cloud a.tag {
   margin-bottom: 5px;
   margin-right: 5px;
   display: inline-block;
 }
-div.sidebar div.articulos-recomendados a.articulo-recomendado img {
-  width: 100%;
+div.sidebar div.articulos-recomendados div.articulo-recomendado {
+  padding-bottom: 20px;
 }
-div.sidebar div.articulos-recomendados a.articulo-recomendado h5 {
+div.sidebar div.articulos-recomendados div.articulo-recomendado a {
   font-size: 18px;
   font-weight: 800;
+  padding-top: 10px;
+  display: inline-block;
+}
+div.sidebar div.pilares-sidebar {
+  background-color: #1a1a1a;
+  background-image: url('/img/pilares/back-pilares.png');
+  background-repeat: no-repeat;
+  background-position: top center;
+  padding: 10px 20px;
+}
+div.sidebar div.pilares-sidebar p.title {
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+div.sidebar div.pilares-sidebar div.pilar-sidebar {
+  background-color: white;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 62px;
+  position: relative;
+}
+div.sidebar div.pilares-sidebar div.pilar-sidebar a.number {
+  color: white;
+  position: absolute;
+}
+div.sidebar div.pilares-sidebar div.pilar-sidebar a.name {
+  position: absolute;
+  padding-left: 80px;
+  top: 50%;
+  transform: translate(0px, -50%);
+  line-height: 20px;
+  font-weight: 800;
+  color: black;
+  font-size: 15px;
 }
 div.section h1 {
   text-transform: uppercase;
@@ -839,6 +877,9 @@ div.section div.content-of-list a.title {
 }
 div.section div.content-of-list span.stats {
   padding: 11px 0 8px 0;
+}
+div.section a.verMasContenido {
+  display: none;
 }
 div.section div.breadcumb {
   float: left;

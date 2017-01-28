@@ -7,6 +7,9 @@ use App\Section;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
+use DB;
 
 class FrontController extends Controller
 {
@@ -14,26 +17,29 @@ class FrontController extends Controller
   public function __construct() {
       $allSections = Section::all();
       $this->sections = $allSections->where('level', 1);
-      $recomendados = Content::where('dest','=',1)->take(5)->get();
+      //$recomendados = Content::where('dest','=',1)->take(5)->get();
+      $recomendados = Content::take(5)->get();
       $tags =  Tag::take(5)->get();
+      $pilaresSidebar = $allSections->where('section_id', 2);
 
        View::share( 'path', '');
        View::share( 'sections', $this->sections );
        View::share( 'recomendados', $recomendados );
        View::share( 'tags', $tags );
+       View::share( 'pilaresSidebar', $pilaresSidebar );
     }
 
   public function getIndex(){
     $target = Section::where('id', 1)->first();
-    $videos = Content::where('typeview_id','=',3)->paginate(4);
+    $videos = Content::where('typeview_id','=',4)->paginate(4);
 
     return view('front.index', compact('target','videos'));
   }
 
   public function getSection($section, Request $request){
     if($section = Section::where('url', $section)->first()){
-
-      $contents = $section->contents()->paginate(12);
+      $sql = 'section_id in (SELECT id from sections WHERE section_id = '.$section->id.')';
+      $contents = Content::whereRaw($sql)->paginate(12);
       $target = $section;
 
       if($request->ajax())return  $this->renderAjax($request,$section,$contents);

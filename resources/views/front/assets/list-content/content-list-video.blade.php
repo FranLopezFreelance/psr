@@ -5,7 +5,7 @@
 
     <a href="{{$content->getFullUrl()}}"><img src="{{$content->getImageByType(3)}}" alt=""></a>
     <a href="{{$content->getFullUrl()}}"><p class="title {{!(strlen($title)>40)?'':'short'}}">{{str_limit($title,50)}}</p></a>
-    @include('front.assets.stats')
+     @include('front.assets.stats')
     </div>
   </div>
 </div>

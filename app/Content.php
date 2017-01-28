@@ -97,6 +97,7 @@ class Content extends Model
       }
       //dd($this->typeview_id);
       switch ($this->typeview_id) {
+        case 2:$folder='pilares'; break;
         case 3:$folder='articulos'; break;
         case 4:$folder='programas'; break;
       }
