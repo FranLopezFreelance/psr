@@ -1,4 +1,7 @@
 <div class="row">
+  <div class="col-xs-12">
+
+
 <div class="list-content" data-next-page="{{$contents->nextPageUrl()}}">
 
   @foreach($contents as $content)
@@ -8,7 +11,10 @@
   @endforeach
 
 </div>
+
+  </div>
 </div>
+
 <div class="row">
   <div class="verMas col-xs-12">
     <a class="verMasContenido" onClick=loadContent()>Ver Más</a>

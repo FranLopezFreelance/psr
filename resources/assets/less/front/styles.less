@@ -114,8 +114,22 @@ div.verMas{
 }
 
 ul.nav.nav-tabs.inner-menu{
-  border-bottom: solid 1px @gris-pilar;
-  margin: 0 15px;
+  //border-bottom: solid 1px @gris-pilar;
+  //margin: 0 15px;
+
+   li:hover > ul {
+      display: block;
+  }
+  
+  ul.dropdown-menu{
+    padding: 0!important;
+    width: 100%;
+    .drop-shadow(0);
+    li{
+      margin: 0!important;
+      a{text-align: center;}
+    }
+  }
   li{
     margin-right: 15px!important;
     &.active a{
