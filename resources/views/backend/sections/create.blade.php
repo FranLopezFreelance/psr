@@ -110,7 +110,7 @@
                       </div>
 
                       <div class="form-group{{ $errors->has('social_desc') ? ' has-error' : '' }}">
-                          <label for="social_desc" class="col-md-4 control-label">Social Desc.</label>
+                          <label for="social_desc" class="col-md-4 control-label">Desc. Social</label>
 
                           <div class="col-md-6">
                               <textarea id="social_desc" class="form-control" name="social_desc" required/>{{ old('social_desc') }}</textarea>

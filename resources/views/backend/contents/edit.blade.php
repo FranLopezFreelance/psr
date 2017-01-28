@@ -197,24 +197,6 @@
                           </div>
                       </div>
 
-                      <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                          <label for="description" class="col-md-4 control-label">Descripción</label>
-
-                          <div class="col-md-6">
-                              @if(old('description'))
-                                <textarea id="description" class="form-control" name="description" required/>{{ old('description') }}</textarea>
-                              @else
-                                <textarea id="description" class="form-control" name="description" required/>{{ $content->description }}</textarea>
-                              @endif
-
-                              @if ($errors->has('description'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('description') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
                       <div class="form-group{{ $errors->has('social_desc') ? ' has-error' : '' }}">
                           <label for="social_desc" class="col-md-4 control-label">Desc. Social</label>
 
@@ -232,12 +214,11 @@
                           </div>
                       </div>
 
-                      @if($section->id < 4)
-                        <hr />
+                      <hr />
                         <div class="form-group{{ $errors->has('text') ? ' has-error' : '' }}">
-                            <label for="text" class="col-md-1 control-label">Texto</label>
+                            <label for="text" class="col-md-2 control-label">Texto</label>
 
-                            <div class="col-md-10">
+                            <div class="col-md-8">
                                 @if(old('text'))
                                   <textarea id="text" class="form-control text" name="text" />{!! old('text') !!}</textarea>
                                 @else
@@ -251,10 +232,7 @@
                                 @endif
                             </div>
                         </div>
-                        <hr />
-                      @else
-                        <input type="hidden" type="text" name="text" value="-" />
-                      @endif
+                      <hr />
 
                       <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
                           <label for="tags" class="col-md-4 control-label">Tags</label>

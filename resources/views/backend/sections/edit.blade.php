@@ -25,6 +25,57 @@
 
                       <input name="_method" type="hidden" value="PUT">
 
+                      <div class="form-group{{ $errors->has('level') ? ' has-error' : '' }}">
+                          <label for="level" class="col-md-4 control-label">Nivel</label>
+                          <div class="col-md-6">
+                              <select class="form-control level" name="level" disabled>
+                                  @if($section->level == 1)
+                                    <option value="1" selected>Principal</option>
+                                    <option value="2">Sub Sección</option>
+                                  @else
+                                    <option value="1">Principal</option>
+                                    <option value="2" selected>Sub Sección</option>
+                                  @endif
+                              </select>
+
+                              @if ($errors->has('level'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('level') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group{{ $errors->has('section_id') ? ' has-error' : '' }} principal">
+                          <label for="section_id" class="col-md-4 control-label">Sección Principal</label>
+
+                          <div class="col-md-6">
+
+                              @include('backend.sections.includes.select-section-edit')
+
+                              @if ($errors->has('section_id'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('section_id') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group{{ $errors->has('typeview_id') ? ' has-error' : '' }} principal">
+                          <label for="typeview_id" class="col-md-4 control-label">Tipo de Vista</label>
+
+                          <div class="col-md-6">
+
+                              @include('backend.sections.includes.select-typeview-edit')
+
+                              @if ($errors->has('typeview_id'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('typeview_id') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
                       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                           <label for="name" class="col-md-4 control-label">Nombre</label>
 
@@ -65,42 +116,6 @@
                           </div>
                       </div>
 
-                      <div class="form-group{{ $errors->has('level') ? ' has-error' : '' }}">
-                          <label for="level" class="col-md-4 control-label">Nivel</label>
-                          <div class="col-md-6">
-                              <select class="form-control level" name="level" disabled>
-                                  @if($section->level == 1)
-                                    <option value="1" selected>Principal</option>
-                                    <option value="2">Sub Sección</option>
-                                  @else
-                                    <option value="1">Principal</option>
-                                    <option value="2" selected>Sub Sección</option>
-                                  @endif
-                              </select>
-
-                              @if ($errors->has('level'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('level') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
-                      <div class="form-group{{ $errors->has('section_id') ? ' has-error' : '' }} principal">
-                          <label for="section_id" class="col-md-4 control-label">Sección Principal</label>
-
-                          <div class="col-md-6">
-
-                              @include('backend.sections.includes.select-section-edit')
-
-                              @if ($errors->has('section_id'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('section_id') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
                       <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
                           <label for="url" class="col-md-4 control-label">URL</label>
 
@@ -121,26 +136,8 @@
                           </div>
                       </div>
 
-                      <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                          <label for="description" class="col-md-4 control-label">Descripción</label>
-
-                          <div class="col-md-6">
-                              @if(old('description'))
-                                <textarea id="description" class="form-control" name="description" required/>{{ old('description') }}</textarea>
-                              @else
-                                <textarea id="description" class="form-control" name="description" required/>{{ $section->description }}</textarea>
-                              @endif
-
-                              @if ($errors->has('description'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('description') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
                       <div class="form-group{{ $errors->has('social_desc') ? ' has-error' : '' }}">
-                          <label for="social_desc" class="col-md-4 control-label">Des. Social</label>
+                          <label for="social_desc" class="col-md-4 control-label">Desc. Social</label>
 
                           <div class="col-md-6">
                               @if(old('social_desc'))
@@ -157,23 +154,27 @@
                           </div>
                       </div>
 
-                      <div class="form-group{{ $errors->has('typeview_id') ? ' has-error' : '' }} principal">
-                          <label for="typeview_id" class="col-md-4 control-label">Tipo de Vista</label>
+                      <hr />
+                        <div class="form-group{{ $errors->has('text') ? ' has-error' : '' }}">
+                            <label for="text" class="col-md-2 control-label">Texto</label>
 
-                          <div class="col-md-6">
+                            <div class="col-md-8">
+                                @if(old('text'))
+                                  <textarea id="text" class="form-control text" name="text" />{!! old('text') !!}</textarea>
+                                @else
+                                  <textarea id="text" class="form-control text" name="text" />{!! $section->text !!}</textarea>
+                                @endif
 
-                              @include('backend.sections.includes.select-typeview-edit')
-
-                              @if ($errors->has('typeview_id'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('typeview_id') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
+                                @if ($errors->has('text'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('text') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                       <div class="form-group">
-                          <div class="col-md-6 col-md-offset-4">
+                          <div class="col-md-8 col-md-offset-2">
                               <button type="submit" class="btn btn-primary">
                                   Guardar Cambios
                               </button>
