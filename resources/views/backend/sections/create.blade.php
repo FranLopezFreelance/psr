@@ -49,6 +49,28 @@
                           </div>
                       </div>
 
+                      <div class="form-group{{ $errors->has('typeview_id') ? ' has-error' : '' }}">
+                          <label for="typeview_id" class="col-md-4 control-label">Tipo de Vista</label>
+                          <div class="col-md-6">
+                              <select class="form-control" name="typeview_id" required>
+                                <option value="0">Elegir...</option>
+                                @foreach($typeviews as $typeview)
+                                  @if(old('typeview') && old('typeview') == $typeview->id)
+                                    <option value="{{ $typeview->id }}" selected>{{ $typeview->name }}</option>
+                                  @else
+                                    <option value="{{ $typeview->id }}">{{ $typeview->name }}</option>
+                                  @endif
+                                @endforeach
+                              </select>
+
+                              @if ($errors->has('typeview_id'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('typeview_id') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
                       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                           <label for="name" class="col-md-4 control-label">Nombre</label>
                           <div class="col-md-6">
@@ -87,15 +109,15 @@
                           </div>
                       </div>
 
-                      <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                          <label for="description" class="col-md-4 control-label">Descripción</label>
+                      <div class="form-group{{ $errors->has('social_desc') ? ' has-error' : '' }}">
+                          <label for="social_desc" class="col-md-4 control-label">Social Desc.</label>
 
                           <div class="col-md-6">
-                              <textarea id="description" class="form-control" name="description" required/>{{ old('description') }}</textarea>
+                              <textarea id="social_desc" class="form-control" name="social_desc" required/>{{ old('social_desc') }}</textarea>
 
-                              @if ($errors->has('description'))
+                              @if ($errors->has('social_desc'))
                                   <span class="help-block">
-                                      <strong>{{ $errors->first('description') }}</strong>
+                                      <strong>{{ $errors->first('social_desc') }}</strong>
                                   </span>
                               @endif
                           </div>
@@ -118,42 +140,6 @@
                         </div>
 
                       <hr />
-
-                      <div class="form-group{{ $errors->has('social_desc') ? ' has-error' : '' }}">
-                          <label for="social_desc" class="col-md-4 control-label">Desc. Social</label>
-
-                          <div class="col-md-6">
-                              <textarea id="social_desc" class="form-control" name="social_desc" required/>{{ old('social_desc') }}</textarea>
-
-                              @if ($errors->has('social_desc'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('social_desc') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
-                      <div class="form-group{{ $errors->has('typeview_id') ? ' has-error' : '' }}">
-                          <label for="typeview_id" class="col-md-4 control-label">Tipo de Vista</label>
-                          <div class="col-md-6">
-                              <select class="form-control" name="typeview_id" required>
-                                <option value="0">Elegir...</option>
-                                @foreach($typeviews as $typeview)
-                                  @if(old('typeview') && old('typeview') == $typeview->id)
-                                    <option value="{{ $typeview->id }}" selected>{{ $typeview->name }}</option>
-                                  @else
-                                    <option value="{{ $typeview->id }}">{{ $typeview->name }}</option>
-                                  @endif
-                                @endforeach
-                              </select>
-
-                              @if ($errors->has('typeview_id'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('typeview_id') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
 
                       <div class="form-group">
                           <div class="col-md-6 col-md-offset-4">
