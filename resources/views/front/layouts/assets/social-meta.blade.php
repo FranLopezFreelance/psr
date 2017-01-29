@@ -13,14 +13,14 @@ http://secretsaucehq.com/blog/social-media/the-ultimate-guide-to-social-media-me
 <!--Page description. No longer than 155 characters.-->
 <!-- Schema.org markup for Google+ -->
 <meta itemprop="name" content="{{$target->title}}">
-<meta itemprop="description" content="{{$target->description}}">
+<meta itemprop="description" content="{{$target->social_desc}}">
 <meta itemprop="image" content="{{asset($target->img_url)}}">
 
 <!-- Twitter Card data -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@Salbuchi">
 <meta name="twitter:title" content="{{$target->title}}">
-<meta name="twitter:description" content="{{str_limit($target->description,200)}}">
+<meta name="twitter:description" content="{{str_limit($target->social_desc,200)}}">
 <meta name="twitter:creator" content="@Salbuchi">
 <!-- Twitter summary card with large image must be at least 280x150px -->
 <meta name="twitter:image:src" content="{{asset($target->img_url)}}">

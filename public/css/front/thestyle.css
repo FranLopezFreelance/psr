@@ -289,7 +289,7 @@ div.mini-video {
   margin-bottom: 20px;
 }
 div.mini-video div.content-mini {
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.2s ease-out;
 }
@@ -304,11 +304,12 @@ div.mini-video:hover {
   text-decoration: none;
 }
 div.mini-video p.title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
   padding: 10px 10px 0px 10px;
   margin-bottom: 10px;
   min-height: 60px;
+  max-height: 60px;
   line-height: 20px;
 }
 div.mini-video span.stats {
@@ -792,12 +793,22 @@ div.sidebar div.tag-cloud a.tag {
   display: inline-block;
 }
 div.sidebar div.articulos-recomendados div.articulo-recomendado {
-  padding-bottom: 20px;
+  padding-bottom: 10px;
+}
+div.sidebar div.articulos-recomendados div.articulo-recomendado div.imagen {
+  width: 50%;
+  float: left;
+}
+div.sidebar div.articulos-recomendados div.articulo-recomendado div.link {
+  width: 50%;
+  float: left;
+  padding-left: 10px;
 }
 div.sidebar div.articulos-recomendados div.articulo-recomendado a {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 800;
   padding-top: 10px;
+  line-height: 18px;
   display: inline-block;
 }
 div.sidebar div.pilares-sidebar {
@@ -827,12 +838,16 @@ div.sidebar div.pilares-sidebar div.pilar-sidebar a.number {
 div.sidebar div.pilares-sidebar div.pilar-sidebar a.name {
   position: absolute;
   padding-left: 80px;
+  padding-right: 10px;
   top: 50%;
   transform: translate(0px, -50%);
-  line-height: 20px;
+  line-height: 16px;
   font-weight: 800;
   color: black;
   font-size: 15px;
+}
+div.section {
+  padding-bottom: 50px;
 }
 div.section h1 {
   text-transform: uppercase;
@@ -926,6 +941,9 @@ div.home-videos div.video {
   background-color: grey;
   position: relative;
 }
+div.home-videos div.video img {
+  width: 100%;
+}
 div.home-videos div.video span {
   position: absolute;
   text-align: left;
@@ -943,7 +961,7 @@ div.home-videos div.video span {
     font-size: 25px;
   }
 }
-div.home-videos div.video-internacional > div.video > span {
+div.home-videos div.video-internacional > div.video span {
   border-left: 7px solid #fd1c18;
 }
 div.home-mas-videos {
@@ -1278,8 +1296,9 @@ div.programas-section div.list-content div.mini-video {
       .q(@md,{min-height: 235px;});
       .q(@sm,{min-height: 265px;});*/
 }
-div.programas-section div.list-content div.mini-video p.title.short {
-  font-size: 18px;
+div.programas-section div.list-content div.mini-video p.title {
+  font-size: 15px;
+  line-height: 18px;
 }
 div.section div.content {
   padding: 30px 40px 40px 40px;
@@ -1310,6 +1329,9 @@ div.section div.content div.text {
   padding: 30px 0;
   font-size: 20px;
   color: black;
+}
+div.section div.content div.text a {
+  color: #0063a4;
 }
 div.section div.content div.bottom-line {
   padding-top: 10px;

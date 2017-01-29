@@ -287,6 +287,8 @@ class SectionSeeder extends Seeder
         'social_desc' => 'Todo lo relacionado a Geopolítica.',
         'order' => 1,
       ]);
+
+
       //secciones de programas
       DB::table('sections')->insert([
         'level' => 2,
@@ -334,6 +336,7 @@ class SectionSeeder extends Seeder
         'text' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'order' => 1,
+        'topnav' => 0,
       ]);
 
       DB::table('sections')->insert([
@@ -346,6 +349,7 @@ class SectionSeeder extends Seeder
         'text' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'order' => 1,
+        'topnav' => 0,
       ]);
 
       DB::table('sections')->insert([
@@ -358,6 +362,7 @@ class SectionSeeder extends Seeder
         'text' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'social_desc' => 'Estos son los programas de Proyecto Segunda República emitidos por el canal TLV1 "Toda la Verdad Primero".',
         'order' => 1,
+        'topnav' => 0,
       ]);
     }
 }

@@ -21,7 +21,7 @@
       @foreach($pilaresSidebar as $index => $pilar)
       <div class="pilar-sidebar">
 
-          <a class="number" href="{{$pilar->getFullUrl()}}"><img src="/img/test/pilar-1-btn.jpg" alt=""></a>
+          <a class="number" href="{{$pilar->getFullUrl()}}"><img src="/img/pilares/internas/{{$pilar->url}}-btn.jpg" alt=""></a>
           <a class="name" href="{{$pilar->getFullUrl()}}" >{{$pilar->name}}</a>
 
       </div>

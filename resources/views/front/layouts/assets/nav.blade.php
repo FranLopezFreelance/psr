@@ -33,7 +33,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{$section->name}} <span class="caret"></span></a>
               <ul class="dropdown-menu" >
                 @foreach($section->getSubSections() as $subsection)
-                <li><a href="{{$subsection->getFullUrl()}}">{{$subsection->name}}</a></li>
+                @if($subsection->topnav != 0)<li><a href="{{$subsection->getFullUrl()}}">{{$subsection->name}}</a></li>@endif
                 @endforeach
               </ul>
             </li>

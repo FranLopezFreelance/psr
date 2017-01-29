@@ -12,44 +12,37 @@ class TagsSeeder extends Seeder
     public function run()
     {
       DB::table('tags')->insert([
-          'name' => 'Moneda Soberana',
-          'url' => 'moneda-soberana',
+          'name' => 'Bloque Nacional',
+          'url' => 'bloque-nacional',
       ]);
       DB::table('tags')->insert([
-          'name' => 'Macri Gato',
-          'url' => 'macri-gato',
+          'name' => 'Bloque Internacional',
+          'url' => 'bloque-internacional',
       ]);
       DB::table('tags')->insert([
-          'name' => 'Mercosur',
-          'url' => 'mercosur',
+          'name' => 'Primer Pilar',
+          'url' => 'primer-pilar',
       ]);
       DB::table('tags')->insert([
-          'name' => 'Energía',
-          'url' => 'energia',
+          'name' => 'Segundo Pilar',
+          'url' => 'segundo-pilar',
       ]);
       DB::table('tags')->insert([
-          'name' => 'Peronismo',
-          'url' => 'peronismo',
+          'name' => 'Tercer Pilar',
+          'url' => 'tercer-pilar',
       ]);
       DB::table('tags')->insert([
-          'name' => 'Religión',
-          'url' => 'religion',
+          'name' => 'Cuarto Pilar',
+          'url' => 'cuarto-pilar',
       ]);
+      DB::table('tags')->insert([
+          'name' => 'Quinto Pilar',
+          'url' => 'quinto-pilar',
+      ]);
+
       DB::table('tags')->insert([
           'name' => 'Medio Ambiente',
           'url' => 'medio-ambiente',
-      ]);
-      DB::table('tags')->insert([
-          'name' => 'Conspiración',
-          'url' => 'conspiracion',
-      ]);
-      DB::table('tags')->insert([
-          'name' => 'Esoterismo',
-          'url' => 'esoterismo',
-      ]);
-      DB::table('tags')->insert([
-          'name' => 'Plan Quinquenal',
-          'url' => 'plan-quinquenal',
       ]);
       DB::table('tags')->insert([
           'name' => 'Economía',
@@ -60,8 +53,17 @@ class TagsSeeder extends Seeder
           'url' => 'politica',
       ]);
       DB::table('tags')->insert([
-          'name' => 'Nueva República',
-          'url' => 'nueva-republica',
+          'name' => 'Deuda Externa',
+          'url' => 'deuda-externa',
       ]);
+      DB::table('tags')->insert([
+          'name' => 'Cultura',
+          'url' => 'cultura',
+      ]);
+      DB::table('tags')->insert([
+          'name' => 'Geopolítica',
+          'url' => 'geopolítica',
+      ]);
+
     }
 }

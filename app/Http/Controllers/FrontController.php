@@ -31,9 +31,20 @@ class FrontController extends Controller
 
   public function getIndex(){
     $target = Section::where('id', 1)->first();
+    //$sql = "SELECT * FROM contents INNER JOIN tagscontents ON contents.id = tagscontents.content_id WHERE tagscontents.tag_id = 1 AND contents.typeview_id = 4 ORDER BY contents.date DESC";
+    $nacional = Content::join('tagscontents', 'contents.id', '=', 'tagscontents.content_id')
+    ->where([["tagscontents.tag_id","=",1],["contents.typeview_id","=",4]])
+    ->orderBy('date','desc')
+    ->first();
+
+    $internacional = Content::join('tagscontents', 'contents.id', '=', 'tagscontents.content_id')
+    ->where([["tagscontents.tag_id","=",2],["contents.typeview_id","=",4]])
+    ->orderBy('date','desc')
+    ->first();
+
     $videos = Content::where('typeview_id','=',4)->paginate(4);
 
-    return view('front.index', compact('target','videos'));
+    return view('front.index', compact('target','nacional','internacional','videos'));
   }
 
   public function getSection($section, Request $request){
