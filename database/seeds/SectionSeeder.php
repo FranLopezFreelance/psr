@@ -200,7 +200,7 @@ class SectionSeeder extends Seeder
       DB::table('sections')->insert([
         'level' => 2,
         'section_id' => 3,
-        'social_img'=>'/img/test/psr-noticias.jpg',
+        'social_img'=>'default.jpg',
         'url' => 'soberania-y-estado',
         'name' => 'Soberanía y Estado',
         'html_title' => 'Soberanía y Estado | Proyecto Segunda República',
@@ -213,7 +213,7 @@ class SectionSeeder extends Seeder
       DB::table('sections')->insert([
         'level' => 2,
         'section_id' => 3,
-        'social_img'=>'/img/test/psr-noticias.jpg',
+        'social_img'=>'default.jpg',
         'url' => 'economia',
         'name' => 'Economía',
         'html_title' => 'Economía',
@@ -226,7 +226,7 @@ class SectionSeeder extends Seeder
       DB::table('sections')->insert([
         'level' => 2,
         'section_id' => 3,
-        'social_img'=>'/img/test/psr-noticias.jpg',
+        'social_img'=>'default.jpg',
         'url' => 'politica-internacional',
         'name' => 'Política Internacional',
         'html_title' => 'Política Internacional | Proyecto Segunda República',
@@ -239,7 +239,7 @@ class SectionSeeder extends Seeder
       DB::table('sections')->insert([
         'level' => 2,
         'section_id' => 3,
-        'social_img'=>'/img/test/psr-noticias.jpg',
+        'social_img'=>'default.jpg',
         'url' => 'deuda-externa',
         'name' => 'Deuda Externa',
         'html_title' => 'Deuda Externa | Proyecto Segunda República',
@@ -252,7 +252,7 @@ class SectionSeeder extends Seeder
       DB::table('sections')->insert([
         'level' => 2,
         'section_id' => 3,
-        'social_img'=>'/img/test/psr-noticias.jpg',
+        'social_img'=>'default.jpg',
         'url' => 'energia-y-medio-ambiente',
         'name' => 'Energía y Medio Ambiente',
         'html_title' => 'Energía y Medio Ambiente | Proyecto Segunda República',
@@ -265,7 +265,7 @@ class SectionSeeder extends Seeder
       DB::table('sections')->insert([
         'level' => 2,
         'section_id' => 3,
-        'social_img'=>'/img/test/psr-noticias.jpg',
+        'social_img'=>'default.jpg',
         'url' => 'cultura',
         'name' => 'Cultura',
         'html_title' => 'Cultura | Proyecto Segunda República',
@@ -278,7 +278,7 @@ class SectionSeeder extends Seeder
       DB::table('sections')->insert([
         'level' => 2,
         'section_id' => 3,
-        'social_img'=>'/img/test/psr-noticias.jpg',
+        'social_img'=>'default.jpg',
         'url' => 'geopolitica',
         'name' => 'Geopolítica',
         'html_title' => 'Geopolítica | Proyecto Segunda República',

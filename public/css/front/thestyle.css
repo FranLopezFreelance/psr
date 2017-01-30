@@ -253,6 +253,15 @@ a.tag {
   font-size: 11px;
   font-weight: 500;
 }
+a.tag.red-bloque {
+  background-color: #fd1c18;
+}
+a.tag.blue-bloque {
+  background-color: #0096ec;
+}
+a.tag.especial-bloque {
+  background-color: #74a95f;
+}
 a.vermas {
   text-transform: uppercase;
   font-size: 11px;
@@ -297,6 +306,23 @@ div.mini-video div.content-mini:hover {
   transition: all 0.2s ease-out;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.22);
 }
+div.mini-video div.content-mini div.tag.programa {
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 3px 0;
+}
+div.mini-video div.content-mini div.tag.programa.red-bloque {
+  background-color: #fd1c18;
+}
+div.mini-video div.content-mini div.tag.programa.blue-bloque {
+  background-color: #0096ec;
+}
+div.mini-video div.content-mini div.tag.programa.especial-bloque {
+  background-color: #74a95f;
+}
 div.mini-video img {
   width: 100%;
 }
@@ -308,8 +334,7 @@ div.mini-video p.title {
   font-weight: 800;
   padding: 10px 10px 0px 10px;
   margin-bottom: 10px;
-  min-height: 60px;
-  max-height: 60px;
+  height: 60px;
   line-height: 20px;
 }
 div.mini-video span.stats {
@@ -459,7 +484,7 @@ nav.main-menu ul.nav li {
 }
 nav.main-menu ul.nav li a {
   color: black;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
   font-size: 14px;
 }
@@ -1205,6 +1230,10 @@ div.header-pilar h3 {
 div.section.pilares {
   padding-top: 30px;
 }
+div.section.pilares div.sidebar div.sidebar-item {
+  margin-bottom: 30px;
+  margin-top: 0px!important;
+}
 div.section.pilares div.sidebar p.sidebar-title {
   background-color: #767676;
   color: white;
@@ -1212,7 +1241,6 @@ div.section.pilares div.sidebar p.sidebar-title {
   text-align: center;
   font-size: 20px;
   padding: 18px 5px;
-  margin-top: 28px;
 }
 div.section.pilares div.sidebar div.infografias img {
   width: 100%;
@@ -1227,11 +1255,15 @@ div.section.pilares div.sidebar div.videos a > p {
   text-transform: uppercase;
   color: #167ac6;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 700;
   padding-top: 5px;
 }
 div.section.pilares div.content-pilar {
   padding: 30px 15px;
+  font-size: 20px;
+}
+div.section.pilares div.content-pilar a {
+  color: #0063a4;
 }
 body.hard-backdrop div.modal-backdrop {
   opacity: 0.8;
@@ -1284,7 +1316,7 @@ div.programas-section div.section-intro div.border-bottom-hard {
   border-bottom: none!important;
 }
 div.programas-section div.list-content {
-  padding-top: 20px;
+  padding-top: 25px;
 }
 div.programas-section div.list-content div.col.col-lg-3 {
   padding: 0 10px;
@@ -1299,6 +1331,8 @@ div.programas-section div.list-content div.mini-video {
 div.programas-section div.list-content div.mini-video p.title {
   font-size: 15px;
   line-height: 18px;
+  height: 50px;
+  margin-bottom: 0px!important;
 }
 div.section div.content {
   padding: 30px 40px 40px 40px;

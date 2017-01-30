@@ -31,7 +31,7 @@ class Section extends Model
     }
 
     public function contents(){
-      return $this->hasMany('App\Content');
+      return $this->hasMany('App\Content')->orderBy('date','desc');
     }
 
     public function getLink(){
@@ -68,6 +68,16 @@ class Section extends Model
       $results = array_reverse($results);
       //dd($results);
       return '/'.implode("/", $results);
+    }
+
+    public function getImageByType($type){
+      switch ($type) {
+        case 1:$subfolder='standard'; break;
+        case 2:$subfolder='medium'; break;
+        case 3:$subfolder='small'; break;
+      }
+
+      return '/img/secciones/'.$subfolder.'/'.$this->social_img;
     }
 
 }

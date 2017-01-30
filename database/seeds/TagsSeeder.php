@@ -20,6 +20,10 @@ class TagsSeeder extends Seeder
           'url' => 'bloque-internacional',
       ]);
       DB::table('tags')->insert([
+          'name' => 'Programa Especial',
+          'url' => 'programa-especial',
+      ]);
+      DB::table('tags')->insert([
           'name' => 'Primer Pilar',
           'url' => 'primer-pilar',
       ]);
@@ -63,6 +67,10 @@ class TagsSeeder extends Seeder
       DB::table('tags')->insert([
           'name' => 'Geopolítica',
           'url' => 'geopolítica',
+      ]);
+      DB::table('tags')->insert([
+          'name' => 'Donal Trump',
+          'url' => 'donal-trump',
       ]);
 
     }

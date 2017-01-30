@@ -12,7 +12,7 @@
 
   </div>
   <div class="col-sm-6">
-    <img class="intro" src="{{$target->social_img}}" alt="">
+    <img class="intro" src="{{$target->getImageByType(2)}}" alt="">
   </div>
   <div class="col-sm-6">
     <h1 class="hidden-xs">{{$target->name}}</h1>

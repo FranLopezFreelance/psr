@@ -3,13 +3,13 @@
   <div class="row">
     <div class="col-xs-12 col-md-6 video-nacional">
       <div class="video">
-        <a href="{{$nacional->getFullUrl()}}"><img src="{{$nacional->getImageByType(1)}}" alt=""></a>
+        <a href="{{$nacional->getFullUrl()}}"><img src="{{$nacional->getImageByType(2)}}" alt=""></a>
         <a href="{{$nacional->getFullUrl()}}"><span>{{str_limit($nacional->title,100)}}</span></a>
       </div>
     </div>
     <div class="col-xs-12 col-md-6 video-internacional">
       <div class="video">
-        <a href="{{$internacional->getFullUrl()}}"><img src="{{$internacional->getImageByType(1)}}" alt=""></a>
+        <a href="{{$internacional->getFullUrl()}}"><img src="{{$internacional->getImageByType(2)}}" alt=""></a>
         <a href="{{$internacional->getFullUrl()}}"><span>{{str_limit($internacional->title,100)}}</span></a>
       </div>
     </div>
