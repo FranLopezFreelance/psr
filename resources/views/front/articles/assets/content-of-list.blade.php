@@ -7,7 +7,7 @@
     <div class="col-xs-8 col-sm-8">
     <a class="title" href="{{$content->getFullUrl()}}">{{$title}}</a>
     @include('front.assets.stats')
-    <div class="hidden-xs">{!!str_limit($text,400)!!}</div>
+    <div class="hidden-xs">{{strip_tags(str_limit($text,400))}}</div>
     <a class="vermas hidden-xs" href="{{$content->getFullUrl()}}">Leer Más</a>
     </div>
   </div>

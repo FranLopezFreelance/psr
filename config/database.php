@@ -28,6 +28,7 @@ return [
 
     'default' => env('DB_CONNECTION', 'mysql'),
 
+
     /*
     |--------------------------------------------------------------------------
     | Database Connections
@@ -62,7 +63,7 @@ return [
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
-            'strict' => true,
+            'strict' => false,
             'engine' => null,
         ],
 

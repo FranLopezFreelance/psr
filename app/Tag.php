@@ -17,4 +17,7 @@ class Tag extends Model
   public function getFullUrl(){
     return '/temas/'. $this->url;
   }
+  public function getImageByType($type){
+    return '';
+  }
 }

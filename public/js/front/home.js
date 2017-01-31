@@ -15,6 +15,12 @@ function resolveSlider() {
 }
 var headerH = 80;
 
+$('#search-input').keyup(function(){
+  var url = $('#search-input').val();
+  $('#search').attr('action','/search/'+url);
+  console.log(url);
+});
+
 $(window).bind("scroll", function() {
     $(window).scrollTop() > headerH ? ($(".site").addClass("fixed"), $(".menu").addClass("navbar-fixed-top")) : ($(".site").removeClass("fixed"), $(".menu").removeClass("navbar-fixed-top"))
 });

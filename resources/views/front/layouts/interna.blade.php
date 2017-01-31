@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    @include('front.layouts.assets.social-meta')
+    @if($target)@include('front.layouts.assets.social-meta')@endif
     @include('front.layouts.assets.header')
 
     @include('front.layouts.assets.nav')
