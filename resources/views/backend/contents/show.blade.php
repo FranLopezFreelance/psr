@@ -7,7 +7,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4>
-                <a href="/backend/sections">Contenidos</a>
+                <a href="/backend/contents/subSection/{{ $subSection->id }}">Contenidos</a>
                 <!-- <a class="btn btn-success article-create" href="/backend/contents/{{ $section->id }}/createBySection">Crear</a> -->
 
             </h4>
@@ -16,7 +16,7 @@
       </div>
       <div class="col-md-4">
           <div class="panel panel-default">
-            <div class="panel-heading"><h3>{{ $section->name }}</h3>
+            <div class="panel-heading"><h3>{{ $section->name }} <a class="btn btn-success article-create" href="/backend/contents/createBySection/{{ $section->id }}/{{ $subSection->id }}">Crear</a></h3>
             </div>
               <div class="panel-body">
                   <ul>

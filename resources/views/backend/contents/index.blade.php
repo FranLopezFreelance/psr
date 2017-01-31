@@ -21,7 +21,19 @@
               <div class="panel-body">
                   <ul>
                     @forelse($menuSections as $principalSection)
-                        <li><a href="/backend/contents/section/{{ $principalSection->id }}">{{ $principalSection->name }}</a></li>
+                      <li><a href="/backend/sections/{{ $principalSection->id }}">{{ $principalSection->name }}</a></li>
+                    @empty
+                      No hay secciones aquí.
+                    @endforelse
+                  </ul>
+                  
+                  <ul>
+                    @forelse($menuSections as $principalSection)
+                      @if($principalSection->childrens()->count() > 0)
+                        <li><a href="/backend/contents/section/{{ $principalSection->id }}">{{ $principalSection->name }} ({{ $principalSection->childrens()->count() }})</a></li>
+                      @else
+                        <li><a href="">{{ $principalSection->name }} ({{ $principalSection->childrens()->count() }})</a></li>
+                      @endif
                           @if($principalSection->id == $section->id)
                             <ul>
                               @forelse($principalSection->childrens->where('active', 1) as $children)

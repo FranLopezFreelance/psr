@@ -305,9 +305,26 @@ class ContentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Content $content)
     {
-        //
+      $typeView = $content->typeview->name;
+      $subSection = $content->section;
+      $content->delete();
+      $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)
+                              ->where('active', 1)->get();
+
+      if($subSection->level == 2){
+        $section = $subSection->parent;
+      }elseif($subSection->level == 3){
+        $section = $subSection->parent->parent;
+      }
+
+      $contents = $subSection->contents;
+
+      $message = 'El '.$typeView.' ha sido eliminada.';
+
+      return view('backend.contents.index', compact('section', 'subSection', 'contents', 'menuSections', 'message'));
     }
 
     public function addNewTag($name){
