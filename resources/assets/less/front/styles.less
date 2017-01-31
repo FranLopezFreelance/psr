@@ -19,6 +19,8 @@ html,body{
   background-color: white;
 }
 
+.full-width{width: 100%;}
+
 a{
   color: black;
   &:hover{text-decoration: none;color:black;}
@@ -31,6 +33,9 @@ a.tag{
   text-transform: uppercase;
   font-size: 11px;
   font-weight: 500;
+  &.red-bloque{background-color: @red-border-video;}
+  &.blue-bloque{background-color: @blue-border-video;}
+  &.especial-bloque{background-color: @especial-border-video;}
 }
 a.vermas{
     text-transform: uppercase;
@@ -69,12 +74,24 @@ div.mini-video{
   margin-bottom: 20px;
 
   div.content-mini{
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     .transition();
     &:hover {
       .transition();
       box-shadow: 0 8px 8px rgba(0,0,0,0.25), 0 2px 2px rgba(0,0,0,0.22);
+    }
+    div.tag.programa{
+      text-align: center;
+      color:white;
+      font-weight: 600;
+      font-size: 13px;
+      //letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 0;
+      &.red-bloque{background-color: @red-border-video;}
+      &.blue-bloque{background-color: @blue-border-video;}
+      &.especial-bloque{background-color: @especial-border-video;}
     }
   }
 
@@ -88,13 +105,16 @@ div.mini-video{
     text-decoration: none;
   }
   p.title{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 800;
     padding: 10px 10px 0px 10px;
     margin-bottom: 10px;
-    min-height: 60px;
+    height: 60px;
+    //min-height: 60px;
+    //max-height: 60px;
     line-height: 20px;
   }
+
   span.stats{
     margin-left: 10px;
   }
@@ -106,7 +126,7 @@ div.verMas{
 
   a{
     padding-top: 30px;
-    display: none;
+    //display: none;
     font-size: 20px;
     font-weight: 600;
     cursor: pointer;
@@ -120,7 +140,7 @@ ul.nav.nav-tabs.inner-menu{
    li:hover > ul {
       display: block;
   }
-  
+
   ul.dropdown-menu{
     padding: 0!important;
     width: 100%;
@@ -251,7 +271,7 @@ nav.main-menu{
     .rounded(0);
 		a{
 			color:black;
-			font-weight:600;
+			font-weight:400;
 			text-transform: uppercase;
 			font-size: 14px;
 		}

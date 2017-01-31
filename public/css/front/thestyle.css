@@ -235,6 +235,9 @@ body {
   /* or 950px */
   background-color: white;
 }
+.full-width {
+  width: 100%;
+}
 a {
   color: black;
 }
@@ -249,6 +252,15 @@ a.tag {
   text-transform: uppercase;
   font-size: 11px;
   font-weight: 500;
+}
+a.tag.red-bloque {
+  background-color: #fd1c18;
+}
+a.tag.blue-bloque {
+  background-color: #0096ec;
+}
+a.tag.especial-bloque {
+  background-color: #74a95f;
 }
 a.vermas {
   text-transform: uppercase;
@@ -286,13 +298,30 @@ div.mini-video {
   margin-bottom: 20px;
 }
 div.mini-video div.content-mini {
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.2s ease-out;
 }
 div.mini-video div.content-mini:hover {
   transition: all 0.2s ease-out;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.22);
+}
+div.mini-video div.content-mini div.tag.programa {
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 3px 0;
+}
+div.mini-video div.content-mini div.tag.programa.red-bloque {
+  background-color: #fd1c18;
+}
+div.mini-video div.content-mini div.tag.programa.blue-bloque {
+  background-color: #0096ec;
+}
+div.mini-video div.content-mini div.tag.programa.especial-bloque {
+  background-color: #74a95f;
 }
 div.mini-video img {
   width: 100%;
@@ -301,11 +330,11 @@ div.mini-video:hover {
   text-decoration: none;
 }
 div.mini-video p.title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
   padding: 10px 10px 0px 10px;
   margin-bottom: 10px;
-  min-height: 60px;
+  height: 60px;
   line-height: 20px;
 }
 div.mini-video span.stats {
@@ -317,7 +346,6 @@ div.verMas {
 }
 div.verMas a {
   padding-top: 30px;
-  display: none;
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;
@@ -456,7 +484,7 @@ nav.main-menu ul.nav li {
 }
 nav.main-menu ul.nav li a {
   color: black;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
   font-size: 14px;
 }
@@ -781,20 +809,70 @@ div.sidebar {
 div.sidebar img.sidebar {
   width: 100%;
 }
-div.sidebar div.tag-cloud {
-  padding: 20px 0px;
+div.sidebar div.sidebar-item {
+  margin-top: 35px;
 }
 div.sidebar div.tag-cloud a.tag {
   margin-bottom: 5px;
   margin-right: 5px;
   display: inline-block;
 }
-div.sidebar div.articulos-recomendados a.articulo-recomendado img {
-  width: 100%;
+div.sidebar div.articulos-recomendados div.articulo-recomendado {
+  padding-bottom: 10px;
 }
-div.sidebar div.articulos-recomendados a.articulo-recomendado h5 {
-  font-size: 18px;
+div.sidebar div.articulos-recomendados div.articulo-recomendado div.imagen {
+  width: 50%;
+  float: left;
+}
+div.sidebar div.articulos-recomendados div.articulo-recomendado div.link {
+  width: 50%;
+  float: left;
+  padding-left: 10px;
+}
+div.sidebar div.articulos-recomendados div.articulo-recomendado a {
+  font-size: 15px;
   font-weight: 800;
+  padding-top: 10px;
+  line-height: 18px;
+  display: inline-block;
+}
+div.sidebar div.pilares-sidebar {
+  background-color: #1a1a1a;
+  background-image: url('/img/pilares/back-pilares.png');
+  background-repeat: no-repeat;
+  background-position: top center;
+  padding: 10px 20px;
+}
+div.sidebar div.pilares-sidebar p.title {
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+div.sidebar div.pilares-sidebar div.pilar-sidebar {
+  background-color: white;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 62px;
+  position: relative;
+}
+div.sidebar div.pilares-sidebar div.pilar-sidebar a.number {
+  color: white;
+  position: absolute;
+}
+div.sidebar div.pilares-sidebar div.pilar-sidebar a.name {
+  position: absolute;
+  padding-left: 80px;
+  padding-right: 10px;
+  top: 50%;
+  transform: translate(0px, -50%);
+  line-height: 16px;
+  font-weight: 800;
+  color: black;
+  font-size: 15px;
+}
+div.section {
+  padding-bottom: 50px;
 }
 div.section h1 {
   text-transform: uppercase;
@@ -839,6 +917,9 @@ div.section div.content-of-list a.title {
 }
 div.section div.content-of-list span.stats {
   padding: 11px 0 8px 0;
+}
+div.section a.verMasContenido {
+  display: none;
 }
 div.section div.breadcumb {
   float: left;
@@ -885,6 +966,9 @@ div.home-videos div.video {
   background-color: grey;
   position: relative;
 }
+div.home-videos div.video img {
+  width: 100%;
+}
 div.home-videos div.video span {
   position: absolute;
   text-align: left;
@@ -902,7 +986,7 @@ div.home-videos div.video span {
     font-size: 25px;
   }
 }
-div.home-videos div.video-internacional > div.video > span {
+div.home-videos div.video-internacional > div.video span {
   border-left: 7px solid #fd1c18;
 }
 div.home-mas-videos {
@@ -1146,6 +1230,10 @@ div.header-pilar h3 {
 div.section.pilares {
   padding-top: 30px;
 }
+div.section.pilares div.sidebar div.sidebar-item {
+  margin-bottom: 30px;
+  margin-top: 0px!important;
+}
 div.section.pilares div.sidebar p.sidebar-title {
   background-color: #767676;
   color: white;
@@ -1153,7 +1241,6 @@ div.section.pilares div.sidebar p.sidebar-title {
   text-align: center;
   font-size: 20px;
   padding: 18px 5px;
-  margin-top: 28px;
 }
 div.section.pilares div.sidebar div.infografias img {
   width: 100%;
@@ -1168,11 +1255,15 @@ div.section.pilares div.sidebar div.videos a > p {
   text-transform: uppercase;
   color: #167ac6;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 700;
   padding-top: 5px;
 }
 div.section.pilares div.content-pilar {
   padding: 30px 15px;
+  font-size: 20px;
+}
+div.section.pilares div.content-pilar a {
+  color: #0063a4;
 }
 body.hard-backdrop div.modal-backdrop {
   opacity: 0.8;
@@ -1225,7 +1316,7 @@ div.programas-section div.section-intro div.border-bottom-hard {
   border-bottom: none!important;
 }
 div.programas-section div.list-content {
-  padding-top: 20px;
+  padding-top: 25px;
 }
 div.programas-section div.list-content div.col.col-lg-3 {
   padding: 0 10px;
@@ -1237,8 +1328,11 @@ div.programas-section div.list-content div.mini-video {
       .q(@md,{min-height: 235px;});
       .q(@sm,{min-height: 265px;});*/
 }
-div.programas-section div.list-content div.mini-video p.title.short {
-  font-size: 18px;
+div.programas-section div.list-content div.mini-video p.title {
+  font-size: 15px;
+  line-height: 18px;
+  height: 50px;
+  margin-bottom: 0px!important;
 }
 div.section div.content {
   padding: 30px 40px 40px 40px;
@@ -1269,6 +1363,9 @@ div.section div.content div.text {
   padding: 30px 0;
   font-size: 20px;
   color: black;
+}
+div.section div.content div.text a {
+  color: #0063a4;
 }
 div.section div.content div.bottom-line {
   padding-top: 10px;

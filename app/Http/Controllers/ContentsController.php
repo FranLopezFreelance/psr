@@ -32,7 +32,8 @@ class ContentsController extends Controller
         $sections = Section::all();
         $principalSections = $sections->where('level', 1)
                                       ->where('topnav_back', 1)
-                                      ->where('active', 1)->get();
+                                      ->where('active', 1);//->get();
+
 
         $section = $sections->where('level', 1)->first();
         $subSections = $sections->where('level', 2);
@@ -160,9 +161,9 @@ class ContentsController extends Controller
     		$name = $url.'.'.$file->getClientOriginalExtension();
         $imageFile = Image::make($request->file('img'));
         $imageFile->save($path.'standard/'.$name);
-        $imageMedium = $imageFile->resize(640, 380);
+        $imageMedium = $imageFile->resize(750, 422);
         $imageMedium->save($path.'medium/'.$name);
-        $imageSmall = $imageFile->resize(320, 190);
+        $imageSmall = $imageFile->resize(320, 180);
         $imageSmall->save($path.'small/'.$name);
         $content->img_url = $name;
       }
@@ -180,6 +181,7 @@ class ContentsController extends Controller
 
       //Mensaje
       $message = 'El '.$contentName.' ha sido creado.';
+      return redirect('/backend/contents/createBySection/'.$section->id.'/'.$subSection->id);
 
       return view('backend.contents.show', compact('content', 'sections', 'section', 'subSection', 'menuSections', 'message'));
     }

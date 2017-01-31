@@ -1,16 +1,17 @@
 
-<div class="row">
-  <a class=" articulo-recomendado"  href="{{$content->getFullUrl()}}">
-    <div class="col-xs-12">
-    <h5 class="title">{{$content->title}}</h5>
-  <!--  @include('front.assets.stats')-->
-  </div>
-    <div class="col-xs-6">
-      <img src="{{$content->img_url}}" alt="">
-    </div>
-    <div class="col-xs-6">
-        <p>{{str_limit($content->text,80)}}</p>
-      </div>
+<div class="">
 
-</a>
+  <!--  @include('front.assets.stats')-->
+<div class="articulo-recomendado">
+
+
+    <div class="imagen">
+      <a href="{{$content->getFullUrl()}}"><img class="full-width" src="{{$content->getImageByType(3)}}" alt=""></a>
+    </div>
+    <div class="link">
+        <a href="{{$content->getFullUrl()}}">{{str_limit($content->title,80)}}</a>
+      </div>
+<div class="clearfix"></div>
+</div>
+
 </div>

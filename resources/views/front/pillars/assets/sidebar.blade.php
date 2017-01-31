@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <div class="infografias">
+    <div class="infografias sidebar-item">
       <p class="sidebar-title">Infografías</p>
       <a data-toggle="modal" data-target="#pilar-infografia-modal">
         <img src="/img/pilares/infografias/thumb-{{$target->url}}.jpg" alt="">
@@ -9,7 +9,7 @@
   </div>
 
   <div class="col-xs-12">
-    <div class="videos">
+    <div class="videos sidebar-item">
       <p class="sidebar-title">Videos de Doctrina</p>
 
       <?php     $video =  array('views'=>'50','title'=>'Doctrina: Primer Pilar','img_url'=>'/img/test/video-mini-2.jpg','video_id'=>'qvsVtMhVGaU');?>
@@ -36,7 +36,7 @@
     </div>
   </div>
 
-  <div class="">
+  <div class="sidebar-item">
     <div class="fb-page" data-href="https://www.facebook.com/ProyectoSegundaRepublica/"
      data-small-header="false" data-adapt-container-width="true"
     data-hide-cover="false" data-show-facepile="true">
@@ -47,7 +47,7 @@
 
   </div>
 
-  <div class="">
+  <div class="sidebar-item">
     <img class="sidebar" src="/img/sidebar/contactateconpsr.jpg" alt="">
   </div>
   <div class="">

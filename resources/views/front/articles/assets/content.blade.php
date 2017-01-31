@@ -46,7 +46,7 @@
     <div class="tags">
       @if($content->tags()->count())<span>En éste artículo: </span>@endif
         @foreach($content->tags as $tag)
-        <a class="tag" href="{{$tag->getFullUrl()}}">{{$tag->name}}</a>
+        <a class="tag {{$tag->color}}" href="{{$tag->getFullUrl()}}">{{$tag->name}}</a>
       @endforeach
     </div>
     @endif
