@@ -77,17 +77,11 @@
                               <select class="form-control" name="section_id" required>
                                   <option value="0">Elegir...</option>
                                     @foreach($subSections as $section)
-                                      <optgroup label="{{ $section->name }}">
-                                        @if($section->childrens)
-                                          @foreach($section->childrens as $subSection)
-                                            @if($subSection->id == $content->section->id)
-                                              <option value="{{ $subSection->id }}" selected>{{ $subSection->name }}</option>
-                                            @else
-                                              <option value="{{ $subSection->id }}">{{ $subSection->name }}</option>
-                                            @endif
-                                          @endforeach
-                                        @endif
-                                      </optgroup>
+                                      @if($section->id == $content->section->id)
+                                        <option value="{{ $section->id }}" selected>{{ $section->name }}</option>
+                                      @else
+                                        <option value="{{ $section->id }}">{{ $section->name }}</option>
+                                      @endif
                                     @endforeach
                               </select>
 
