@@ -19,7 +19,13 @@ class FrontController extends Controller
       $this->sections = $allSections->where('level', 1);
       //$recomendados = Content::where('dest','=',1)->take(5)->get();
       $recomendados = Content::take(5)->get();
-      $tags =  Tag::take(5)->get();
+      //$sql ="SELECT *, tags.id as tid, count(*) as cant FROM tags INNER JOIN tagscontents ON tags.id = tagscontents.tag_id GROUP BY tid order by cant DESC limit 5";
+      $tags = Tag::select('*',DB::raw('tags.id as tid, count(*) as cant'))
+                 ->join('tagscontents', 'tags.id', '=', 'tagscontents.tag_id')
+                 ->groupBy('tid')
+                 ->orderBy('cant','desc')->take(10)
+                 ->get();
+
       $pilaresSidebar = $allSections->where('section_id', 2);
 
        View::share( 'path', '');
@@ -86,6 +92,7 @@ class FrontController extends Controller
     if($content = Content::where('url', $content)->first()){
       // !!!!! FALTA IF SUBSECTION Y SECCION
       $target = $content;
+      $content->addView();
 
       return view($content->typeView->show_view, compact('target','content'));
     }else{
@@ -94,17 +101,18 @@ class FrontController extends Controller
   }
 
   private function renderAjax($request,$section,$contents){
-    if($section->typeview_id == 4) {
+
+    if($section == null || $section->typeview_id == 3) {
+        return [
+            'content' => view('front.articles.assets.ajax-article-render')->with(compact('contents'))->render(),
+            'next_page' => $contents->nextPageUrl()
+        ];
+    }
+    else if($section->typeview_id == 4) {
       $colsm = 4;
       $colmd = 4;
         return [
             'content' => view('front.home.assets.ajax-video-render')->with(compact('contents','colsm','colmd'))->render(),
-            'next_page' => $contents->nextPageUrl()
-        ];
-    }
-    else if($section->typeview_id == 3) {
-        return [
-            'content' => view('front.articles.assets.ajax-article-render')->with(compact('contents'))->render(),
             'next_page' => $contents->nextPageUrl()
         ];
     }
@@ -121,6 +129,34 @@ class FrontController extends Controller
             'next_page' => $contents->nextPageUrl()
         ];
     }else return view('front.home.assets.ajax-video-render')->with(compact('contents'));
+  }
+
+  public function getContentsByTag($tag, Request $request){
+    $tag = Tag::where('url', $tag)->first();
+    if($tag){
+
+      $contents = $tag->contents()->paginate(12);
+      $target = $tag;
+
+      if($request->ajax())return  $this->renderAjax($request,$tag,$contents);
+
+      return view('front.temas.index', compact('target','contents'));
+    }else{
+      return view('errors.404');
+    }
+  }
+
+  public function getContentsBySearch($query,Request $request){
+  //  if(count($request->all()) == 0)return view('errors.404');
+    //foreach ($request->all() as $key => $value) {$query = $key;}
+  	$contents = Content::where('title', 'LIKE', '%' . $query . '%')
+                    ->orWhere("text", "LIKE", "%$query%")
+                    ->paginate(12);
+    $target = $contents[0];
+    if($request->ajax()) return  $this->renderAjax($request,null,$contents);
+  
+
+    return view('front.search.index', compact('target','contents','query'));
   }
 
 }

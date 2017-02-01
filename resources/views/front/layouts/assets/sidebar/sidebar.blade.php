@@ -46,17 +46,22 @@
   <img class="sidebar" src="/img/sidebar/contactateconpsr.jpg" alt="">
   </div>
 
-  <img class="sidebar" src="/img/test/follow.jpg" alt="">
+
 
 
 
 </div>
+<div class="clearfix"></div>
+<div class="col-xs-12 col-sm-6 col-md-12 ">
+  <h3>SEGUINOS EN</h3>
+  @include('front.layouts.assets.sidebar.social-sidebar')
+  </div>
 
 <div class="col-xs-12 ">
 <div class="tag-cloud  sidebar-item">
   <h3>TEMAS</h3>
   @foreach($tags as $tag)
-  <a class="tag" href="{{$tag->getFullUrl()}}">{{$tag->name}}</a>
+  <a class="tag {{$tag->color}}" href="{{$tag->getFullUrl()}}">{{$tag->name}}</a>
   @endforeach
 </div>
 </div>

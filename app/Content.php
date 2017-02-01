@@ -26,11 +26,7 @@ class Content extends Model
         return $this->belongsToMany('App\Tag', 'tagscontents', 'content_id', 'tag_id');
     }
 
-    public function getViewsAttribute($value){
-      $r = rand ( 500 ,  10000 );
-      return number_format($r,0,',','.');
-    }
-
+    
     public function renderDate(){
       setlocale(LC_TIME, 'Spanish');
       $param = '%d %B %Y';
@@ -102,5 +98,10 @@ class Content extends Model
         case 4:$folder='programas'; break;
       }
       return '/img/'.$folder.'/'.$subfolder.'/'.$this->img_url;
+    }
+
+    public function addView(){
+      $this->views += 1;
+      $this->save();
     }
 }

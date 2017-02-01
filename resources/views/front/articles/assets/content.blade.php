@@ -26,7 +26,7 @@
   </div>
   <div class="col-xs-12">
 
-    @if($video == false)
+    @if($video == false && $content->author)
     <div class="col-xs-12 col-sm-6">
       <div class="author {{($content->tags()->count()) ? 'border':''}}">
         <img src="{{$content->author->getFullImgUrl()}}" alt="">

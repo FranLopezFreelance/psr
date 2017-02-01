@@ -14,14 +14,17 @@ class TagsSeeder extends Seeder
       DB::table('tags')->insert([
           'name' => 'Bloque Nacional',
           'url' => 'bloque-nacional',
+          'color' => 'blue-bloque',
       ]);
       DB::table('tags')->insert([
           'name' => 'Bloque Internacional',
           'url' => 'bloque-internacional',
+          'color' => 'red-bloque',
       ]);
       DB::table('tags')->insert([
           'name' => 'Programa Especial',
           'url' => 'programa-especial',
+          'color' => 'programa-especial',
       ]);
       DB::table('tags')->insert([
           'name' => 'Primer Pilar',
