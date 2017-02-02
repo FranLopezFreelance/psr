@@ -18,6 +18,7 @@ Auth::routes();
 Route::get('backend', 'BackendController@index');
 Route::resource('backend/sections', 'SectionsController');
 Route::resource('backend/contents', 'ContentsController');
+Route::resource('backend/contacts', 'ContactsController');
 Route::get('backend/contents/createBySection/{section}', 'ContentsController@createBySection');
 Route::get('backend/contents/createBySection/{section}/{subSection}', 'ContentsController@createBySubSection');
 Route::get('backend/contents/getBySection/{subSection}', 'ContentsController@getContentBySubSection');
@@ -31,6 +32,7 @@ Route::get('/temas/{tag}', 'FrontController@getContentsByTag');
 Route::get('/{section}', 'FrontController@getSection');
 Route::get('/{section}/{subSection}', 'FrontController@getSubSection');
 Route::get('/{section}/{subSection}/{content}', 'FrontController@getContent');
+Route::post('storeContact', 'FrontController@storeContact');
 
 // /* OTHERS BACKEND CONTROLLERS */
 Route::get('backend/sections/{section}', 'SectionsController@getBySection');

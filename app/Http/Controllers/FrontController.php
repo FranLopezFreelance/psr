@@ -154,9 +154,33 @@ class FrontController extends Controller
                     ->paginate(12);
     $target = $contents[0];
     if($request->ajax()) return  $this->renderAjax($request,null,$contents);
-  
+
 
     return view('front.search.index', compact('target','contents','query'));
+  }
+
+  public function storeContact(Request $request)
+  {
+      $contact = new Contact($request->all());
+      $contact->save();
+      
+      $target = Section::where('id', 1)->first();
+      //$sql = "SELECT * FROM contents INNER JOIN tagscontents ON contents.id = tagscontents.content_id WHERE tagscontents.tag_id = 1 AND contents.typeview_id = 4 ORDER BY contents.date DESC";
+      $nacional = Content::join('tagscontents', 'contents.id', '=', 'tagscontents.content_id')
+      ->where([["tagscontents.tag_id","=",1],["contents.typeview_id","=",4]])
+      ->orderBy('date','desc')
+      ->first();
+
+      $internacional = Content::join('tagscontents', 'contents.id', '=', 'tagscontents.content_id')
+      ->where([["tagscontents.tag_id","=",2],["contents.typeview_id","=",4]])
+      ->orderBy('date','desc')
+      ->first();
+
+      $videos = Content::where('typeview_id','=',4)->paginate(4);
+
+      $message = $contact->name." gracias por ponerte en contacto con nosotros. Pronto nos vamos a poner en contacto con vos.";
+
+      return view('front.index', compact('target','nacional','internacional','videos','message'));
   }
 
 }
