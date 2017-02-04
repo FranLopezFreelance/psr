@@ -1,4 +1,24 @@
 </div><!--END SITE CONTENT-->
+
+<!-- Modal -->
+<div id="search-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content container-fluid">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <form id="search-main">
+
+            <input type="text" placeholder="Buscar..." id="search-input-main" autocomplete="off">
+
+          <button type="submit" class="btn btn-default"><i class="material-icons">search</i></button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
 <div class="footer container-fluid">
 <div class="row">
   <div class="col-md-1 hidden-xs"></div>

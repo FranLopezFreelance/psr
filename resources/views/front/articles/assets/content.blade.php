@@ -3,8 +3,9 @@
 <div class="row">
   <div class="col-xs-12">
     <h1>{{$content->title}}</h1>
-    @include('front.assets.addthis')
     <div class="bottom-line col-xs-12"></div>
+
+
     <div class="breadcumb">
     @foreach($target->getBreadcrumb() as $link)
         <a href="/{{$link['url']}}">{{$link['name']}}</a> <span class="b-separator">>></span>
@@ -16,8 +17,10 @@
     @if ($video)
     <a class="btn-video" onclick="showVideo('{{$content->video_id}}')"><img class="main-image" src="{{$content->getImageByType(1)}}" alt=""></a>
     <div class="video-container hidden"></div>
+    @include('front.assets.addthis')
     @else
     <img class="main-image" src="{{$content->getImageByType(1)}}" alt="">
+    @include('front.assets.addthis')
     @endif
 
 </div>

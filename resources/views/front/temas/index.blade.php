@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="tag-page">
-  <div class="col-xs-12">
+  <div class="">
     <h1 class="">{{$target->name}}</h1>
     <div class="breadcumb">
     <a href="/">Home</a> <span class="b-separator">>></span>

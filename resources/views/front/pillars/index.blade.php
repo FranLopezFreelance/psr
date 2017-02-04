@@ -33,7 +33,7 @@ foreach ($subs as $sub) {if($target->url == $sub->url)$target=$sub;}
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="pilar-infografia-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade modal-pilar" id="pilar-infografia-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -47,7 +47,7 @@ foreach ($subs as $sub) {if($target->url == $sub->url)$target=$sub;}
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modal-video" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade modal-pilar" id="modal-video" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
