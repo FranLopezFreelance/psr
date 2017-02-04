@@ -1,6 +1,4 @@
 <div class="row">
-  <div class="col-xs-12">
-
 
 <div class="list-content" data-next-page="{{$contents->nextPageUrl()}}">
 
@@ -12,7 +10,6 @@
 
 </div>
 
-  </div>
 </div>
 
 @if(count($contents->nextPageUrl()))

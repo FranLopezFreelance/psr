@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="seach-page">
-  <div class="col-xs-12">
+  <div class="">
     <h1 class="">Resultados de Búsqueda: {{$query}}</h1>
     <div class="breadcumb">
     <a href="/">Home</a> <span class="b-separator">>></span>
@@ -11,7 +11,7 @@
 
   </div>
 
-<div class="col-xs-12">
+<div class="">
     <form id="search" class="" action="/search/{{$query}}">
 
         <button type="submit"><i class="material-icons">search</i></button>
@@ -21,6 +21,7 @@
 </div>
 
     </div>
+    <div class="clearfix"></div>
 
 @include('front.assets.list-content.list-contents')
 

@@ -18,7 +18,11 @@ var headerH = 80;
 $('#search-input').keyup(function(){
   var url = $('#search-input').val();
   $('#search').attr('action','/search/'+url);
-  console.log(url);
+});
+
+$('#search-input-main').keyup(function(){
+  var url = $('#search-input-main').val();
+  $('#search-main').attr('action','/search/'+url);
 });
 
 $(window).bind("scroll", function() {
@@ -35,6 +39,7 @@ function resolveSidebar(){
     if($('.list-content').length )$(window).unbind('scroll',fetchPosts);
   }
 }
+
 
 $("document").ready(function() {
     resolveSlider(), resolveHeader(),resolveSidebar();
@@ -54,8 +59,31 @@ $("document").ready(function() {
   speed:0.6,
   });
 
-});
+  $('#search-modal').on('shown.bs.modal', function () {$('#search-modal input').focus();})
 
+  loadImages();
+  if($('.list-content').length){
+    var page = $('.list-content').data('next-page');
+    if(page == null || page == undefined || page == '')$('.verMas').hide();
+  }
+
+/*
+  $('.slider-libros').on('extra:slider:moveStart', function (e) {
+
+            var url = $('.slider-libros .item').find("img").attr('url');
+            $('.slider-libros .item').find("img").attr("src", url); //set value : src = url
+        });
+*/
+
+
+});
+function loadImages(){
+  var imgDefer = document.getElementsByTagName('img');
+  for (var i=0; i<imgDefer.length; i++) {
+  if(imgDefer[i].getAttribute('data-original')) {
+  imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-original'));
+  } }
+}
 $(window).resize(function() {
     resolveSlider(), resolveHeader(),resolveSidebar();
 });
@@ -63,12 +91,13 @@ $(window).resize(function() {
 function verMasVideos(){
   var page = $('.videos-content').data('next-page');
   if(page !== null && page !== undefined && page !== '') {
-    $('.spinner').addClass('show');
+    $('.spinner-wrapper').addClass('show');
     $.get({url:'moreHomeVideos?page='+page,cache:false}, function(data){
-        $('.spinner').removeClass('show');
+        $('.spinner-wrapper').removeClass('show');
         $('.videos-content').append(data.videos);
       if(data.next_page!=null)  $('.videos-content').data('next-page', ++page);
       else $('.verMasVideos').remove();
+      loadImages();
     });
   }
 }
@@ -76,7 +105,7 @@ function verMasVideos(){
 function showVideo($url){
   //console.log($url);
   var video='<iframe id="ytplayer" type="text/html" width="100%" height="360"';
-  video+='  src="http://www.youtube.com/embed/'+$url+'/?autoplay=1&playlist=F7S61o-_4C0"';
+  video+='  src="http://www.youtube.com/embed/'+$url+'/?autoplay=1&playlist=lUsc5Bl_F8s,FSxdRJVqFq4,YI1WwxMsB1w,PGY5AS3uIcM"';
   video+='frameborder="0"></iframe>';
   $('.video-container').append(video);
   $('.video-container').removeClass('hidden');
@@ -101,15 +130,17 @@ $('#modal-video').on('hidden.bs.modal', function () {
 
 function loadContent(){
   var page = $('.list-content').data('next-page');
-
   if(page == null || page == undefined || page == '') return;
 
-  $('.spinner').addClass('show');
+
+  $('.spinner-wrapper').addClass('show');
   $.get({url:page,cache: false}, function(data){
     //console.log(data.next_page);
     $('.list-content').append(data.content);
     $('.list-content').data('next-page', data.next_page);
-    $('.spinner').removeClass('show');
+    if(data.next_page == null || data.next_page == undefined || data.next_page == '') $('.verMas').hide();
+    $('.spinner-wrapper').removeClass('show');
+    loadImages();
   });
 }
 
@@ -127,12 +158,13 @@ function fetchPosts() {
             var scroll_position_for_posts_load = $(window).height() + $(window).scrollTop() + 500;
 
             if(scroll_position_for_posts_load >= $(document).height()) {
-                $('.spinner').addClass('show');
+                $('.spinner-wrapper').addClass('show');
                 $.get({url:page,cache: false}, function(data){
                   //console.log(data.next_page);
                   $('.list-content').append(data.content);
                   $('.list-content').data('next-page', data.next_page);
-                  $('.spinner').removeClass('show');
+                  $('.spinner-wrapper').removeClass('show');
+                  loadImages();
                 });
             }
         }, 350))

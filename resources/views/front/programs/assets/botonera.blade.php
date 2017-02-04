@@ -14,7 +14,7 @@ $mas = $subsections->splice(4,count($subsections)-4);
   @endforeach
   <li role="presentation" class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-      Ver más Temporadas <span class="caret-"></span>
+      Ver más   <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
       @foreach($mas as $temporada)
