@@ -3,6 +3,8 @@
 <script type="text/javascript" src="/js/front/jquery-2.2.0.min.js"></script>
 <script src="/js/front/bootstrap.js"></script>
 <script src="/js/front/extra.slider.min.js"></script>
+<script src="/js/front/parsley.min.js"></script>
+<script src="/js/front/es.js"></script>
 <!-- Load Greensock's TweenMax -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
 

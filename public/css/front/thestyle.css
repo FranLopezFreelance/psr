@@ -769,6 +769,19 @@ div#search-modal form > button i {
   padding: 0px;
   vertical-align: middle;
 }
+form ul.parsley-errors-list {
+  margin: 0;
+  padding: 0;
+}
+form ul.parsley-errors-list li {
+  list-style: none;
+}
+form ul.parsley-errors-list li {
+  color: red;
+  font-weight: 800;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 5px 10px;
+}
 .extra-slider {
   padding: 0;
 }
@@ -1066,6 +1079,17 @@ div.section div.section-content {
 @media (min-width: 768px) {
   div.section div.section-content {
     padding: 30px 25px 40px 40px;
+  }
+}
+div.section div.contacto-section div.container-fluid {
+  padding-top: 0;
+}
+div.section div.contacto-section h3 {
+  margin: 20px 0;
+}
+@media (min-width: 768px) {
+  div.section div.contacto-section h3 {
+    margin: 40px 0;
   }
 }
 div.section div.tag-page {

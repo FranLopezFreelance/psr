@@ -1,6 +1,9 @@
 @extends('front.layouts.interna')
 
 @section('content')
-@include('front.assets.section-intro')
+<div class="contacto-section">
+  @include('front.home.contacto')
+</div>
+
 
 @endsection

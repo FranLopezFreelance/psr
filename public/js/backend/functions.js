@@ -44,6 +44,14 @@ $( document ).ready(function() {
       $('.video_id').val(getParameterByName('v',url));
     });
 
+    var chars = $('textarea[name="social_desc"]').val().length;
+    $('.social-count').text(chars);
+
+    $('textarea[name="social_desc"]').keyup(function(){
+      var chars = $('textarea[name="social_desc"]').val().length;
+      $('.social-count').text(chars);
+    });
+
     function getParameterByName(name, url) {
     if (!url) {
       url = window.location.href;

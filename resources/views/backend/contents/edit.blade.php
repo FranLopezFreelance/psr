@@ -196,15 +196,19 @@
 
                           <div class="col-md-6">
                               @if(old('description'))
-                                <textarea id="description" class="form-control" name="social_desc" required/>{{ old('social_desc') }}</textarea>
+                                <textarea rows="3" id="description" class="form-control" name="social_desc" required/>{{ old('social_desc') }}</textarea>
                               @else
-                                <textarea id="description" class="form-control" name="social_desc" required/>{{ $content->social_desc }}</textarea>
+                                <textarea rows="3"  id="description" class="form-control" name="social_desc" required/>{{ $content->social_desc }}</textarea>
                               @endif
                               @if ($errors->has('social_desc'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('social_desc') }}</strong>
                                   </span>
                               @endif
+                              <div class="social-helper">
+                                <strong><span class="social-count"></span> caracteres</strong>
+                                <span> - Se recomienda no más de <strong>150</strong> caracteres(facebook)</span>
+                              </div>
                           </div>
                       </div>
 
