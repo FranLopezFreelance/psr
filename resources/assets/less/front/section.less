@@ -1,25 +1,28 @@
 div.section{
 padding-bottom: 50px;
-.q(@sm,{
-  div.section-content{
-    padding: 30px 40px 40px 40px;
+
+div.section-content{
+    padding-top: 10px;
+    .q(@sm,{
+      padding: 30px 25px 40px 40px;
+        });
   }
-  });
 
 div.tag-page{
   padding: 10px 0px;
   margin-bottom: 10px;
 }
 div.seach-page{
-  padding: 30px 8px;
+  //padding: 30px 8px;
   h1{
-    font-size: 30px;
+    font-size: 24px;
+    .q(@sm,{font-size: 30px;});
   }
   form{
     margin-top: 30px;
     //margin-bottom: 30px;
     display: block;
-    height: 80px;
+    //height: 0px;
     input{
       padding: 10px;
       min-width: 285px;
@@ -51,19 +54,16 @@ div.seach-page{
     text-transform: uppercase;
     font-weight: 800;
     color:black;
-    line-height: 40px;
-    letter-spacing: 1px;
     margin: 0;
     padding: 0;
     padding-bottom: 10px;
-
   }
   img.intro{
     width: 100%;
   }
 
   div.section-intro{
-    padding-top: 30px;
+    //padding-top: 30px;
     div.breadcumb{
       margin-bottom: 15px;
     }

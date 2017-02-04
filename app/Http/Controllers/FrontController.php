@@ -138,7 +138,7 @@ class FrontController extends Controller
       $contents = $tag->contents()->paginate(12);
       $target = $tag;
 
-      if($request->ajax())return  $this->renderAjax($request,$tag,$contents);
+      if($request->ajax())return  $this->renderAjax($request,null,$contents);
 
       return view('front.temas.index', compact('target','contents'));
     }else{

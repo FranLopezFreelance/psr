@@ -8,7 +8,7 @@
 
 <!-- Load Greensock's Draggable plugin -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/utils/Draggable.min.js"></script>
-<script type="text/javascript" src="/js/front/home.js"></script>
+<script type="text/javascript" src="/js/front/home.js?v={{str_random(40)}}"></script>
 
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->

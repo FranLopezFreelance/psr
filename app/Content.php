@@ -26,7 +26,7 @@ class Content extends Model
         return $this->belongsToMany('App\Tag', 'tagscontents', 'content_id', 'tag_id');
     }
 
-    
+
     public function renderDate(){
       setlocale(LC_TIME, 'Spanish');
       $param = '%d %B %Y';
@@ -45,11 +45,11 @@ class Content extends Model
       $result = [];
       $current = $this->section;
       while($current->section_id){
-        $results[] = array('url'=>$current->parent->url,'name'=>$current->parent->name);
+        $results[] = array('url'=>$current->parent->url.'/'.$current->url,'name'=>$current->name);
         $current = $current->parent;
       }
-      $results = array_reverse($results);
-      $results[] = array('url'=>$this->section->url,'name'=>$this->section->name);
+      $results[] = array('url'=>$current->url,'name'=>$current->name);
+      $results = array_reverse($results);      
       return $results;
       /*
       if($this->section->section_id){

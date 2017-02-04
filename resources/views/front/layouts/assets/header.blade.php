@@ -5,7 +5,7 @@
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" type="text/css"  href="/css/front/extra.slider.css" >
-    <link rel="stylesheet" type="text/css"  href="/css/front/thestyle.min.css" >
+    <link rel="stylesheet" type="text/css"  href="/css/front/thestyle.min.css?v={{str_random(40)}}" >
 
 
 

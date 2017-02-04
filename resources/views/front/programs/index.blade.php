@@ -5,7 +5,7 @@
 
   <div class="row">
 
-  <div class="col-md-9">
+  <div class="col-md-9 section-content">
       @include('front.assets.section-intro')
       @include('front.programs.assets.botonera')
       @include('front.programs.assets.list-programas')
