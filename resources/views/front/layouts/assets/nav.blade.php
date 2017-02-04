@@ -40,7 +40,9 @@
           @else
           <li><a href="/{{$section->url}}">{{$section->name}}</a></li>
           @endif
+
         @endforeach
+        <a data-toggle="modal" data-target="#search-modal"  class="nohover"><i class="material-icons">search</i></a>
 
 
       </ul>

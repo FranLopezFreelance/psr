@@ -18,7 +18,11 @@ var headerH = 80;
 $('#search-input').keyup(function(){
   var url = $('#search-input').val();
   $('#search').attr('action','/search/'+url);
-  console.log(url);
+});
+
+$('#search-input-main').keyup(function(){
+  var url = $('#search-input-main').val();
+  $('#search-main').attr('action','/search/'+url);
 });
 
 $(window).bind("scroll", function() {
@@ -35,6 +39,7 @@ function resolveSidebar(){
     if($('.list-content').length )$(window).unbind('scroll',fetchPosts);
   }
 }
+
 
 $("document").ready(function() {
     resolveSlider(), resolveHeader(),resolveSidebar();
@@ -53,6 +58,19 @@ $("document").ready(function() {
   auto: 7,
   speed:0.6,
   });
+/*
+  $('.slider-libros').on('extra:slider:moveStart', function (e) {
+
+            var url = $('.slider-libros .item').find("img").attr('url');
+            $('.slider-libros .item').find("img").attr("src", url); //set value : src = url
+        });
+*/
+
+var imgDefer = document.getElementsByTagName('img');
+for (var i=0; i<imgDefer.length; i++) {
+if(imgDefer[i].getAttribute('data-original')) {
+imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-original'));
+} }
 
 });
 
@@ -69,6 +87,8 @@ function verMasVideos(){
         $('.videos-content').append(data.videos);
       if(data.next_page!=null)  $('.videos-content').data('next-page', ++page);
       else $('.verMasVideos').remove();
+
+      $("img.lazy").lazyload();
     });
   }
 }

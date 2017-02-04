@@ -5,7 +5,7 @@
     <a href="tags/economia" class="tag">Economía</a>
   </div>
   <div class="wrapper-articulo">
-    <img src="/{{$img}}" alt="">
+    <img class="lazy" data-original="/{{$img}}" alt="">
     @include('front.home.assets.addthis-articulo-home')
     <h5 class="title">{{$title}}</h5>
     <span class="stats">17 diciembre 2016 | 15:26 GMT<span class="views">10.100</span></span>

@@ -2,7 +2,7 @@
 <div class="pilar" >
   <div class="nPilar">{{$n}}</div>
   <a href="{{$url}}">
-    <img class="pilar-home-thumb" src="/img/pilares/home-thumb-{{$nPilar}}-pilar.jpg" alt="">
+    <img class="pilar-home-thumb lazy" data-original="/img/pilares/home-thumb-{{$nPilar}}-pilar.jpg" alt="">
   </a>
   <div class="pilar-content">
     <p class="tipo">Pilar {{$type}}</p>

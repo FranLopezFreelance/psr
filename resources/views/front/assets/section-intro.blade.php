@@ -11,7 +11,7 @@
     </div>
 
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6 hidden-xs">
     <img class="intro" src="{{$target->getImageByType(2)}}" alt="">
   </div>
   <div class="col-sm-6">
@@ -19,6 +19,6 @@
     <p>{{$target->description}}</p>
     @include('front.assets.addthis')
   </div>
-<div class="border-bottom-hard col-xs-12"></div>
+<div class="border-bottom-hard col-xs-12 hidden-xs"></div>
 </div>
 </div>

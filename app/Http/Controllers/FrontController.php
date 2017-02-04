@@ -73,7 +73,7 @@ class FrontController extends Controller
       foreach($subSections as $subSection){
         if($subSection->parent->url == $section){
           //$section = Section::where('url', $section)->first();
-          $contents = $subSection->contents()->paginate(12);
+          $contents = $subSection->contents()->paginate(24);
           $target = $subSection;
 
           if($request->ajax())return  $this->renderAjax($request,$subSection,$contents);
@@ -151,10 +151,11 @@ class FrontController extends Controller
     //foreach ($request->all() as $key => $value) {$query = $key;}
   	$contents = Content::where('title', 'LIKE', '%' . $query . '%')
                     ->orWhere("text", "LIKE", "%$query%")
+                    ->where([['active','=',1],['section_id','!=',0]])
                     ->paginate(12);
     $target = $contents[0];
     if($request->ajax()) return  $this->renderAjax($request,null,$contents);
-  
+
 
     return view('front.search.index', compact('target','contents','query'));
   }
