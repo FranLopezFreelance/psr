@@ -25,6 +25,23 @@ class ContactsController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+      $contact = new Contact($request->all());
+      $contact->save();
+
+      return response()->json([
+        'name' => $contact->name,
+      ]);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
