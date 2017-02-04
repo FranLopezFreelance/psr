@@ -15,6 +15,11 @@
       <div class="col-md-12">
           <div class="panel panel-default">
               <div class="panel-body">
+                @if(isset($message))
+                    <div class="alert alert-success message">
+                        <h5>{{ $message }}</h5>
+                    </div>
+                @endif
                 <table class="table table-hover">
                   <tr>
                     <th>Nombre</th>
@@ -33,10 +38,13 @@
                           {!! Form::close() !!}
                         </td>
                       </tr>
+                      @if($contact->id == $thisContact->id)
+                      @endif
                   @empty
                     - No hay contactos.
                   @endforelse
                 </table>
+                {{ $contents->links() }}
               </div>
           </div>
       </div>
