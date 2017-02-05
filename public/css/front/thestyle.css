@@ -335,6 +335,7 @@ div.mini-video {
     color: white;
     font-weight: 600;
     font-size: 13px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     padding: 3px 0;
   }
@@ -1228,7 +1229,6 @@ h4.title {
   text-transform: uppercase;
   font-size: 28px;
   font-weight: 800;
-  letter-spacing: 2px;
 }
 @media (min-width: 992px) {
   h4.title {

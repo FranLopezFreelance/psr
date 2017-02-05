@@ -1,4 +1,5 @@
-<!--
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <!--
 https://moz.com/blog/meta-data-templates-123
 https://searchenginewatch.com/2016/05/16/how-to-write-meta-title-tags-for-seo-with-good-and-bad-examples/
 https://searchenginewatch.com/2016/01/21/seo-basics-22-essentials-you-need-for-optimizing-your-site/
@@ -9,7 +10,7 @@ http://secretsaucehq.com/blog/social-media/the-ultimate-guide-to-social-media-me
 
 <!-- Place this data between the <head> tags of your website -->
 <title>{{$target->html_title}}</title>
-<meta name="description" content="{{str_limit($target->social_desc,150)}}" />
+<meta name="description" content="{{str_limit($target->social_desc,200)}}" />
 <!--Page description. No longer than 155 characters.-->
 <!-- Schema.org markup for Google+ -->
 <meta itemprop="name" content="{{$target->title}}">
@@ -34,7 +35,10 @@ http://secretsaucehq.com/blog/social-media/the-ultimate-guide-to-social-media-me
 <meta property="og:site_name" content="http://www.proyectosegundarepublica.com.ar" />
 <meta property="article:published_time" content="{{$target->date}}" />
 <meta property="article:modified_time" content="{{$target->updated_at}}" />
+<?php $data = get_defined_vars();?>
 @if(!empty($data['section']))<meta property="article:section" content="{{$section->title}}" />@endif
-@if(!empty($data['content']))<meta property="article:tag" content="{{$content->tags()[0]->name}}" />@endif
+@if(!empty($data['content']))<meta property="article:tag" content="{{$content->tags[0]->name}}" />@endif
 <meta property="og:author" content="PSR" />
+<meta property="article:publisher" content="http://www.facebook.com/ProyectoSegundaRepublica" />
+<meta property="article:author" content="http://facebook.com/ProyectoSegundaRepublica" />
 <meta property="fb:app_id" content="1698679477089861"/>

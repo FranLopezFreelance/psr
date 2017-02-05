@@ -19,7 +19,7 @@
   <div class="home-mas-videos container-fluid">
   <h4 class="title">Programas Anteriores</h4>
   <div class="clearfix"></div>
-  <div class="videos-content" data-next-page="2">
+  <div class="videos-content" data-next-page="1">
 
       <?php $colsm = 3; $colmd = 3; ?>
       @foreach($videos as $content)
