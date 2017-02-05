@@ -32,10 +32,8 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
-
       $contact = new Contact($request->all());
       $contact->save();
-
       return response()->json([
         'name' => $contact->name,
       ]);

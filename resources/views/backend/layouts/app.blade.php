@@ -80,7 +80,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="/">Web</a>
+                            <a href="/" target="_blank">Web</a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="/backend/contacts"/> Ver</a></li>
                             </ul>

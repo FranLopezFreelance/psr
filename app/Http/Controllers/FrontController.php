@@ -8,6 +8,7 @@ use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use DB;
 
@@ -35,7 +36,21 @@ class FrontController extends Controller
        View::share( 'pilaresSidebar', $pilaresSidebar );
     }
 
-  public function getIndex(){
+  public function getIndex(Request $request){
+    if($request->ajax()) {
+
+      $page = Paginator::resolveCurrentPage();
+        $perPage=12;
+        $contents = new Paginator(Content::where('typeview_id','=',4)->orderBy('date','desc')->skip((($page - 1) * $perPage)+6)->take($perPage + 1)->get(), $perPage, $page);
+//dd($contents);
+      $colsm = 3;
+      $colmd = 3;
+        return [
+            'videos' => view('front.home.assets.ajax-video-render')->with(compact('contents','colsm','colmd'))->render(),
+            'next_page' => $contents->nextPageUrl()
+        ];
+    }
+
     $target = Section::where('id', 1)->first();
     //$sql = "SELECT * FROM contents INNER JOIN tagscontents ON contents.id = tagscontents.content_id WHERE tagscontents.tag_id = 1 AND contents.typeview_id = 4 ORDER BY contents.date DESC";
 
@@ -144,7 +159,7 @@ class FrontController extends Controller
     $tag = Tag::where('url', $tag)->first();
     if($tag){
 
-      $contents = $tag->contents()->paginate(12);
+      $contents = $tag->contents()->orderBy('date','desc')->paginate(12);
       $target = $tag;
 
       if($request->ajax())return  $this->renderAjax($request,null,$contents);
@@ -161,8 +176,24 @@ class FrontController extends Controller
   	$contents = Content::where('title', 'LIKE', '%' . $query . '%')
                     ->orWhere("text", "LIKE", "%$query%")
                     ->where([['active','=',1],['section_id','!=',0]])
+                    ->orderBy('date','desc')
                     ->paginate(12);
+
+    $tags = Tag::where('name', 'LIKE', '%' . $query . '%')->get();
+
+    foreach($tags as $tag){
+      foreach($tag->contents as $content){
+        if(!$contents->contains('id', $content->id)){
+          $contents->push($content);
+        }
+      }
+    }
+
+    $contents->sortByDesc('date');
+
     $target = $contents[0];
+
+    // dd($target);
     if($request->ajax()) return  $this->renderAjax($request,null,$contents);
 
 

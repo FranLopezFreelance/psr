@@ -80,6 +80,19 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('dest') ? ' has-error' : '' }}">
+                            <div class="col-md-6 col-md-offset-4">
+
+                              <input type="checkbox" name="dest"  /> Destacado
+
+                                @if ($errors->has('typeview_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('dest') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                       @if($section->id == 4)
                         <div class="form-group{{ $errors->has('videotype_id') ? ' has-error' : '' }}">
                             <label for="videotype_id" class="col-md-4 control-label">Tipo de Video</label>
@@ -110,6 +123,18 @@
                                 @if ($errors->has('video_id'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('video_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('reference') ? ' has-error' : '' }}">
+                            <label for="reference" class="col-md-4 control-label">Programa N°: </label>
+                            <div class="col-md-6">
+                                <input id="reference" type="text" class="form-control" name="reference" value="{{ old('reference') }}" required>
+                                @if ($errors->has('reference'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('reference') }}</strong>
                                     </span>
                                 @endif
                             </div>

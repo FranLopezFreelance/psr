@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
           <div class="panel panel-default">
             <div class="panel-heading"><h3>{{ $section->name }} <a class="btn btn-success article-create" href="/backend/contents/createBySection/{{ $section->id }}/{{ $subSection->id }}">Crear</a></h3>
             </div>
@@ -43,7 +43,7 @@
               </div>
           </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-9">
           <div class="panel panel-default">
               <div class="panel-heading">
                 <h4>{{ $content->title }}
@@ -61,7 +61,23 @@
                 @if($content->typeview_id == 4)
                   <iframe width="100%" height="400" src="https://www.youtube.com/embed/{{ $content->video_id }}" frameborder="0" allowfullscreen>
                   </iframe>
-
+                  <hr />
+                    <div class="row">
+                      <div class="col-md-6">
+                        <img src="{{ $content->getSmallImg($content->typeview_id) }}" />
+                      </div>
+                      <div class="col-md-6">
+                        <p><b>Creado por:</b></p>
+                          @if(isset($content->creator->name))
+                            <p class="editor">{{ $content->creator->name }} - {{ $content->getDate() }}</p>
+                          @endif
+                        <p><b>Editado por:</b></p>
+                          @forelse($content->editors as $editor)
+                            <p class="editor">{{ $editor->name }} - {{ $editor->pivot->date }} </p>
+                          @empty
+                          @endforelse
+                      </div>
+                    </div>
                   <hr />
 
                   <p><b>Video ID: </b>
@@ -73,17 +89,34 @@
                   </p>
 
                 @elseif($content->typeview_id == 2 || $content->typeview_id == 3)
-                  <img src="{{ $content->getSmallImg($content->typeview_id) }}" />
-                  <hr />
-                  <p>{!! $content->text !!}</p>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <img src="{{ $content->getSmallImg($content->typeview_id) }}" />
+                    </div>
+                    <div class="col-md-6">
+                      <p><b>Creado por:</b></p>
+                        @if(isset($content->creator->name))
+                          <p class="editor">{{ $content->creator->name }}</p>
+                        @endif
+                      <p><b>Editado por:</b></p>
+                        @forelse($content->editors as $editor)
+                          <p class="editor">{{ $editor->name }}</p>
+                        @empty
+                        @endforelse
+                    </div>
+                  </div>
 
                   <hr />
+                @endif
 
+                @if($content->typeview_id == 3)
+                  <p><b>Autor: </b> {{ $content->author->name }}</p>
+                  <p><img src="{{ $content->author->getFullImgUrl() }}" /></p>
                 @endif
 
                 <p><b>Título HTML: </b> {{ $content->html_title }}</p>
                 <p><b>URL: </b> {{ $content->url }}</p>
-                <p><b>Descripción: </b> {{ $content->description }}</p>
+                <p><b>Descripción: </b> {!! $content->text !!}</p>
                 <p><b>Desc. Social: </b> {{ $content->social_desc }}</p>
                 <p><b>Tags: </b>
                   @if(isset($content->tags))
@@ -96,9 +129,6 @@
                     No hay Tags asociados.
                   @endif
                 </p>
-                @if($content->typeview_id == 3)
-                  <p><b>Autor: </b> {{ $content->author->name }}</p>
-                @endif
                 <p><b>Fecha: </b> {{ $content->renderDate() }}</p>
                 <!-- <img src="{{ $content->getStandardImg($content->typeview_id) }}" />
                 <img src="{{ $content->getMediumImg($content->typeview_id) }}" /> -->

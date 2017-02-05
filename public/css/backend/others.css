@@ -21,3 +21,15 @@
 .list-group-item:hover {
   background-color: #EFF8FB;
 }
+
+.table-contents {
+  border-top: 2px solid gray;
+}
+
+.line-hight {
+  border-bottom: 2px solid gray;
+}
+
+.editor, .creator {
+  margin-left: 15px;
+}

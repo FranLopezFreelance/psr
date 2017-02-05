@@ -8,7 +8,7 @@ use Carbon\Carbon;
 class Content extends Model
 {
     protected $fillable = ['section_id', 'videotype_id', 'url', 'title', 'html_title', 'description', 'social_desc',
-    'social_img', 'typeview_id', 'text', 'author_id', 'tags', 'video_id', 'img_url', 'date'];
+    'social_img', 'typeview_id', 'text', 'author_id', 'tags', 'video_id', 'img_url', 'date', 'reference', 'user_id'];
 
     public function typeView(){
         return $this->belongsTo('App\Typeview', 'typeview_id');
@@ -24,6 +24,18 @@ class Content extends Model
 
     public function tags(){
         return $this->belongsToMany('App\Tag', 'tagscontents', 'content_id', 'tag_id');
+    }
+
+    public function creator(){
+        return $this->belongsTo('App\User', 'user_id');
+    }
+
+    public function getDate(){
+        return date_format($this->created_at, 'd-m-Y');
+    }
+
+    public function editors(){
+        return $this->belongsToMany('App\User', 'userscontents', 'content_id', 'user_id');
     }
 
 
@@ -106,7 +118,7 @@ class Content extends Model
     }
 
     public function getProgramaTag(){
-      $tags = [1,2,3,50];//nacional,internacional,especial,doctrina      
+      $tags = [1,2,3,50];//nacional,internacional,especial,doctrina
       foreach ($this->tags()->getResults() as $value) {
         if(in_array($value->id,$tags))return $value;
       }

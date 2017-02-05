@@ -8,7 +8,7 @@
                 <div class="panel-heading">
                   <h4>
                     <a href="/backend/contents/subSection/{{ $content->section->id }}">{{ $content->section->name }}</a>
-                    / Editar {{ $content->typeview->name }}
+                    / <a href="/backend/contents/{{ $content->id }}">{{ $content->title }}</a> / Editar {{ $content->typeview->name }}
                     <a class="btn btn-warning btn-xs pull-right"
                       href="/{{ $content->section->parent->url }}/{{ $content->section->url }}/{{ $content->url }}">Ver en la Web</a>
                   </h4>
@@ -40,6 +40,23 @@
                   <form class="form-horizontal" role="form" method="POST" action="/backend/contents/{{ $content->id }}">
                       {{ csrf_field() }}
                       {!! method_field('patch') !!}
+
+                      <div class="form-group{{ $errors->has('dest') ? ' has-error' : '' }}">
+                          <div class="col-md-6 col-md-offset-4">
+
+                              @if($content->dest)
+                                <input type="checkbox" name="dest"  checked/> Destacado
+                              @else
+                                <input type="checkbox" name="dest"/> Destacado
+                              @endif
+
+                              @if ($errors->has('typeview_id'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('dest') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
 
                       <div class="form-group{{ $errors->has('typeview_id') ? ' has-error' : '' }}">
                           <label for="typeview_id" class="col-md-4 control-label">Sección</label>
@@ -150,6 +167,18 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="form-group{{ $errors->has('reference') ? ' has-error' : '' }}">
+                            <label for="reference" class="col-md-4 control-label">Programa N°: </label>
+                            <div class="col-md-6">
+                                <input id="reference" type="text" class="form-control" name="reference" value="{{ $content->reference }}"  required>
+                                @if ($errors->has('reference'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('reference') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                       @endif
 
                       <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -225,7 +254,7 @@
                               @endif
                               <div class="social-helper">
                                 <strong><span class="social-count"></span> caracteres</strong>
-                                <span> - Se recomienda no más de <strong>150</strong> caracteres(facebook)</span>
+                                <span> - Se recomienda no más de <strong>150</strong> caracteres (facebook)</span>
                               </div>
                           </div>
                       </div>

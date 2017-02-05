@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
           <div class="panel panel-default">
             <div class="panel-heading"><h3>Secciones</h3>
             </div>
@@ -26,7 +26,7 @@
                       No hay secciones aquí.
                     @endforelse
                   </ul>
-                  
+
                   <ul>
                     @forelse($menuSections as $principalSection)
                       @if($principalSection->childrens()->count() > 0)
@@ -59,7 +59,7 @@
               </div>
           </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-9">
           <div class="panel panel-default">
               <div class="panel-heading">
                 <h4>{{ $subSection->parent->name }} / {{ $subSection->name }}
@@ -72,23 +72,35 @@
                         <h5>{{ $message }}</h5>
                     </div>
                 @endif
-                    <ul class="list-group">
+
+                    <table class="table table-hover table-contents">
                       @if(isset($contents))
                         @forelse($contents as $content)
-                            <li class="list-group-item">
-                              <a href="/backend/contents/{{ $content->id }}">{{ $content->title }}</a>
-                              <div class="actions">
-                                <a href="/backend/contents/{{ $content->id }}/edit" class="btn btn-primary btn-xs article-edit">Editar</a>
-                                {!! Form::open(['method' => 'DELETE','route' => ['contents.destroy', $content->id],'style'=>'display:inline']) !!}
-                                {!! Form::submit('Eliminar', ['class' => 'btn btn-danger pull-right btn-xs']) !!}
-                                {!! Form::close() !!}
-                              </div>
-                            </li>
+                            <tr>
+                              <td class="line-hight" rowspan="2"><img src="{{ $content->getSmallImg($content->typeview_id) }}" width="140px"></td>
+                              <td colspan="5"><h4><a href="/backend/contents/{{ $content->id }}">{{ $content->title }}</a></h4></td>
+                            </tr>
+                            <tr class="line-hight">
+                              <td>Pgrama N°: {{ $content->reference }}</td>
+                              <td>{{ $content->renderDate() }}</td>
+                              <td>
+                                @if(isset($content->creator->name))
+                                  {{ $content->creator->name }}
+                                @endif
+                              </td>
+                              <td><a href="/backend/contents/{{ $content->id }}/edit" class="btn btn-primary btn-xs article-edit">Editar</a></td>
+                              <td>
+                                  {!! Form::open(['method' => 'DELETE','route' => ['contents.destroy', $content->id],'style'=>'display:inline']) !!}
+                                  {!! Form::submit('Eliminar', ['class' => 'btn btn-danger pull-right btn-xs']) !!}
+                                  {!! Form::close() !!}
+                              </td>
+                            </tr>
                         @empty
                           - No hay contenidos aquí.
                         @endforelse
                       @endif
-                    </ul>
+                    </table>
+                    {{ $contents->links() }}
                   </div>
                 </div>
               </div>

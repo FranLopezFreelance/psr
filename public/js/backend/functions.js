@@ -16,8 +16,9 @@ $( document ).ready(function() {
     'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
   ],
   toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-  toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
+  toolbar2: 'print preview media | forecolor backcolor emoticons | codesample | fontsizeselect',
   image_advtab: true,
+  fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
   templates: [
     { title: 'Test template 1', content: 'Test 1' },
     { title: 'Test template 2', content: 'Test 2' }

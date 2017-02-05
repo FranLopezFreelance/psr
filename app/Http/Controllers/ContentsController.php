@@ -9,6 +9,7 @@ use App\Tag;
 use App\Typeview;
 use App\Videotype;
 
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,7 @@ class ContentsController extends Controller
         $section = $sections->where('level', 1)->first();
         $subSections = $sections->where('level', 2);
         $subSection = $sections->where('level', 2)->first();
-        $contents = $subSection->contents;
+        $contents = Content::where('section_id', $subSection->id)->paginate(15);
         return view('backend.contents.index', compact('sections', 'section', 'subSection', 'contents', 'menuSections'));
     }
 
@@ -48,9 +49,13 @@ class ContentsController extends Controller
                                 ->where('topnav_back', 1)
                                 ->where('active', 1)->get();
 
+
         if($subSection = $section->childrens()->first()){
           $contents = $subSection->contents;
         }
+
+        $contents = Content::where('section_id', $subSection->id)->paginate(15);
+
         return view('backend.contents.index', compact('section', 'subSection', 'contents', 'menuSections'));
     }
 
@@ -66,7 +71,7 @@ class ContentsController extends Controller
           $section = $subSection->parent->parent;
         }
 
-        $contents = $subSection->contents;
+        $contents = Content::where('section_id', $subSection->id)->orderBy('date', 'desc')->paginate(15);
         return view('backend.contents.index', compact('section', 'subSection', 'contents', 'menuSections'));
     }
 
@@ -168,6 +173,8 @@ class ContentsController extends Controller
         $content->img_url = $name;
       }
 
+      $content->user_id = Auth::user()->id;
+
       $content->save();
 
       //Guardando Tags asociados
@@ -268,6 +275,15 @@ class ContentsController extends Controller
           $string
         );
         $content->url = $url;
+
+        if($request->input('dest')){
+          $content->dest = 1;
+        }else{
+          $content->dest = 0;
+        }
+
+        $content->editors()->save(Auth::user());
+
         $content->save();
 
         //Guardando Tags asociados
@@ -322,7 +338,7 @@ class ContentsController extends Controller
         $section = $subSection->parent->parent;
       }
 
-      $contents = $subSection->contents;
+      $contents = Content::where('section_id', $subSection->id)->orderBy('date', 'desc')->paginate(15);
 
       $message = 'El '.$typeView.' ha sido eliminada.';
 
