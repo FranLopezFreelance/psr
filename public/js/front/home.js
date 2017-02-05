@@ -41,7 +41,7 @@ $('.contact-form').on('submit', function(e) {
           success: function(data)
           {
             $('#form-result').modal();
-            $('#form-result .fnombre').text(data.nombre);
+            $('#form-result .fnombre').text(data.name);
           },
           error: function(data){
             $('.contact-form button').removeAttr('disabled');

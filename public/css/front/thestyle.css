@@ -245,14 +245,17 @@ a.tag {
   font-size: 11px;
   font-weight: 500;
 }
-a.tag.red-bloque {
+a.tag.red {
   background-color: #fd1c18;
 }
-a.tag.blue-bloque {
+a.tag.hardblue {
   background-color: #0096ec;
 }
-a.tag.especial-bloque {
+a.tag.especial {
   background-color: #74a95f;
+}
+a.tag.doctrina {
+  background-color: black;
 }
 a.vermas {
   text-transform: uppercase;
@@ -343,6 +346,9 @@ div.mini-video {
   }
   div.mini-video div.content-mini div.tag.programa.especial-bloque {
     background-color: #74a95f;
+  }
+  div.mini-video div.content-mini div.tag.programa.doctrina-bloque {
+    background-color: black;
   }
   div.mini-video div.content-mini span.stats {
     margin-left: 10px;
@@ -1260,6 +1266,18 @@ div.home-videos div.video {
 div.home-videos div.video img {
   width: 100%;
 }
+div.home-videos div.video.hardblue span {
+  border-left: 7px solid #0096ec;
+}
+div.home-videos div.video.red span {
+  border-left: 7px solid #fd1c18;
+}
+div.home-videos div.video.especial span {
+  border-left: 7px solid #74a95f;
+}
+div.home-videos div.video.doctrina span {
+  border-left: 7px solid black;
+}
 div.home-videos div.video span {
   position: absolute;
   text-align: left;
@@ -1270,15 +1288,11 @@ div.home-videos div.video span {
   font-size: 15px;
   padding: 8px 20px;
   color: white;
-  border-left: 7px solid #0096ec;
 }
 @media (min-width: 992px) {
   div.home-videos div.video span {
     font-size: 25px;
   }
-}
-div.home-videos div.video-internacional > div.video span {
-  border-left: 7px solid #fd1c18;
 }
 div.home-mas-videos .title {
   color: black;

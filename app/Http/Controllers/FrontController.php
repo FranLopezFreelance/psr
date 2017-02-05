@@ -38,17 +38,26 @@ class FrontController extends Controller
   public function getIndex(){
     $target = Section::where('id', 1)->first();
     //$sql = "SELECT * FROM contents INNER JOIN tagscontents ON contents.id = tagscontents.content_id WHERE tagscontents.tag_id = 1 AND contents.typeview_id = 4 ORDER BY contents.date DESC";
-    $nacional = Content::join('tagscontents', 'contents.id', '=', 'tagscontents.content_id')
-    ->where([["tagscontents.tag_id","=",1],["contents.typeview_id","=",4]])
-    ->orderBy('date','desc')
-    ->first();
 
-    $internacional = Content::join('tagscontents', 'contents.id', '=', 'tagscontents.content_id')
-    ->where([["tagscontents.tag_id","=",2],["contents.typeview_id","=",4]])
-    ->orderBy('date','desc')
-    ->first();
-
-    $videos = Content::where('typeview_id','=',4)->paginate(4);
+    $videos = Content::where('typeview_id','=',4)->orderBy('date','desc')->paginate(6);
+    $primero = $videos->items()[0];
+    $videos->offsetUnset(0);
+    $segundo = $videos->items()[1];
+    $videos->offsetUnset(1);
+    if($primero->date == $segundo->date){
+      if($primero->tags()->contains('id', 1)){
+        $nacional = $primero;
+        $internacional = $segundo;
+      }
+      else if($segundo->tags()->contains('id', 1)){
+        $nacional = $segundo;
+        $internacional = $primero;
+      }
+    }else{//orden por fecha
+      $nacional = $primero;
+      $internacional = $segundo;
+    }
+  //  dd($videos);
 
     return view('front.index', compact('target','nacional','internacional','videos'));
   }
@@ -119,7 +128,7 @@ class FrontController extends Controller
   }
 
   public function getMoreHomeVideos(Request $request){
-  $contents = Content::where('typeview_id','=',4)->paginate(12);//ver de ordenar el request
+  $contents = Content::where('typeview_id','=',4)->orderBy('date','desc')->paginate(12);//ver de ordenar el request
 
     if($request->ajax()) {
       $colsm = 3;
@@ -164,7 +173,7 @@ class FrontController extends Controller
   {
       $contact = new Contact($request->all());
       $contact->save();
-      
+
       $target = Section::where('id', 1)->first();
       //$sql = "SELECT * FROM contents INNER JOIN tagscontents ON contents.id = tagscontents.content_id WHERE tagscontents.tag_id = 1 AND contents.typeview_id = 4 ORDER BY contents.date DESC";
       $nacional = Content::join('tagscontents', 'contents.id', '=', 'tagscontents.content_id')
