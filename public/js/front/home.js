@@ -118,7 +118,7 @@ function verMasVideos(){
   var page = $('.videos-content').data('next-page');
   if(page !== null && page !== undefined && page !== '') {
     $('.spinner-wrapper').addClass('show');
-    $.get({url:'moreHomeVideos?page='+page,cache:false}, function(data){
+    $.get({url:'/?page='+page,cache:false}, function(data){
         $('.spinner-wrapper').removeClass('show');
         $('.videos-content').append(data.videos);
       if(data.next_page!=null)  $('.videos-content').data('next-page', ++page);
@@ -157,7 +157,6 @@ $('#modal-video').on('hidden.bs.modal', function () {
 function loadContent(){
   var page = $('.list-content').data('next-page');
   if(page == null || page == undefined || page == '') return;
-
 
   $('.spinner-wrapper').addClass('show');
   $.get({url:page,cache: false}, function(data){

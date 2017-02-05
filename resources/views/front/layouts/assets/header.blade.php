@@ -3,7 +3,7 @@
     <!-- Bootstrap -->
     <link href="/css/front/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="favicon.png">
+  
     <link rel="stylesheet" type="text/css"  href="/css/front/extra.slider.css" >
     <link rel="stylesheet" type="text/css"  href="/css/front/thestyle.min.css?v={{str_random(40)}}" >
 

@@ -196,7 +196,6 @@ class FrontController extends Controller
     // dd($target);
     if($request->ajax()) return  $this->renderAjax($request,null,$contents);
 
-
     return view('front.search.index', compact('target','contents','query'));
   }
 
