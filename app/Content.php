@@ -49,7 +49,7 @@ class Content extends Model
         $current = $current->parent;
       }
       $results[] = array('url'=>$current->url,'name'=>$current->name);
-      $results = array_reverse($results);      
+      $results = array_reverse($results);
       return $results;
       /*
       if($this->section->section_id){
@@ -103,5 +103,13 @@ class Content extends Model
     public function addView(){
       $this->views += 1;
       $this->save();
+    }
+
+    public function getProgramaTag(){
+      $tags = [1,2,3,50];//nacional,internacional,especial,doctrina      
+      foreach ($this->tags()->getResults() as $value) {
+        if(in_array($value->id,$tags))return $value;
+      }
+      return new Tag();
     }
 }

@@ -113,8 +113,11 @@
                           <label for="social_desc" class="col-md-4 control-label">Desc. Social</label>
 
                           <div class="col-md-6">
-                              <textarea id="social_desc" class="form-control" name="social_desc" required/>{{ old('social_desc') }}</textarea>
-
+                              <textarea rows="3" id="social_desc" class="form-control" name="social_desc" required/>{{ old('social_desc') }}</textarea>
+                              <div class="social-helper">
+                                <strong><span class="social-count"></span> caracteres</strong>
+                                <span> - Se recomienda no más de <strong>150</strong> caracteres(facebook)</span>
+                              </div>
                               @if ($errors->has('social_desc'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('social_desc') }}</strong>

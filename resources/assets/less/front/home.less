@@ -37,6 +37,10 @@ div.home-videos{
     img{width: 100%;}
     background-color: grey;
     position: relative;
+    &.hardblue span{border-left: 7px solid @blue-border-video;}
+    &.red span{border-left: 7px solid @red-border-video;}
+    &.especial span{border-left: 7px solid @especial-border-video;}
+    &.doctrina span{border-left: 7px solid @doctrina-border-video;}
 
     span{
       position: absolute;
@@ -48,14 +52,10 @@ div.home-videos{
       font-size: 15px;
       padding: 8px 20px;
       color:white;
-      border-left: 7px solid @blue-border-video;
       .q(@md,{font-size: 25px;});
     }
   }
 
-  div.video-internacional>div.video span{
-    border-left: 7px solid @red-border-video;
-  }
 }
 
 div.home-mas-videos{

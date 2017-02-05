@@ -141,9 +141,9 @@
 
                           <div class="col-md-6">
                               @if(old('social_desc'))
-                                <textarea id="social_desc" class="form-control" name="social_desc" required/>{{ old('social_desc') }}</textarea>
+                                <textarea rows="3" id="social_desc" class="form-control" name="social_desc" required/>{{ old('social_desc') }}</textarea>
                               @else
-                                <textarea id="social_desc" class="form-control" name="social_desc" required/>{{ $section->social_desc }}</textarea>
+                                <textarea rows="3" id="social_desc" class="form-control" name="social_desc" required/>{{ $section->social_desc }}</textarea>
                               @endif
 
                               @if ($errors->has('social_desc'))
@@ -151,6 +151,10 @@
                                       <strong>{{ $errors->first('social_desc') }}</strong>
                                   </span>
                               @endif
+                              <div class="social-helper">
+                                <strong><span class="social-count"></span> caracteres</strong>
+                                <span> - Se recomienda no más de <strong>150</strong> caracteres(facebook)</span>
+                              </div>
                           </div>
                       </div>
 
