@@ -35,5 +35,6 @@ http://secretsaucehq.com/blog/social-media/the-ultimate-guide-to-social-media-me
 <meta property="article:published_time" content="{{$target->date}}" />
 <meta property="article:modified_time" content="{{$target->updated_at}}" />
 @if(!empty($data['section']))<meta property="article:section" content="{{$section->title}}" />@endif
-<meta property="article:tag" content="Article Tag" />
+@if(!empty($data['content']))<meta property="article:tag" content="{{$content->tags()[0]->name}}" />@endif
+<meta property="og:author" content="PSR" />
 <meta property="fb:app_id" content="1698679477089861"/>
