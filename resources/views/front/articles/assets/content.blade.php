@@ -22,8 +22,10 @@
     <img class="main-image" src="{{$content->getImageByType(1)}}" alt="">
     @include('front.assets.addthis')
     @endif
-
-</div>
+      @if(!Auth::guest())
+        <a class="btn btn-success pull-right article-create" href="/backend/contents/{{ $content->id }}/edit">Editar</a>
+      @endif
+  </div>
   <div class="col-xs-12">
     <div class="text">{!!$content->text!!}</div>
   </div>

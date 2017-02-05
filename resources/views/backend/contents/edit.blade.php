@@ -9,6 +9,8 @@
                   <h4>
                     <a href="/backend/contents/subSection/{{ $content->section->id }}">{{ $content->section->name }}</a>
                     / Editar {{ $content->typeview->name }}
+                    <a class="btn btn-warning btn-xs pull-right"
+                      href="/{{ $content->section->parent->url }}/{{ $content->section->url }}/{{ $content->url }}">Ver en la Web</a>
                   </h4>
                 </div>
                 <div class="panel-body">

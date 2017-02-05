@@ -47,9 +47,17 @@ class ContactsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Contact $contact)
     {
-        //
+        $contact->view = 1;
+        $contact->save();
+
+        $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)
+                              ->where('active', 1)->get();
+
+        $contacts = Contact::all();
+        return view('backend.contacts.show', compact('contacts', 'contact', 'menuSections'));
     }
 
     /**
