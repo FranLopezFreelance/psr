@@ -23,6 +23,7 @@ Route::get('backend/contents/createBySection/{section}', 'ContentsController@cre
 Route::get('backend/contents/createBySection/{section}/{subSection}', 'ContentsController@createBySubSection');
 Route::get('backend/contents/getBySection/{subSection}', 'ContentsController@getContentBySubSection');
 Route::get('backend/tags/create/{tag}', 'ContentsController@addNewTag');
+Route::post('backend/contents/editImage/{content}', 'ContentsController@editImage');
 
 /* FRONT CONTROLLERS */
 Route::get('/', 'FrontController@getIndex');

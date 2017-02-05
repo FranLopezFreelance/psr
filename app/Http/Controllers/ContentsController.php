@@ -350,4 +350,24 @@ class ContentsController extends Controller
         'name' => $name
       ]);
     }
+
+    public function editImage(Request $request, Content $content){
+
+      if($content->typeview_id == 3){
+        $path = 'img/articulos/';
+      }elseif($content->typeview_id == 4){
+        $path = 'img/programas/';
+      }
+
+      $file = $request->file('file');
+      $name = $content->url.'.'.$file->getClientOriginalExtension();
+      $imageFile = Image::make($file);
+      $imageFile->save($path.'standard/'.$name);
+      $imageMedium = $imageFile->resize(750, 422);
+      $imageMedium->save($path.'medium/'.$name);
+      $imageSmall = $imageFile->resize(320, 180);
+      $imageSmall->save($path.'small/'.$name);
+      $content->img_url = $name;
+      $content->save();
+    }
 }

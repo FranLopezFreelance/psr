@@ -13,7 +13,8 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/backend/others.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/dropzone.css">
     <!-- Social Sharing -->
 
 
@@ -78,6 +79,12 @@
                                 <li><a href="/backend/contacts"/> Ver</a></li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="/">Web</a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/backend/contacts"/> Ver</a></li>
+                            </ul>
+                        </li>
                         @endif
                     </ul>
 
@@ -117,6 +124,7 @@
     <script src="/js/app.js"></script>
     <script src="/js/backend/functions.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/dropzone.js"></script>
     <script src="/js/backend/tinymce/tinymce.min.js"></script>
     <!-- <script src="/js/backend/tinymce/jquery.tinymce.min.js"></script> -->
     <script>

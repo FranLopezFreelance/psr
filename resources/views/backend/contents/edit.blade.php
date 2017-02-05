@@ -21,6 +21,22 @@
                       </div>
                   @endif
 
+                  <div class="row">
+                    <div class="col-md-4 col-md-offset-1">
+                      <img src="{{ $content->getSmallImg($content->typeview_id) }}" />
+                    </div>
+                    <div class="col-md-6">
+                      <div class="dropzoneDIV">
+                          <h4>Arrastrar imágen</h4>
+                          <form action="/backend/contents/editImage/{{ $content->id }}" class="dropzone" method="POST">
+                            {{ csrf_field() }}
+                          </form>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr />
+
                   <form class="form-horizontal" role="form" method="POST" action="/backend/contents/{{ $content->id }}">
                       {{ csrf_field() }}
                       {!! method_field('patch') !!}
